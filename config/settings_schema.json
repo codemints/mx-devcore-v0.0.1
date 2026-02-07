@@ -66,7 +66,8 @@
       },
       {
         "type": "header",
-        "content": "Cart Drawer Settings"
+        "content": "Cart Drawer Settings",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
       },
       {
         "type": "select",
@@ -76,7 +77,8 @@
         "options": [
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
-        ]
+        ],
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
       },
       {
         "type": "select",
@@ -86,7 +88,8 @@
         "options": [
           { "value": "overlay", "label": "Overlay page" },
           { "value": "underlay", "label": "Under nav" }
-        ]
+        ],
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
       }
     ]
   }
