@@ -22,9 +22,8 @@
 
   <div class="header__actions py-(--hdr-py)">
     <div class="header__actions--cart w-(--hdr-icon-w) aspect-square">
-      <a href="{{ routes.cart_url }}" class="inline-block w-full h-full">
-        {%- render 'icons.theme', icon: 'cart' -%}
-      </a>
+      {%- render 'cart.link' -%}
+      {%- render 'cart.count' -%}
     </div>
   </div>
 </div>
