@@ -7,6 +7,14 @@
   </head>
   
   <body>
-    {{ content_for_layout }}
+    {%- sections 'group-header' -%}
+
+    <main>
+      {{ content_for_layout }}
+    </main>
+
+    {%- sections 'group-footer' -%}
+
+    {%- sections 'group-cart' -%}
   </body>
 </html>
