@@ -17,7 +17,7 @@
       "type": "collection-grid",
       "blocks": {
         "collection-grid-item": {
-          "type": "_card-product",
+          "type": "_card-product-static",
           "static": true,
           "settings": {
             "product": "{{ closest.product }}"
