@@ -4,6 +4,12 @@
   <head>
     <title>{{ page_title }}</title>
     {{ content_for_header }}
+
+    {%- style -%}
+      :root {
+        {%- render 'style.variables.header' -%}
+      }
+    {%- endstyle -%}
   </head>
   
   <body>
