@@ -12,7 +12,7 @@
     <ul class="flex items-center gap-x-(--hdr-link-gap)">
       {%- for link in settings.menu_primary.links -%}
         <li class="leading-none">
-          <a href="{{ link.url }}">
+          <a href="{{ link.url }}" class="inline-block">
             {{ link.title }}
           </a>
         </li>
