@@ -3,7 +3,7 @@
     <a href="{{ routes.root_url }}" class="w-(--hdr-logo-w)">
       {{ settings.logo_on_light
         | image_url: width: settings.logo_on_light.width
-        | image_tag: "w-full h-full object-contain"
+        | image_tag: class: 'w-full h-full object-contain'
       }}
     </a>
   </div>
