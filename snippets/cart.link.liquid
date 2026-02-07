@@ -1,7 +1,7 @@
 <a
   href="{{ routes.cart_url }}"
   class="inline-block w-full h-full"
-  {% if settings.cart_type == drawer %}
+  {% if settings.cart_type == 'drawer' %}
     {% if settigs.cart_drawer_type == 'overlay' %}
       mx-cart-open
     {% elsif settings.cart_drawer_type == 'underlay' %}
