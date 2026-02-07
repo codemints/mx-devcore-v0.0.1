@@ -1,0 +1,31 @@
+{%- comment -%} STATIC BLOCKS {%- endcomment -%}
+{%- comment -%} END {%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{%- schema -%}
+  {
+    "name": "Collection Grid",
+    "tag": "section",
+    "class": "section__collection-grid",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection",
+        "info": "Only required when used outside of the collection template."
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Collection Grid",
+        "settings": {},
+        "blocks": [],
+        "category": "Collection"
+      }
+    ]
+  }
+{%- endschema -%}
