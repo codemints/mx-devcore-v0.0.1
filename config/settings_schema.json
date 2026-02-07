@@ -65,6 +65,19 @@
         ]
       },
       {
+        "type": "checkbox",
+        "id": "cart_count_visible",
+        "label": "Show cart count",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_count_hide",
+        "label": "Hide cart count when empty",
+        "default": true,
+        "visible_if": "{{ settings.cart_count_visible == true }}"
+      },
+      {
         "type": "select",
         "id": "cart_drawer_layout",
         "label": "Cart drawer layout",
