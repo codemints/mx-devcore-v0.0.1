@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+/* TAILWIND */
+@import 'tailwindcss';
+@import './core/tailwind.css';
+
+/* SPLIDE */
+@import '@splidejs/splide/css/core';

@@ -1,0 +1,69 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MX DevCore",
+    "theme_author": "moxiethunder",
+    "theme_version": "0.0.1",
+    "theme_documentation_url": "https:\/\/github.com\/codemints\/mx-devcore-v0.0.1\/",
+    "theme_support_url": "https:\/\/github.com\/codemints\/mx-devcore-v0.0.1\/"
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo_on_light",
+        "label": "Logo for light surfaces"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_on_dark",
+        "label": "Logo for dark surfaces"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_favicon",
+        "label": "The site favicon"
+      }
+    ]
+  },
+  {
+    "name": "Menus",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu_primary",
+        "label": "Primary navigation",
+        "default": "main-menu",
+        "info": "Used in the header as the primary navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_mobile",
+        "label": "Mobile navigation",
+        "info": "Used for mobile navigation drawer. Defaults to primary navigation if blank."
+      },
+      {
+        "type": "link_list",
+        "id": "menu_footer_legal",
+        "label": "Legal navigation",
+        "info": "Used in Footer Legal section."
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "default": "page",
+        "options": [
+          { "value": "page", "label": "Page" },
+          { "value": "drawer", "label": "Drawer" }
+        ]
+      }
+    ]
+  }
+]

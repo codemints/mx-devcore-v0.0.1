@@ -1,0 +1,22 @@
+#Add as many enviroments as you need.
+# These are used to run the Shopify CLI commands
+# Defaults are development, staging, and production
+
+[environments.development]
+theme = "123456789012"
+store = "your-store-name" # or store = "your-store-name.myshopify.com"
+password  = "shptka_12345678901234567890123456789012" # from the Theme Access app
+theme-editor-sync = true
+notify = './app/build/notify.xml'
+
+[environments.staging]
+theme = "123456789012"
+store = "your-store-name" # or store = "your-store-name.myshopify.com"
+password  = "shptka_12345678901234567890123456789012" # from the Theme Access app
+
+[environments.production]
+theme = "123456789012"
+store = "your-store-name" # or store = "your-store-name.myshopify.com"
+password  = "shptka_12345678901234567890123456789012" # from the Theme Access app
+live = true
+allow-live = true
