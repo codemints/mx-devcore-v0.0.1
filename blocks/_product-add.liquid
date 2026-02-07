@@ -11,7 +11,7 @@
 -%}
 
 {%- capture classlist -%}
-  theme-block classname
+  theme-block {{ classname }}
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
@@ -19,21 +19,15 @@
 
 {%- schema -%}
   {
-    "name": "Product Card",
+    "name": "Cart Add",
     "tag": null,
-    "settings": [
-      {
-        "type": "product",
-        "id": "product",
-        "label": "Product"
-      }
-    ],
+    "settings": [],
     "presets": [
       {
-        "name": "Product Card",
+        "name": "Cart Add",
         "settings": {},
         "blocks": [],
-        "category": "Card"
+        "category": "Product"
       }
     ]
   }
