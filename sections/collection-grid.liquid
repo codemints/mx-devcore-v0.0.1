@@ -5,6 +5,12 @@
   assign s = section.settings
 -%}
 
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+
+  }
+{%- endstyle -%}
+
 {%- schema -%}
   {
     "name": "Collection Grid",
@@ -18,7 +24,9 @@
         "info": "Only required when used outside of the collection template."
       }
     ],
-    "blocks": [],
+    "blocks": [
+      { "type": "_card-product" }
+    ],
     "presets": [
       {
         "name": "Collection Grid",
