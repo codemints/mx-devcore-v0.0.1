@@ -8,6 +8,7 @@
   assign classname = prefix | append: type
 
   assign resource = s.product | default: closest.product | default: product
+  assign current = resource.selected_or_first_available_variant
 -%}
 
 {%- capture classlist -%}
@@ -17,7 +18,10 @@
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <div class="product-card__inner">
     <div class="product-card__media">
-
+      {{ resource.featured_image
+        | image_url: resource.featured_image.width
+        | image_tag: class: 'cover-center'
+      }}
     </div>
 
     <div class="product-card__details">
