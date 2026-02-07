@@ -1,4 +1,11 @@
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "title": {
+      "type": "page-title",
+      "settings": {}
+    }
+  },
+  "order": [
+    "title"
+  ]
 }

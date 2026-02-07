@@ -6,11 +6,11 @@ import getModules from './app/build/get-modules.js'
 const dir = import.meta.dirname
 
 const modules = getModules(dir, config.root, config.modules)
-const coreJs = resolve(dirName, config.core.scripts)
+const coreJs = resolve(dir, config.core.scripts)
 
 const input = {
   ...modules,
-  'core-js': coreJs
+  'theme-core': coreJs
 }
 
 const aliases = Object.entries(config.aliases).reduce((acc, [key, value]) => {

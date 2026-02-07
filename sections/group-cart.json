@@ -1,0 +1,23 @@
+{
+  "type": "aside",
+  "name": "Cart Group",
+  "sections": {
+    "cart_header": {
+      "type": "cart-header",
+      "settings": {}
+    },
+    "cart_body": {
+      "type": "cart-body",
+      "settings": {}
+    },
+    "cart_footer": {
+      "type": "cart-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cart_header",
+    "cart_body",
+    "cart_footer"
+  ]
+}

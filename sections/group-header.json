@@ -1,0 +1,23 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "header_banner": {
+      "type": "header-banner",
+      "settings": {}
+    },
+    "header_primary": {
+      "type": "header-primary",
+      "settings": {}
+    },
+    "header_drawer": {
+      "type": "header-drawer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header_banner",
+    "header_primary",
+    "header_drawer"
+  ]
+}

@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "vite build --watch",
-    "tailwind": "tailwindcss -i ./app/css/theme-core.css -o ./assets/theme-core.min.css --watch -minify",
+    "tailwind": "tailwindcss -i ./app/css/theme-core.css -o ./assets/theme-core.min.css --watch --minify",
     "shop:dev": "shopify theme dev -e development",
     "push:dev": "shopify theme push -e development",
     "start:dev": "run-p build tailwind shop:dev",

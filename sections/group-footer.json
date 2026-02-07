@@ -1,0 +1,18 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer_primary": {
+      "type": "footer-primary",
+      "settings": {}
+    },
+    "footer_legal": {
+      "type": "footer-legal",
+      "settings": {}
+    }
+  },
+  "order": [
+    "footer_primary",
+    "footer_legal"
+  ]
+}
