@@ -18,6 +18,6 @@
   {%- if settings.cart_count_visible == true -%}
     </span>
 
-    <span class="flex justify-center items-center absolute top-0 right-0 w-4 aspect-square text-gray-200 text-[12px] bg-gray-700 rounded-full{% if settings.cart_count_hide == true and cart.item_count == 0 %} hidden{% endif %}">{{ cart.item_count }}</span>
+    <span class="flex justify-center items-center absolute top-0 right-0 w-4 aspect-square text-gray-200 text-[12px] bg-gray-700 rounded-full- translate-x-1/2 -translate-y-1/2{% if settings.cart_count_hide == true and cart.item_count == 0 %} hidden{% endif %}">{{ cart.item_count }}</span>
   {%- endif -%}
 </a>
