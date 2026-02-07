@@ -3,6 +3,8 @@
   assign attrs = block.shopify_attributes
   assign unique_id = section.id | append: '--' | append: block.id
   assign id = 'theme-block__' | append: unique_id
+
+  assign resource = s.product | default: closest.product | default: product
 -%}
 
 <div id="{{ id }}" class="theme-block theme-block__product-card" {{ attrs }}>
@@ -13,7 +15,13 @@
   {
     "name": "Product Card",
     "tag": null,
-    "settings": [],
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      }
+    ],
     "presets": [
       {
         "name": "Product Card",
