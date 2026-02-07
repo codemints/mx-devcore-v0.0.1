@@ -10,32 +10,16 @@
   #shopify-section-{{ section.id }} {}
 {%- endstyle -%}
 
-<div outer>
-  <div class="block-offset" inner>
-    <!-- conditionally rendered -->
-    <div background-full></div>
-
-    <div class="inline-offset inline-space block-space page-max" wrapper>
-      <!-- conditionally rendered -->
-      <div background-contained></div>
-
-      <div content>
-        <!-- shoppify liquid from blocks and settings -->
-        <div section-title></div> <!-- example -->
-        <div section-grid></div> <!-- example -->
-      </div>
-    </div>
+<div class="section__content container">
+  <div class="collection__grid grid grid-cols-2 lg:grid-cols-4 gap-x-6 lg:gap-x-10 gap-y-12 lg:gap-y-15">
+    {%- for resource in source.products -%}
+      {%- content_for 'block',
+        type: '_card-product-static',
+        id: 'collection-grid-item',
+        closest.product: resource
+      -%}
+    {%- endfor -%}
   </div>
-</div>
-
-<div class="collection__grid grid grid-cols-2 lg:grid-cols-4 gap-x-6 lg:gap-x-10 gap-y-12 lg:gap-y-15">
-  {%- for resource in source.products -%}
-    {%- content_for 'block',
-      type: '_card-product-static',
-      id: 'collection-grid-item',
-      closest.product: resource
-    -%}
-  {%- endfor -%}
 </div>
 
 {%- schema -%}
