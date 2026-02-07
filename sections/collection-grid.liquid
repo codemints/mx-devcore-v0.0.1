@@ -3,13 +3,18 @@
 
 {%- liquid
   assign s = section.settings
+  assign source = s.collection | default: collection
 -%}
 
 {%- style -%}
-  #shopify-section-{{ section.id }} {
-
-  }
+  #shopify-section-{{ section.id }} {}
 {%- endstyle -%}
+
+<div>
+  {%- for resource in source.products -%}
+    {%- content_for 'block', type: '_card-product', id: 'collection-grid-item'%}
+  {%- endfor -%}
+</div>
 
 {%- schema -%}
   {
