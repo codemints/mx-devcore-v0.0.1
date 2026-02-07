@@ -4,7 +4,7 @@
   </div>
 
   <div class="header__navigation">
-    <ul class="flex items-center">
+    <ul class="flex items-center gap-x-(--hdr-link-gap)">
       {%- for link in settings.menu_primary.links -%}
         <li class="leading-none">
           <a href="{{ link.url }}">
