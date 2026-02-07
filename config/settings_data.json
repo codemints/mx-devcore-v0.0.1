@@ -12,7 +12,7 @@
     "logo_on_light": "shopify://shop_images/Simple_Skull_Logo_byGraphicSauceCo.png",
     "cart_type": "drawer",
     "cart_count_visible": true,
-    "cart_count_hide": false,
+    "cart_count_hide": true,
     "cart_drawer_type": "overlay",
     "content_for_index": []
   }
