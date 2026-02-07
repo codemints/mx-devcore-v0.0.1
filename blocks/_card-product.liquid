@@ -1,14 +1,33 @@
 {%- liquid
   assign s = block.settings
   assign attrs = block.shopify_attributes
+  assign prefix = 'theme-block__'
+  assign type = 'add-to-cart'
   assign unique_id = section.id | append: '--' | append: block.id
-  assign id = 'theme-block__' | append: unique_id
+  assign id = prefix | append: unique_id
+  assign classname = prefix | append: type
 
   assign resource = s.product | default: closest.product | default: product
 -%}
 
-<div id="{{ id }}" class="theme-block theme-block__product-card" {{ attrs }}>
+{%- capture classlist -%}
+  theme-block {{ classname }}
+{%- endcapture -%}
 
+<div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  <div class="product-card__inner">
+    <div class="product-card__media">
+
+    </div>
+
+    <div class="product-card__details">
+
+    </div>
+
+    <div class="product-card__form">
+
+    </div>
+  </div>
 </div>
 
 {%- schema -%}
