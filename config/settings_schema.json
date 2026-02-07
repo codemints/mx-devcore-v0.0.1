@@ -65,11 +65,6 @@
         ]
       },
       {
-        "type": "header",
-        "content": "Cart Drawer Settings",
-        "visible_if": "{{ settings.cart_type == 'drawer' }}"
-      },
-      {
         "type": "select",
         "id": "cart_drawer_layout",
         "label": "Cart drawer layout",
