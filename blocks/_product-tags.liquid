@@ -2,7 +2,7 @@
   assign s = block.settings
   assign attrs = block.shopify_attributes
   assign prefix = 'theme-block__'
-  assign type = 'buy-buttons'
+  assign type = 'product-tags'
   assign unique_id = section.id | append: '--' | append: block.id
   assign id = prefix | append: unique_id
   assign classname = prefix | append: type
@@ -19,12 +19,12 @@
 
 {%- schema -%}
   {
-    "name": "Buy Buttons",
+    "name": "Product Tags",
     "tag": null,
     "settings": [],
     "presets": [
       {
-        "name": "Buy Buttons",
+        "name": "Product Tags",
         "settings": {},
         "blocks": [],
         "category": "Product"
