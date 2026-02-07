@@ -1,6 +1,6 @@
 <div class="header__inner text-(length:--hdr-fz) bg-gray-200 text-gray-700 px-(--hdr-px)">
   <div class="header__logo py-(--hdr-py)">
-    <a href="{{ routes.root_url }}" class="w-(--hdr-logo-w)">
+    <a href="{{ routes.root_url }}" class="inline-block w-(--hdr-logo-w)">
       {{ settings.logo_on_light
         | image_url: width: settings.logo_on_light.width
         | image_tag: class: 'w-full h-full object-contain'
