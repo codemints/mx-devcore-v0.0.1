@@ -63,6 +63,30 @@
           { "value": "page", "label": "Page" },
           { "value": "drawer", "label": "Drawer" }
         ]
+      },
+      {
+        "type": "header",
+        "content": "Cart Drawer Settings"
+      },
+      {
+        "type": "select",
+        "id": "cart_drawer_layout",
+        "label": "Cart drawer layout",
+        "default": "right",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "right", "label": "Right" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cart_drawer_type",
+        "label": "Cart drawer type",
+        "default": "overlay",
+        "options": [
+          { "value": "overlay", "label": "Overlay page" },
+          { "value": "underlay", "label": "Under nav" }
+        ]
       }
     ]
   }
