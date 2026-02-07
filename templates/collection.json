@@ -15,6 +15,16 @@
     },
     "collection_grid_RaBHzx": {
       "type": "collection-grid",
+      "blocks": {
+        "collection-grid-item": {
+          "type": "_card-product",
+          "static": true,
+          "settings": {
+            "product": "{{ closest.product }}"
+          },
+          "blocks": {}
+        }
+      },
       "name": "Collection Grid",
       "settings": {
         "collection": ""
