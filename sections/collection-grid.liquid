@@ -12,7 +12,7 @@
 
 <div>
   {%- for resource in source.products -%}
-    {%- content_for 'block', type: '_card-product', id: 'collection-grid-item'%}
+    {%- content_for 'block', type: '_card-product', id: 'collection-grid-item', closest.product: resource -%}
   {%- endfor -%}
 </div>
 
