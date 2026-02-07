@@ -19,7 +19,7 @@
   <div class="product-card__inner">
     <div class="product-card__media">
       {{ resource.featured_image
-        | image_url: resource.featured_image.width
+        | image_url: width: resource.featured_image.width
         | image_tag: class: 'cover-center'
       }}
     </div>
