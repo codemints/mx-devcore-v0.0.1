@@ -11,6 +11,7 @@
   "current": {
     "logo_on_light": "shopify://shop_images/Simple_Skull_Logo_byGraphicSauceCo.png",
     "cart_type": "drawer",
+    "cart_count_visible": false,
     "cart_drawer_type": "overlay",
     "content_for_index": []
   }

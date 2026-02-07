@@ -68,7 +68,7 @@
         "type": "checkbox",
         "id": "cart_count_visible",
         "label": "Show cart count",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
