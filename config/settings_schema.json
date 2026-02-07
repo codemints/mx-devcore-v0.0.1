@@ -81,8 +81,8 @@
         "label": "Cart drawer type",
         "default": "overlay",
         "options": [
-          { "value": "overlay", "label": "Overlay page" },
-          { "value": "underlay", "label": "Under nav" }
+          { "value": "overlay", "label": "Full page" },
+          { "value": "underlay", "label": "Under header" }
         ],
         "visible_if": "{{ settings.cart_type == 'drawer' }}"
       }
