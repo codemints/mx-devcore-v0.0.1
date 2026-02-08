@@ -4,16 +4,19 @@
 {%- liquid
   assign s = section.settings
   assign source = s.collection | default: collection
+  assign bg_classname = s.bg_color | append: '/' | append: s.bg_opacity
 -%}
 
 {%- style -%}
-  #shopify-section-{{ section.id }} {}
+  #shopify-section-{{ section.id }} {
+
+  }
 {%- endstyle -%}
 
 <div class="section__wrapper">
-  <div class="section__inner">
+  <div class="section__inner{% if s.bg_size == 'full' %} {{ bg_classname }}{% endif %}">
     <div class="section__container container">
-      <div class="section__content content">
+      <div class="section__content content{% if s.bg_size == 'contained' %} {{ bg_classname }}{% endif %}">
         <div class="section__header">
           <h1>{{ source.title }}</h1>
         </div>
