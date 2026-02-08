@@ -4,7 +4,7 @@
 {%- liquid
   assign s = section.settings
   assign source = s.collection | default: collection
-  assign bg_classname = s.bg_color | append: '/' | append: s.bg_opacity
+  assign bg_classname = s.bg_color
 -%}
 
 {%- style -%}
