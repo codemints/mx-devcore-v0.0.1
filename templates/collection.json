@@ -27,7 +27,7 @@
       },
       "name": "Collection Grid",
       "settings": {
-        "bg_color": "midnight",
+        "bg_color": "default",
         "bg_opacity": 100,
         "bg_size": "full",
         "collection": ""
