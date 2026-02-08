@@ -31,6 +31,10 @@
 
     <div class="product-card__form">
       {%- form 'product', resource, id: '', class: '', mx-cart-add-form: '' -%}
+        <input type="hidden" name="id" value="{{ current.id }}">
+        <input type="hidden" name="quantity" value="1">
+
+        <button type="submit" name="add">Add to cart</button>
       {%- endform -%}
     </div>
   </div>
