@@ -8,11 +8,12 @@
   Object.entries(elements).reduce((acc, [key, val], index, array) => {
     const isLast = index === array.length - 1
     const h = val.offsetHeight
+    const sum = acc += h
 
     ROOT.style.setProperty(`--${key}-height`, `${h}px`)
     
     if (isLast) ROOT.style.setProperty('--header-height', `${acc}px`)
 
-    return acc += h
+    return sum
   }, 0)
 </script>
