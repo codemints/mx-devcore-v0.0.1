@@ -15,6 +15,8 @@
     "cart_count_visible": true,
     "cart_count_hide": true,
     "cart_drawer_type": "overlay",
+    "enable_devmode": true,
+    "enable_hot_reload": false,
     "content_for_index": []
   }
 }
