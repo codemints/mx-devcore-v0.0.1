@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo_on_light": "shopify://shop_images/logoipsum-410.png",
-    "logo_favicon": "shopify://shop_images/logoipsum-411.png",
+    "logo_on_light": "shopify://shop_images/logoipsum-350b.png",
+    "logo_favicon": "shopify://shop_images/logoipsum-351b.png",
     "cart_type": "drawer",
     "cart_count_visible": true,
     "cart_count_hide": true,
