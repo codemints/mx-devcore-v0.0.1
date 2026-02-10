@@ -100,5 +100,23 @@
         "visible_if": "{{ settings.cart_type == 'drawer' }}"
       }
     ]
+  },
+  {
+    "name": "Developer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_devmode",
+        "label": "Enable developer mode",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_hot_reload",
+        "label": "Enable hot reload",
+        "default": false,
+        "visible_if": "{{ settings.enable_devmode == true }}"
+      }
+    ]
   }
 ]
