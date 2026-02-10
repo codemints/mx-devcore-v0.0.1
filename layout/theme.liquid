@@ -2,6 +2,8 @@
 
 <html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}">
   <head>
+    {%- render 'f.set-css-vars' -%}
+    
     {%- if settings.logo_favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.logo_favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
