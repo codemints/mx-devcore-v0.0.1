@@ -1,6 +1,7 @@
 <script type="module">
   const ROOT = document.documentElement
   let headerHeight = 0
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
 
   const elements = {
     navbar: document.querySelector('[id$=header_primary]'),
@@ -14,6 +15,5 @@
   }
 
   ROOT.style.setProperty('--header-height', `${headerHeight}px`)
-
-  console.log(window.innerWidth - document.documentElement.clientWidth)
+  ROOT.style.setProperty('--scrollbar-w', `${scrollbarWidth}px`)
 </script>
