@@ -32,5 +32,9 @@
     {%- sections 'group-footer' -%}
 
     {%- sections 'group-cart' -%}
+
+    {%- if settings.enable_devmode == true and settings.enable_hot_reload == true -%}
+      {%- render 'dev.theme-reload' -%}
+    {%- endif -%}
   </body>
 </html>
