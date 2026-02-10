@@ -1,19 +1,17 @@
 <script type="module">
   const ROOT = document.documentElement
+  let headerHeight = 0
+
   const elements = {
     navbar: document.querySelector('[id$=header_primary]'),
     topbar: document.querySelector('[id$=header_banner]'),
   }
 
-  Object.entries(elements).reduce((acc, [key, val], index, array) => {
-    const isLast = index === array.length - 1
-    const h = val.offsetHeight
-    const sum = acc += h
-
+  for (const [key, el] of Object.entries(elements)) {
+    const h = el.offsetHeight
     ROOT.style.setProperty(`--${key}-height`, `${h}px`)
-    
-    if (isLast) ROOT.style.setProperty('--header-height', `${acc}px`)
+    headerHeight += h
+  }
 
-    return sum
-  }, 0)
+  ROOT.style.setProperty('--header-height', `${headerHeight}px`)
 </script>
