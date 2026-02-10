@@ -4,11 +4,10 @@
     topbar: document.querySelector('[id$=header_banner]'),
   }
 
-  const headerHeight = Object.entries(elements).reduce((acc, [key, val]) => {
+  Object.entries(elements).reduce((acc, [key, val], index, array) => {
+    console.log(index, array)
     const h = val.offsetHeight
     document.documentElement.style.setProperty(`--${key}-height`, `${h}px`)
     return acc += h
   }, 0)
-
-  console.log(headerHeight)
 </script>
