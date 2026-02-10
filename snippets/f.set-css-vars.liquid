@@ -1,13 +1,18 @@
 <script type="module">
+  const ROOT = document.documentElement
   const elements = {
     navbar: document.querySelector('[id$=header_primary]'),
     topbar: document.querySelector('[id$=header_banner]'),
   }
 
   Object.entries(elements).reduce((acc, [key, val], index, array) => {
-    console.log(index, array)
+    const isLast = index === array.length - 1
     const h = val.offsetHeight
-    document.documentElement.style.setProperty(`--${key}-height`, `${h}px`)
+
+    ROOT.style.setProperty(`--${key}-height`, `${h}px`)
+    
+    if (isLast) ROOT.style.setProperty('--header-height', `${acc}px`)
+
     return acc += h
   }, 0)
 </script>
