@@ -6,7 +6,7 @@
 
   const headerHeight = Object.entries(elements).reduce((acc, [key, val]) => {
     const h = val.offsetHeight
-    document.documentElements.setProperty(`--${key}-height`, `${h}px`)
+    document.documentElement.style.setProperty(`--${key}-height`, `${h}px`)
     return acc += h
   }, 0)
 
