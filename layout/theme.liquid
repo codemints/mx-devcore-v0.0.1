@@ -27,16 +27,12 @@
 
     <main>
       <h1>Testing Development Again...Again</h1>
-      
+
       {{ content_for_layout }}
     </main>
 
     {%- sections 'group-footer' -%}
 
     {%- sections 'group-cart' -%}
-
-    {%- if settings.enable_devmode == true and settings.enable_hot_reload == true -%}
-      {%- render 'dev.theme-reload' -%}
-    {%- endif -%}
   </body>
 </html>
