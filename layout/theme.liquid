@@ -22,7 +22,7 @@
     {{ 'theme-core.min.css' | asset_url | stylesheet_tag }}
   </head>
   
-  <body>
+  <body class="[&>([id$=__header_primary])]:sticky [&>([id$=__header_primary]]):top-0">
     {%- sections 'group-header' -%}
 
     <main>
