@@ -1,11 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "title": {
       "type": "page-title",
       "settings": {}
+    },
+    "collection_grid_RaBHzx": {
+      "type": "collection-grid",
+      "blocks": {
+        "collection-grid-item": {
+          "type": "_card-product-static",
+          "static": true,
+          "settings": {
+            "product": "{{ closest.product }}"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Collection Grid",
+      "settings": {
+        "bg_color": "default",
+        "bg_opacity": 100,
+        "bg_size": "contained",
+        "collection": ""
+      }
     }
   },
   "order": [
-    "title"
+    "title",
+    "collection_grid_RaBHzx"
   ]
 }

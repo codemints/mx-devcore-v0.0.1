@@ -1,9 +1,25 @@
 <!doctype html>
 
-<html>
+<html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}">
   <head>
+    {%- render 'f.set-css-vars' -%}
+
+    {%- if settings.logo_favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.logo_favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
     <title>{{ page_title }}</title>
     {{ content_for_header }}
+
+    {%- style -%}
+      :root {
+        {%- render 's.variables.color' -%}
+        {%- render 's.variables.spacing' -%}
+        {%- render 's.variables.header' -%}
+      }
+    {%- endstyle -%}
+
+    {{ 'theme-core.min.css' | asset_url | stylesheet_tag }}
   </head>
   
   <body>

@@ -1,0 +1,95 @@
+{%- comment -%} STATIC BLOCKS {%- endcomment -%}
+{%- comment -%} END {%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign source = s.collection | default: collection
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-bg-color: var(--c-{{ s.bg_color }});
+    --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+  }
+{%- endstyle -%}
+
+<div class="section__wrapper fudge">
+  <div class="section__inner{% if s.bg_size == 'full' %} background{% endif %}">
+    <div class="section__container container">
+      <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
+        <div class="section__header">
+          <h1>{{ source.title }}</h1>
+        </div>
+    
+        <div class="collection__grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-10 gap-y-12 lg:gap-y-20">
+          {%- for resource in source.products -%}
+            {%- content_for 'block',
+              type: '_card-product-static',
+              id: 'collection-grid-item',
+              closest.product: resource
+            -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- schema -%}
+  {
+    "name": "Collection Grid",
+    "tag": "section",
+    "class": "section__collection-grid",
+    "settings": [
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "default",
+        "options": [
+          { "value": "default", "label": "Default" },
+          { "value": "midnight", "label": "Midnight" },
+          { "value": "cobalt", "label": "Cobalt" },
+          { "value": "seafoam", "label": "Seafoam" },
+          { "value": "ivory", "label": "Ivory" },
+          { "value": "stone", "label": "Stone" },
+        ]
+      },
+      {
+        "type": "range",
+        "id": "bg_opacity",
+        "label": "Background opacity",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      },
+      {
+        "type": "select",
+        "id": "bg_size",
+        "label": "Background size",
+        "default": "full",
+        "options": [
+          { "value": "full", "label": "Full" },
+          { "value": "contained", "label": "Contained" }
+        ]
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection",
+        "info": "Only required when used outside of the collection template."
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Collection Grid",
+        "settings": {},
+        "blocks": [],
+        "category": "Collection"
+      }
+    ]
+  }
+{%- endschema -%}

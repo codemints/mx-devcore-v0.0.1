@@ -1,3 +1,32 @@
+<div id="header-primary" class="header__inner grid grid-cols-[auto_1fr_auto] items-center gap-x-(--hdr-area-gap) text-(length:--hdr-fz) bg-gray-200 text-gray-700 px-(--hdr-px)">
+  <div class="header__logo py-(--hdr-py)">
+    <a href="{{ routes.root_url }}" class="inline-block w-(--hdr-logo-w)">
+      {{ settings.logo_on_light
+        | image_url: width: settings.logo_on_light.width
+        | image_tag: class: 'w-full h-full object-contain'
+      }}
+    </a>
+  </div>
+
+  <div class="header__navigation h-full **:h-full">
+    <ul class="flex items-center gap-x-(--hdr-link-gap)">
+      {%- for link in settings.menu_primary.links -%}
+        <li class="leading-none">
+          <a href="{{ link.url }}" class="inline-flex items-center">
+            {{ link.title }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <div class="header__actions py-(--hdr-py)">
+    <div class="header__actions--cart w-(--hdr-icon-w) aspect-square">
+      {%- render 'cart.link' -%}
+    </div>
+  </div>
+</div>
+
 {%- schema -%}
   {
     "name": "Header Primary",

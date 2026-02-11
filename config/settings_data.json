@@ -1,1 +1,22 @@
-{}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "logo_on_light": "shopify://shop_images/logoipsum-350c.png",
+    "logo_favicon": "shopify://shop_images/logoipsum-351c.png",
+    "cart_type": "drawer",
+    "cart_count_visible": true,
+    "cart_count_hide": true,
+    "cart_drawer_type": "overlay",
+    "enable_devmode": true,
+    "enable_hot_reload": true,
+    "content_for_index": []
+  }
+}
