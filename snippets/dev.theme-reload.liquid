@@ -1,1 +1,11 @@
-<script type="module" crossorigin="anonymous" src="https://localhost:5173/@vite/client"></script>
+
+      <script type="module">
+        (function() {
+          const ws = new WebSocket('wss://localhost:5173', 'vite-hmr')
+          ws.addEventListener('message', (e) => {
+            const msg = JSON.parse(e.data)
+            if (msg.type === 'full-reload') window.location.reload()
+          })
+        })()
+      </script>
+    
