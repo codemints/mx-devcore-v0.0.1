@@ -86,10 +86,10 @@
         "type": "select",
         "id": "cart_drawer_layout",
         "label": "Layout",
-        "default": "right",
+        "default": "lg:right-0",
         "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "right", "label": "Right" }
+          { "value": "lg:left-0", "label": "Left" },
+          { "value": "lg:right-0", "label": "Right" }
         ],
         "visible_if": "{{ settings.cart_type == 'drawer' }}"
       },
