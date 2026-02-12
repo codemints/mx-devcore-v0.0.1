@@ -1,6 +1,11 @@
 {%- liquid
   assign height = '100%'
   assign top = 0
+
+  if settings.cart_drawer_position == 'under'
+    assign height = 'calc(100dvh - var(--header-height))'
+    assign top = 'var(--header-height)'
+  endif
 -%}
 
 --cart-drawer-width: {{ settings.cart_drawer_width }}px;
