@@ -1,4 +1,22 @@
-<h1>Cart Header</h1>
+{%- liquid
+  assign s = section.settings
+-%}
+
+<div class="cart__header">
+  <div class="cart__header--content">
+    <div class="cart__header--title">
+      <h2>{{ s.title }}</h2>
+    </div>
+
+    <div class="cart__header--close">
+
+    </div>
+  </div>
+
+  <div class="cart__header--blocks">
+    {%- content_for 'blocks' -%}
+  </div>
+</div>
 
 {%- schema -%}
   {
