@@ -40,5 +40,7 @@
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'c.cart-drawer', content: cart_sections -%}
     {%- endif -%}
+
+    <script type="module" src="{{ 'theme-core.min.js' | asset_url }}"></script>
   </body>
 </html>
