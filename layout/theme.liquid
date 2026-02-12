@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}">
+<html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}" data-header-sticky>
   <head>
     {%- render 'f.set-css-vars' -%}
 
@@ -13,6 +13,7 @@
 
     {%- style -%}
       :root {
+        {%- render 's.variables.type' -%}
         {%- render 's.variables.color' -%}
         {%- render 's.variables.spacing' -%}
         {%- render 's.variables.header' -%}
@@ -22,7 +23,7 @@
     {{ 'theme-core.min.css' | asset_url | stylesheet_tag }}
   </head>
   
-  <body class="[&>([id$=__header_primary])]:sticky [&>([id$=__header_primary]]):top-0">
+  <body class="">
     {%- sections 'group-header' -%}
 
     <main>
