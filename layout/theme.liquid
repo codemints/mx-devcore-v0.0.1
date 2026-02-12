@@ -25,6 +25,10 @@
   </head>
   
   <body class="">
+    {%- capture cart_sections -%}
+      {%- sections 'group-cart' -%}
+    {%- endcapture -%}
+
     {%- sections 'group-header' -%}
 
     <main>
