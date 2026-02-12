@@ -14,7 +14,7 @@
     "cart_type": "drawer",
     "cart_count_visible": true,
     "cart_count_hide": true,
-    "cart_drawer_position": "under",
+    "cart_drawer_position": "over",
     "enable_devmode": true,
     "enable_hot_reload": true,
     "cart_drawer_type": "overlay",
