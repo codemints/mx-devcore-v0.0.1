@@ -33,6 +33,8 @@
 
     {%- sections 'group-footer' -%}
 
-    {%- sections 'group-cart' -%}
+    {%- if settings.cart_type == 'drawer' -%}
+      {%- render 'drawer.cart', content: sections 'group-cart' -%}
+    {%- endif -%}
   </body>
 </html>
