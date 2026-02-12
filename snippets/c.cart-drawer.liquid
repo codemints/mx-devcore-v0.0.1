@@ -1,7 +1,7 @@
 <aside id="cart-drawer" class="cart-drawer__wrapper fixed isolate inset-0 z-10" mx-cart-drawer>
   <div class="cart-drawer__backdrop absolute inset-0 -z-1 pointer-events-none" mx-cart-backdrop></div>
 
-  <div class="cart-drawer__offcanvas" mx-cart-offcanvas>
+  <div class="cart-drawer__offcanvas {{ settings.cart_drawer_layout }} lg:w-(--cart-drawer-width)" mx-cart-offcanvas>
     <div class="cart-drawer__inner">
       {{ content }}
     </div>
