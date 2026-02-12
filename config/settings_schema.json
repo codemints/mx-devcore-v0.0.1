@@ -76,29 +76,44 @@
         "label": "Hide cart count when empty",
         "default": true,
         "visible_if": "{{ settings.cart_count_visible == true }}"
-      },
+      }
+    ]
+  },
+  {
+    "name": "Cart Drawer",
+    "settings": [
       {
         "type": "select",
         "id": "cart_drawer_layout",
-        "label": "Cart drawer layout",
-        "default": "right",
+        "label": "Layout",
+        "default": "lg:right-0",
         "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "right", "label": "Right" }
+          { "value": "lg:left-0", "label": "Left" },
+          { "value": "lg:right-0", "label": "Right" }
         ],
         "visible_if": "{{ settings.cart_type == 'drawer' }}"
       },
       {
         "type": "select",
-        "id": "cart_drawer_type",
-        "label": "Cart drawer type",
-        "default": "overlay",
+        "id": "cart_drawer_position",
+        "label": "Position",
+        "default": "over",
         "options": [
-          { "value": "overlay", "label": "Full page" },
-          { "value": "underlay", "label": "Under header" }
+          { "value": "over", "label": "Over header" },
+          { "value": "under", "label": "Under header" }
         ],
         "visible_if": "{{ settings.cart_type == 'drawer' }}"
-      }
+      },
+      {
+        "type": "range",
+        "id": "cart_drawer_width",
+        "label": "Width",
+        "default": 450,
+        "min": 350,
+        "max": 850,
+        "step": 5,
+        "unit": "px"
+      },
     ]
   },
   {

@@ -1,0 +1,9 @@
+<aside id="cart-drawer" class="cart-drawer__wrapper fixed isolate top-(--cart-drawer-top) h-(--cart-drawer-height) w-screen z-10" mx-cart-drawer>
+  <div class="cart-drawer__backdrop absolute inset-0 -z-1 pointer-events-none bg-(--cart-backdrop-background)" mx-cart-backdrop></div>
+
+  <div class="cart-drawer__offcanvas absolute top-0 {{ settings.cart_drawer_layout }} lg:w-(--cart-drawer-width) h-full bg-gray-200 text-gray-700" mx-cart-offcanvas>
+    <div class="cart-drawer__inner">
+      {{ content }}
+    </div>
+  </div>
+</aside>

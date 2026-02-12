@@ -1,0 +1,52 @@
+@layer base {
+  :root {
+    --_scrollbar-active: 0px;
+  }
+
+  [data-overflow-hidden] {
+    --_scrollbar-active: var(--scrollbar-width);
+  }
+
+  [data-header-sticky] {
+    [id$="header_primary"] {
+      @apply sticky top-0;
+    }
+  }
+
+  body {
+
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+
+  }
+
+  h1 {
+
+  }
+
+  h2 {
+
+  }
+
+  h3 {
+
+  }
+
+  h4 {
+
+  }
+
+  h5 {
+
+  }
+
+  h6 {
+
+  }
+}

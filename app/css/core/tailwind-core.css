@@ -1,0 +1,18 @@
+/* THEME */
+@theme inline {
+  /* COLOR VARIABLES */
+    --color-default: var(--c-default);
+    --color-midnight: var(--c-midnight);
+    --color-cobalt: var(--c-cobalt);
+    --color-seafoam: var(--c-seafoam);
+    --color-ivory: var(--c-ivory);
+    --color-stone: var(--c-stone);
+
+  /* FONT FAMILY VARIABLES */
+
+
+  /* FONT SIZE FAMILIES */
+}
+
+@import './tailwind-base.css';
+@import './tailwind-utilities.css';

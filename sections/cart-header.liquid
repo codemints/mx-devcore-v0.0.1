@@ -1,0 +1,45 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<div class="cart__header">
+  <div class="cart__header--content">
+    <div class="cart__header--title">
+      <h2>{{ s.title }}</h2>
+
+      {%- if s.show_count -%}
+        <cart-count>{{ cart.item_count }}</cart-count>
+      {%- endif -%}
+    </div>
+
+    <div class="cart__header--close">
+    </div>
+  </div>
+
+  <div class="cart__header--blocks">
+    {%- content_for 'blocks' -%}
+  </div>
+</div>
+
+{%- schema -%}
+  {
+    "name":"Cart Header",
+    "tag": "section",
+    "class": "section__cart-header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Your Cart"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_count",
+        "label": "Show cart count",
+        "default": false
+      }
+    ],
+    "blocks": []
+  }
+{%- endschema -%}

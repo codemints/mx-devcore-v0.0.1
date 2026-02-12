@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}">
+<html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}" data-header-sticky>
   <head>
     {%- render 'f.set-css-vars' -%}
 
@@ -13,16 +13,22 @@
 
     {%- style -%}
       :root {
+        {%- render 's.variables.type' -%}
         {%- render 's.variables.color' -%}
         {%- render 's.variables.spacing' -%}
         {%- render 's.variables.header' -%}
+        {%- render 's.variables.cart' -%}
       }
     {%- endstyle -%}
 
     {{ 'theme-core.min.css' | asset_url | stylesheet_tag }}
   </head>
   
-  <body>
+  <body class="">
+    {%- capture cart_sections -%}
+      {%- sections 'group-cart' -%}
+    {%- endcapture -%}
+
     {%- sections 'group-header' -%}
 
     <main>
@@ -31,6 +37,10 @@
 
     {%- sections 'group-footer' -%}
 
-    {%- sections 'group-cart' -%}
+    {%- if settings.cart_type == 'drawer' -%}
+      {%- render 'c.cart-drawer', content: cart_sections -%}
+    {%- endif -%}
+
+    <script type="module" src="{{ 'theme-core.min.js' | asset_url }}"></script>
   </body>
 </html>

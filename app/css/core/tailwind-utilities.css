@@ -1,0 +1,86 @@
+/*
+TABLE OF CONTENTS
+  @ SECTION CLASSNAMES
+  @ SECTION PADDING
+  @ SCROLLBAR
+  @ ICONS
+  @ IMAGES
+  @ ACCORDIONS
+*/
+
+/* SECTION CLASSNAMES */
+  @utility background {
+    background-color: oklch(from var(--section-bg-color) l c h / var(--section-bg-opacity, 1));
+  }
+
+  @utility container {
+    @apply mx-auto;
+  }
+
+  @utility content {
+    @apply section-p section-mx;
+  }
+
+/* SECTION PADDING */
+  @utility section-px {
+    padding-left: var(--theme-pl);
+    padding-right: calc(var(--theme-pr) + var(--_scrollbar-gutter, 0px));
+  }
+
+  @utility section-py {
+    padding-top: var(--theme-pt);
+    padding-bottom: var(--theme-pb);
+  }
+
+  @utility section-p {
+    @apply section-px section-py;
+  }
+
+  @utility section-my {
+    margin-top: var(--theme-mt);
+    margin-bottom: var(--theme-mb);
+  }
+
+  @utility section-mx {
+    margin-left: var(--theme-ml);
+    margin-right: var(--theme-mr);
+  }
+
+  @utility gutter-offset-p {
+    margin-left: var(--theme-gutter-pl);
+    margin-right: var(--theme-gutter-pr);
+  }
+
+  @utility gutter-offset-m {
+    margin-left: var(--theme-gutter-ml);
+    margin-right: var(--theme-gutter-mr);
+  }
+
+  @utility gutter-offset-full {
+    margin-left: calc(var(--theme-gutter-pl) + var(--theme-gutter-ml));
+    margin-right: calc(var(--theme-gutter-pr) + var(--theme-gutter-mr));
+  }
+
+/* SCROLLBAR */
+  @utility scrollbar-gutter {
+    --_scrollbar-gutter: var(--_scrollbar-active);
+  }
+
+/* ICONS */
+  @utility theme-icon {
+    @apply inline-block w-full h-full object-contain fill-current;
+  }
+
+/* IMAGES */
+  @utility cover-center {
+    @apply w-full h-full object-cover object-center;
+  }
+
+/* ACCORDIONS */
+  @utility accordion-item-open {
+    grid-template-rows: 1fr;
+  }
+
+  @utility accordion-item-close {
+    grid-template-rows: 0fr;
+  }

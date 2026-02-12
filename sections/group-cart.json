@@ -13,7 +13,9 @@
   "sections": {
     "cart_header": {
       "type": "cart-header",
-      "settings": {}
+      "settings": {
+        "show_count": true
+      }
     },
     "cart_body": {
       "type": "cart-body",

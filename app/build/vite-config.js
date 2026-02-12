@@ -45,10 +45,17 @@ const config = {
       format: 'es',
       entryFileNames: '[name].min.js',
       assetFileNames: '[name].min.[ext]',
-      chunkFileNames: '[name].min.js',
-      manualChunks: undefined,
+      chunkFileNames: (chunkInfo) => `lib-${chunkInfo.name}.min.js`,
+      minifyInternalExports: false,
+      manualChunks: (id) => {
+        if (id.includes('/utilities/')) return 'utilities'
+        if (id.includes('/composables/')) return 'composables'
+        if (id.includes('/services/')) return 'services'
+        if (id.includes('/stores/')) return 'stores'
+        return undefined
+      },
     },
-  }
+  },
 }
 
 export default config

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
-import config from './app/build/get-config.js'
+import config from './app/build/vite-config.js'
 import getModules from './app/build/get-modules.js'
 
 const dir = import.meta.dirname
@@ -42,4 +42,5 @@ export default defineConfig({
     },
   },
   plugins: [],
+  server: [],
 })

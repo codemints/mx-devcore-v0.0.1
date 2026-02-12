@@ -2,7 +2,7 @@
 
 /* TAILWIND */
 @import 'tailwindcss';
-@import './core/tailwind.css';
+@import './core/tailwind-core.css';
 
 /* SPLIDE */
 @import '@splidejs/splide/css/core';
