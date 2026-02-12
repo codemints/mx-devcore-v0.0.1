@@ -6,10 +6,13 @@
   <div class="cart__header--content">
     <div class="cart__header--title">
       <h2>{{ s.title }}</h2>
+
+      {%- if s.show_count -%}
+        <cart-count>{{ cart.item_count }}</cart-count>
+      {%- endif -%}
     </div>
 
     <div class="cart__header--close">
-
     </div>
   </div>
 
