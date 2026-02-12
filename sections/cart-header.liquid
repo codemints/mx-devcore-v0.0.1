@@ -1,1 +1,24 @@
 <h1>Cart Header</h1>
+
+{%- schema -%}
+  {
+    "name":"Cart Header",
+    "tag": "section",
+    "class": "section__cart-header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "Title",
+        "label": "Title",
+        "default": "Your Cart"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_count",
+        "label": "Show cart count",
+        "default": false
+      }
+    ],
+    "blocks": []
+  }
+{%- endschema -%}
