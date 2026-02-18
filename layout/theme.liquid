@@ -32,13 +32,19 @@
     {%- sections 'group-header' -%}
 
     <main>
-      {{ content_for_layout }}
+      {%- if request.page_type == 'policy' -%}
+        {%- render 'policy.content' %}
+      {%- elsif request.page_type == 'cart' -%}
+        {%- render 'cart.page', content: cart_sections -%}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {%- sections 'group-footer' -%}
 
     {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'c.cart-drawer', content: cart_sections -%}
+      {%- render 'cart.drawer', content: cart_sections -%}
     {%- endif -%}
 
     <script type="module" src="{{ 'theme-core.min.js' | asset_url }}"></script>
