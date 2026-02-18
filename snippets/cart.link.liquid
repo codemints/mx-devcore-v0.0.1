@@ -2,6 +2,9 @@
   href="{{ routes.cart_url }}"
   class="inline-block w-full h-full **:pointer-events-none{% if settings.cart_count_visible == true %} relative{% endif %}"
   {% if settings.cart_type == 'drawer' %}
+    role="button"
+    aria-expanded="false"
+    aria-controls="cart-drawer"
     data-overlay-trigger
   {% endif %}
 >
