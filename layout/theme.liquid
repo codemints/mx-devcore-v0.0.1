@@ -2,6 +2,8 @@
 
 <html {% if request.design_mode %}class="shopify-design-mode" {% endif %}lang="{{ request.locale.iso_code }}" data-header-sticky>
   <head>
+    <script type="module" src="{{ 'theme-critical.min.js' | asset_url }}"></script>
+
     {%- render 'f.set-css-vars' -%}
 
     {%- if settings.logo_favicon != blank -%}
@@ -21,7 +23,7 @@
       }
     {%- endstyle -%}
 
-    {{ 'theme-core.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.min.css' | asset_url | stylesheet_tag }}
   </head>
   
   <body class="">
@@ -47,6 +49,6 @@
       {%- render 'cart.drawer', content: cart_sections -%}
     {%- endif -%}
 
-    <script type="module" src="{{ 'theme-core.min.js' | asset_url }}"></script>
+    <script type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
   </body>
 </html>
