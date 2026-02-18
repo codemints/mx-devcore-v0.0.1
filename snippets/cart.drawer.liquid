@@ -1,7 +1,7 @@
 <off-canvas
   id="cart-drawer"
   class="fixed inset-0 isolate z-(--cart-z-index)"
-  data-offcanvas-position="right"
+  data-offcanvas-position="{{ settings.cart_drawer_position }}"
   data-offcanvas-backdrop="true"
   data-offcanvas-scroll-lock="true"
   data-offcanvas-click-outside="true"
@@ -9,7 +9,7 @@
 >
   <div class="absolute inset-0 bg-(--cart-backdrop-background)" data-offcanvas-backdrop></div>
 
-  <div data-offcanvas-element>
+  <div class=" absolute {{ settings.cart_drawer_position }}" data-offcanvas-element>
 
   </div>
 </off-canvas>
