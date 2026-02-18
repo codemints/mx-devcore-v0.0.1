@@ -4,13 +4,13 @@
   data-offcanvas-wrapper
   data-offcanvas-position="{{ settings.cart_drawer_position }}"
   data-offcanvas-backdrop="true"
-  data-offcanvas-scroll-lock="true"
-  data-offcanvas-click-outside="true"
+  data-offcanvas-scroll="false"
+  data-offcanvas-static="false"
   data-offcanvas-keyboard="true"
 >
   <div class="absolute inset-0 bg-(--cart-backdrop-background)" data-offcanvas-backdrop></div>
 
-  <div class=" absolute {{ settings.cart_drawer_position }}" data-offcanvas-element>
+  <div class="absolute" data-offcanvas-element>
 
   </div>
 </off-canvas>
