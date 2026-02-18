@@ -1,6 +1,6 @@
 <off-canvas
   id="cart-drawer"
-  class="fixed inset-0 isolate z-(--cart-z-index)"
+  class="cart-drawer"
   ref="wrapper"
   data-offcanvas-wrapper
   data-offcanvas-position="{{ settings.cart_drawer_position }}"
@@ -9,21 +9,11 @@
   data-offcanvas-static="false"
   data-offcanvas-keyboard="true"
 >
-  <div
-  class="absolute inset-0 bg-(--cart-backdrop-background)"
-  ref="backdrop"
-  data-offcanvas-backdrop
-  ></div>
+  <div ref="backdrop" data-offcanvas-backdrop></div>
 
-  <div
-    class="absolute top-(--cart-drawer-top) right-0 w-full lg:w-(--cart-drawer-width) h-(--cart-drawer-height)"
-    ref="drawer"
-    data-offcanvas-drawer
-  >
+  <div ref="drawer" data-offcanvas-drawer>
     <div class="cart-drawer__inner w-full h-full bg-gray-200">
-      <cart
-        data-cart-content="drawer"
-      >
+      <cart data-cart-content="drawer">
         {%- render 'cart.content' -%}
       </cart>
     </div>
