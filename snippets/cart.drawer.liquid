@@ -10,7 +10,13 @@
 >
   <div class="absolute inset-0 bg-(--cart-backdrop-background)" data-offcanvas-backdrop></div>
 
-  <div class="absolute" data-offcanvas-element>
-
+  <div class="absolute right-0 w-full lg:w-(--cart-drawer-width)" data-offcanvas-element>
+    <div class="cart-drawer__inner">
+      <cart
+        data-cart-content="drawer"
+      >
+        {%- render 'cart.content' -%}
+      </cart>
+    </div>
   </div>
 </off-canvas>
