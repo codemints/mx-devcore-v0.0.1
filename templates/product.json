@@ -16,55 +16,78 @@
     "product_detail": {
       "type": "product-detail",
       "blocks": {
-        "product-detail": {
+        "product-information": {
           "type": "_product-information",
           "static": true,
           "settings": {},
           "blocks": {
-            "theme_breadcrumbs_AqYfmt": {
+            "theme_breadcrumbs_ewgzHU": {
               "type": "_theme-breadcrumbs",
               "name": "Breadcrumbs",
               "settings": {},
               "blocks": {}
             },
-            "product_tags_FpdPWJ": {
+            "product_tags_GMF6b9": {
               "type": "_product-tags",
-              "name": "Product Tags",
+              "name": "Tags",
               "settings": {},
               "blocks": {}
             },
-            "product_title_KMJXiJ": {
+            "product_title_xRkMEi": {
               "type": "_product-title",
-              "name": "Product Title",
+              "name": "Title",
               "settings": {},
               "blocks": {}
             },
-            "product_price_wHD7pq": {
+            "product_price_q4AghV": {
               "type": "_product-price",
               "name": "Price",
               "settings": {},
               "blocks": {}
             },
-            "product_sku_A3y8YR": {
+            "product_sku_JnUKiN": {
               "type": "_product-sku",
               "name": "SKU",
               "settings": {},
               "blocks": {}
             },
-            "product_description_q6ebxb": {
+            "product_description_3MQMUA": {
               "type": "_product-description",
               "name": "Product Description",
               "settings": {},
               "blocks": {}
+            },
+            "product_form_PcAqHc": {
+              "type": "_product-form",
+              "name": "Product Form",
+              "settings": {},
+              "blocks": {
+                "product_variant_selectors_9jgaB7": {
+                  "type": "_product-variant-selectors",
+                  "name": "Variant Selectors",
+                  "settings": {},
+                  "blocks": {}
+                },
+                "product-buy-buttons": {
+                  "type": "_product-buy-buttons",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "product_variant_selectors_9jgaB7"
+              ]
             }
           },
           "block_order": [
-            "theme_breadcrumbs_AqYfmt",
-            "product_tags_FpdPWJ",
-            "product_title_KMJXiJ",
-            "product_price_wHD7pq",
-            "product_sku_A3y8YR",
-            "product_description_q6ebxb"
+            "theme_breadcrumbs_ewgzHU",
+            "product_tags_GMF6b9",
+            "product_title_xRkMEi",
+            "product_price_q4AghV",
+            "product_sku_JnUKiN",
+            "product_description_3MQMUA",
+            "product_form_PcAqHc"
           ]
         },
         "product-carousel": {
