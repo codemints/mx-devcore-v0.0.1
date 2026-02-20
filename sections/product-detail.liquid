@@ -21,10 +21,53 @@
     "tag": "section",
     "class": "section__product-detail",
     "settings": [
-
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "default",
+        "options": [
+          { "value": "default", "label": "Default" },
+          { "value": "midnight", "label": "Midnight" },
+          { "value": "cobalt", "label": "Cobalt" },
+          { "value": "seafoam", "label": "Seafoam" },
+          { "value": "ivory", "label": "Ivory" },
+          { "value": "stone", "label": "Stone" },
+        ]
+      },
+      {
+        "type": "range",
+        "id": "bg_opacity",
+        "label": "Background opacity",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      },
+      {
+        "type": "select",
+        "id": "bg_size",
+        "label": "Background size",
+        "default": "full",
+        "options": [
+          { "value": "full", "label": "Full" },
+          { "value": "contained", "label": "Contained" }
+        ]
+      },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product",
+        "info": "Only required when used outside of the product template."
+      }
     ],
     "blocks": [
-      
+
     ],
     "disabled_on": {
       "groups": ["header", "footer"]
