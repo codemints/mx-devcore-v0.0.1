@@ -104,7 +104,8 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         "type": "checkbox",
         "id": "hide_root",
         "label": "Hide home link",
-        "default": false
+        "default": false,
+        "visible_if": "{{ block.settings.show_advanced_settings == true }}"
       },
       {
         "type": "select",
@@ -116,7 +117,8 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
           { "value": "all", "label": "All" },
           { "value": "custom", "label": "Custom" }
         ],
-        "info": "Only applicable on product templates."
+        "info": "Only applicable on product templates.",
+        "visible_if": "{{ block.settings.show_advanced_settings == true }}"
       }
     ],
     "presets": [
