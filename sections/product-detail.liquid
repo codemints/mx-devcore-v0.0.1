@@ -11,6 +11,7 @@
 
   if s.enable_layout_lg
     assign gap_x = s.gap_x
+    assign flex_row = s.flex_row
   endif
 
   assign resource = settings.product | default: product
@@ -151,7 +152,7 @@
       },
       {
         "type": "select",
-        "id": "layout_lg",
+        "id": "flex_row",
         "label": "First on desktop",
         "default": "lg:flex-row",
         "options": [
