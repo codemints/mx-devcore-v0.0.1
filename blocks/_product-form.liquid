@@ -6,6 +6,8 @@
   assign unique_id = section.id | append: '--' | append: block.id
   assign id = prefix | append: unique_id
   assign classname = prefix | append: type
+
+  assign resource = 
 -%}
 
 {%- capture classlist -%}
