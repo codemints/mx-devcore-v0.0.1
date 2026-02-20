@@ -37,8 +37,8 @@
     --gap-x: {{ gap_x }}px;
     --gap-y: {{ gap_y }}px;
     {% if s.enable_layout_lg == true %}
-    --flex-carousel: 1 1 {{ basis_carousel }}%;
-    --flex-detail: 1 1 {{ basis_detail }}%;
+    --flex-carousel: 1 0 {{ basis_carousel }}%;
+    --flex-detail: 1 0 {{ basis_detail }}%;
     {% endif %}
   }
 {%- endstyle -%}
