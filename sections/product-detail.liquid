@@ -62,10 +62,27 @@
         "visible_if": "{{ section.settings.bg_color != 'default' }}"
       },
       {
+        "type": "header",
+        "content": "Product Settings"
+      },
+      {
         "type": "product",
         "id": "product",
         "label": "Product",
-        "info": "Only required when used outside of the product template."
+        "info": "Required when used outside of the product template."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_variant",
+        "label": "Use product variant",
+        "default": false,
+        "visible_if": "{{ section.settings.product != blank }}"
+      },
+      {
+        "type": "text",
+        "id": "variant_id",
+        "label": "Variant ID",
+        "visible_if": "{{ section.settings.product != blank }}"
       }
     ],
     "blocks": [
