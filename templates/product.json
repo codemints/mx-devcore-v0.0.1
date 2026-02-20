@@ -26,9 +26,9 @@
         "flex_col": "flex-col",
         "gap_y": 60,
         "enable_layout_lg": true,
-        "flex_row": "lg:flex-row-reverse",
+        "flex_row": "lg:flex-row",
         "gap_x": 80,
-        "basis_lg": 50
+        "basis_lg": 45
       }
     }
   },
