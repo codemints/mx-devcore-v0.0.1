@@ -1,5 +1,12 @@
 {%- liquid
   assign s = section.settings
+  assign gap_x = s.gap_y
+  assign gap_y = s.gap_y
+
+  if s.enable_layout_lg
+    assign gap_x = s.gap_x
+  endif
+
   assign resource = settings.product | default: product
 -%}
 
@@ -8,8 +15,8 @@
     --section-bg-color: var(--c-{{ s.bg_color }});
     --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
 
-    --gap-x: {{ s.gap_x }}px;
-    --gap-y: {{ s.gap_y }}px;
+    --gap-x: {{ gap_x }}px;
+    --gap-y: {{ gap_y }}px;
   }
 {%- endstyle -%}
 
