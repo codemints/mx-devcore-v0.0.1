@@ -27,16 +27,44 @@
               "settings": {},
               "blocks": {}
             },
+            "product_tags_FpdPWJ": {
+              "type": "_product-tags",
+              "name": "Product Tags",
+              "settings": {},
+              "blocks": {}
+            },
             "product_title_KMJXiJ": {
               "type": "_product-title",
               "name": "Product Title",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_price_wHD7pq": {
+              "type": "_product-price",
+              "name": "Price",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_sku_A3y8YR": {
+              "type": "_product-sku",
+              "name": "SKU",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_description_q6ebxb": {
+              "type": "_product-description",
+              "name": "Product Description",
               "settings": {},
               "blocks": {}
             }
           },
           "block_order": [
             "theme_breadcrumbs_AqYfmt",
-            "product_title_KMJXiJ"
+            "product_tags_FpdPWJ",
+            "product_title_KMJXiJ",
+            "product_price_wHD7pq",
+            "product_sku_A3y8YR",
+            "product_description_q6ebxb"
           ]
         },
         "product-carousel": {
