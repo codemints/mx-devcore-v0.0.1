@@ -62,6 +62,12 @@
               "name": "Product Form",
               "settings": {},
               "blocks": {
+                "product_subscriptions_gcefw3": {
+                  "type": "_product-subscriptions",
+                  "name": "Subscriptions",
+                  "settings": {},
+                  "blocks": {}
+                },
                 "product_variant_selectors_9jgaB7": {
                   "type": "_product-variant-selectors",
                   "name": "Variant Selectors",
@@ -72,10 +78,19 @@
                   "type": "_product-buy-buttons",
                   "static": true,
                   "settings": {},
-                  "blocks": {}
+                  "blocks": {
+                    "product-quantity": {
+                      "type": "_product-quantity",
+                      "static": true,
+                      "settings": {},
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": []
                 }
               },
               "block_order": [
+                "product_subscriptions_gcefw3",
                 "product_variant_selectors_9jgaB7"
               ]
             }
