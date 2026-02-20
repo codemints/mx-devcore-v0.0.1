@@ -2,6 +2,7 @@
   assign s = section.settings
   assign gap_x = s.gap_y
   assign gap_y = s.gap_y
+  assign dir_sm = s.layout_sm
 
   if s.enable_layout_lg
     assign gap_x = s.gap_x
@@ -26,11 +27,11 @@
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
 
         <div class="section__main flex {{ s.layout_sm }} {{ s.layout_lg }} gap-x-(--gap-x) gap-y-(--gap-y)">
-          <div class="pdp-carousel h-400 w-full bg-teal-500">
+          <div class="pdp-carousel h-100 w-full bg-teal-500">
 
           </div>
 
-          <div class="pdp-detail h-400 w-full bg-fuchsia-500">
+          <div class="pdp-detail h-100 w-full bg-fuchsia-500">
 
           </div>
         </div>
@@ -119,7 +120,7 @@
       },
       {
         "type": "select",
-        "id": "layout_sm",
+        "id": "flex_col",
         "label": "First in layout",
         "default": "flex-col",
         "options": [
