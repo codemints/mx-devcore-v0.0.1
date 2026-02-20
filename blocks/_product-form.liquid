@@ -16,6 +16,7 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   
+  {%- content_for 'block', type: '_product-buy-buttons', id: 'product-buy-buttons' -%}
 </div>
 
 {%- schema -%}
@@ -23,7 +24,11 @@
     "name": "Product Form",
     "tag": null,
     "settings": [],
-    "blocks": [],
+    "blocks": [
+      { "type": "_product-quantity" },
+      { "type": "_product-subscriptions" },
+      { "type": "_product-variant-selectors" }
+    ],
     "presets": [
       {
         "name": "Product Form",
