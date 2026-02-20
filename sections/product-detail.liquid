@@ -53,7 +53,7 @@
             {% comment %} {{ product_carousel }} {% endcomment %}
             {{ resource.featured_image 
               | image_url: width: resource.featured_image.width
-              | image_tag: class: 'w-full h-full object-cover'
+              | image_tag: class: 'w-full h-full object-contain'
             }}
           </div>
 
