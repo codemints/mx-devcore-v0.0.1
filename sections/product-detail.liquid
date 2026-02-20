@@ -3,10 +3,10 @@
   assign gap_x = s.gap_y
   assign gap_y = s.gap_y
   assign flex_col = s.flex_col
-  assign flex_row = 'flex-row'
+  assign flex_row = 'lg:flex-row'
 
   if s.flex_col == 'flex-col-reverse'
-    assign flex_row = 'flex-row-reverse'
+    assign flex_row = 'lg:flex-row-reverse'
   endif
 
   if s.enable_layout_lg
