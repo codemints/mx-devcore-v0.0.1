@@ -3,6 +3,11 @@
   assign gap_x = s.gap_y
   assign gap_y = s.gap_y
   assign flex_col = s.flex_col
+  assign flex_row = 'flex-row'
+
+  if s.flex_col == 'flex-col-reverse'
+    assign flex_row = 'flex-row-reverse'
+  endif
 
   if s.enable_layout_lg
     assign gap_x = s.gap_x
@@ -26,7 +31,7 @@
     <div class="section__container container">
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
 
-        <div class="section__main flex {{ flex_col }} {{ s.layout_lg }} gap-x-(--gap-x) gap-y-(--gap-y)">
+        <div class="section__main flex {{ flex_col }} {{ flex_row }} gap-x-(--gap-x) gap-y-(--gap-y)">
           <div class="pdp-carousel h-100 w-full bg-teal-500">
 
           </div>
