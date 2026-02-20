@@ -15,6 +15,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  {%- content_for 'blocks' -%}
   
   {%- content_for 'block', type: '_product-buy-buttons', id: 'product-buy-buttons' -%}
 </div>
