@@ -47,7 +47,8 @@
         "min": 0,
         "max": 100,
         "step": 1,
-        "unit": "%"
+        "unit": "%",
+        "visible_if": "{{ section.settings.bg_color != 'default' }}"
       },
       {
         "type": "select",
@@ -57,7 +58,8 @@
         "options": [
           { "value": "full", "label": "Full" },
           { "value": "contained", "label": "Contained" }
-        ]
+        ],
+        "visible_if": "{{ section.settings.bg_color != 'default' }}"
       },
       {
         "type": "product",
