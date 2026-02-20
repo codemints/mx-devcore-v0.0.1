@@ -3,7 +3,7 @@
   assign resource = settings.product | default: product
 -%}
 
-<div {% if s.section_id != blank %}id="{{ s.section_id }}" {% endif %}class="section__wrapper">
+<div {% if s.anchor_id != blank %}id="{{ s.anchor_id }}" {% endif %}class="section__wrapper">
   <div class="{% if s.bg_size == 'full' %} background{% endif %}">
     <div class="section__container container">
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
