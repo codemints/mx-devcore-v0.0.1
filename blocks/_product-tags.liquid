@@ -15,6 +15,11 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  <ul>
+    {%- for tag in resource.tags -%}
+      <li>{{ tag }}</li>
+    {%- endfor -%}
+  </ul>
 </div>
 
 {%- schema -%}
