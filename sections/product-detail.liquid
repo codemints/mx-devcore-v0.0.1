@@ -49,11 +49,11 @@
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
 
         <div class="section__main flex {{ flex_col }} {{ flex_row }} gap-x-(--gap-x) gap-y-(--gap-y)">
-          <div class="pdp-carousel flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} h-100 w-full bg-teal-500">
+          <div class="pdp-carousel flex-none{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} h-100 w-full bg-teal-500">
             {{ product_carousel }}
           </div>
 
-          <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} h-100 w-full bg-fuchsia-500">
+          <div class="pdp-detail flex-none{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} h-100 w-full bg-fuchsia-500">
             {{ product_detail }}
           </div>
         </div>
