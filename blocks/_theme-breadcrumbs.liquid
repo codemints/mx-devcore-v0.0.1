@@ -94,6 +94,11 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         "id": "show_advanced_settings",
         "label": "Show advanced settings",
         "default": false
+      },
+      {
+        "type": "header",
+        "content": "Advanced Settings",
+        "visible_if": "{{ block.settings.show_advanced_settings == true }}"
       }
     ],
     "presets": [
