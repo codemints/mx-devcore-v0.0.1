@@ -1,3 +1,13 @@
+{%- comment -%} Start - Static Blocks {%- endcomment -%}
+  {%- capture product_detail -%}
+    {%- content_for 'block', type: '_product-detail', id: 'product-detail' -%}
+  {%- endcapture -%}
+
+  {%- capture product_carousel -%}
+    {%- content_for 'block', type: '_carousel', id: 'product-carousel' -%}
+  {%- endcapture -%}
+{%- comment -%} End - Static Blocks{%- endcomment -%}
+
 {%- liquid
   assign s = section.settings
   assign gap_x = s.gap_y
