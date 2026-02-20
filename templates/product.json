@@ -24,9 +24,10 @@
         "use_variant": false,
         "variant_id": "",
         "layout_sm": "flex-col",
-        "gap_y": 0,
+        "enable_layout_lg": false,
         "layout_lg": "lg:flex-row",
-        "gap_x": 100
+        "gap_x": 100,
+        "basis_lg": 50
       }
     }
   },
