@@ -3,6 +3,13 @@
   assign resource = settings.product | default: product
 -%}
 
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-bg-color: var(--c-{{ s.bg_color }});
+    --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+  }
+{%- endstyle -%}
+
 <div {% if s.anchor_id != blank %}id="{{ s.anchor_id }}" {% endif %}class="section__wrapper">
   <div class="{% if s.bg_size == 'full' %} background{% endif %}">
     <div class="section__container container">
