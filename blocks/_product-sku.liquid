@@ -8,6 +8,8 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
+  assign sofav = resource.selected_or_first_available_variant
+  assign sku = sofav.sku
 -%}
 
 {%- capture classlist -%}
@@ -15,7 +17,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  {{ resource.sku }}
+  {{ sofav.sku }}
 </div>
 
 {%- schema -%}
