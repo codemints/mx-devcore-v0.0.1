@@ -15,6 +15,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  {%- content_for 'block', type: '_product-quantity', id: 'product-quantity'%}
 </div>
 
 {%- schema -%}
@@ -22,9 +23,7 @@
     "name": "Buy Buttons",
     "tag": null,
     "settings": [],
-    "blocks": [
-      { "type": "_product-quantity" }
-    ],
+    "blocks": [],
     "presets": [
       {
         "name": "Buy Buttons",
