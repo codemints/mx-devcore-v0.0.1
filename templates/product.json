@@ -39,15 +39,15 @@
               "settings": {},
               "blocks": {}
             },
-            "product_price_q4AghV": {
-              "type": "_product-price",
-              "name": "Price",
-              "settings": {},
-              "blocks": {}
-            },
             "product_sku_JnUKiN": {
               "type": "_product-sku",
               "name": "SKU",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_price_q4AghV": {
+              "type": "_product-price",
+              "name": "Price",
               "settings": {},
               "blocks": {}
             },
@@ -99,8 +99,8 @@
             "theme_breadcrumbs_ewgzHU",
             "product_tags_GMF6b9",
             "product_title_xRkMEi",
-            "product_price_q4AghV",
             "product_sku_JnUKiN",
+            "product_price_q4AghV",
             "product_description_3MQMUA",
             "product_form_PcAqHc"
           ]
