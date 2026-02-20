@@ -17,7 +17,7 @@
       "type": "product-detail",
       "blocks": {
         "product-detail": {
-          "type": "_product-detail",
+          "type": "_product-information",
           "static": true,
           "settings": {},
           "blocks": {
