@@ -88,6 +88,30 @@
         "id": "variant_id",
         "label": "Variant ID",
         "visible_if": "{{ section.settings.product != blank and section.settings.use_variant == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      },
+      {
+        "type": "select",
+        "id": "layout_sm",
+        "label": "First on mobile",
+        "default": "flex-col",
+        "options": [
+          { "value": "flex-col", "label": "Slider" },
+          { "value": "flex-col-reverse", "label": "Detail" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "layout_lg",
+        "label": "First on desktop",
+        "default": "lg:flex-row",
+        "options": [
+          { "value": "lg:flex-row", "label": "Slider" },
+          { "value": "lg:flex-row-reverse", "label": "Detail" }
+        ]
       }
     ],
     "blocks": [
