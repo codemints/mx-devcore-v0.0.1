@@ -7,6 +7,9 @@
   #shopify-section-{{ section.id }} {
     --section-bg-color: var(--c-{{ s.bg_color }});
     --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+
+    --gap-x: {{ s.gap_x }}px;
+    --gap-y: {{ s.gap_y }}px;
   }
 {%- endstyle -%}
 
@@ -15,7 +18,7 @@
     <div class="section__container container">
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
 
-        <div class="section__main">
+        <div class="section__main flex {{ s.layout_sm }} {{ s.layout_lg }} gap-x-(--gap-x) gap-y-(--gap-y)">
           <div class="pdp-carousel h-400 w-full bg-teal-500">
 
           </div>
