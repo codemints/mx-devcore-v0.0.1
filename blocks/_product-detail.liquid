@@ -17,7 +17,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  {% comment %} {{ item | json }} {% endcomment %}
+  {{ item | json }}
 </div>
 
 {%- schema -%}
