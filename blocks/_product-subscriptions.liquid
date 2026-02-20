@@ -1,0 +1,34 @@
+{%- liquid
+  assign s = block.settings
+  assign attrs = block.shopify_attributes
+  assign prefix = 'theme-block__'
+  assign type = 'subscriptions'
+  assign unique_id = section.id | append: '--' | append: block.id
+  assign id = prefix | append: unique_id
+  assign classname = prefix | append: type
+-%}
+
+{%- capture classlist -%}
+  theme-block {{ classname }}
+{%- endcapture -%}
+
+<div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  
+</div>
+
+{%- schema -%}
+  {
+    "name": "Subscriptions",
+    "tag": null,
+    "settings": [],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Subscriptions",
+        "settings": {},
+        "blocks": [],
+        "category": "Product"
+      }
+    ]
+  }
+{%- endschema -%}
