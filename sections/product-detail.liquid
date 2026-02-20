@@ -87,7 +87,7 @@
         "type": "text",
         "id": "variant_id",
         "label": "Variant ID",
-        "visible_if": "{{ section.settings.product != blank }}"
+        "visible_if": "{{ section.settings.product != blank and section.settings.use_variant == true }}"
       }
     ],
     "blocks": [
