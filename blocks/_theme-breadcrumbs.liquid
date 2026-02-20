@@ -99,6 +99,24 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         "type": "header",
         "content": "Advanced Settings",
         "visible_if": "{{ block.settings.show_advanced_settings == true }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_root",
+        "label": "Hide home link",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_collection",
+        "label": "Product collection link",
+        "default": "all",
+        "options": [
+          { "value": "none", "label": "None" },
+          { "value": "all", "label": "All" },
+          { "value": "custom", "label": "Custom" }
+        ],
+        "info": "Only applies to product templates."
       }
     ],
     "presets": [
