@@ -26,7 +26,7 @@
         "layout_sm": "flex-col",
         "gap_y": 0,
         "layout_lg": "lg:flex-row",
-        "gap_x": 0
+        "gap_x": 100
       }
     }
   },
