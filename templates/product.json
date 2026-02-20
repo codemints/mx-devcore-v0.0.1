@@ -24,7 +24,9 @@
         "use_variant": false,
         "variant_id": "",
         "layout_sm": "flex-col",
-        "layout_lg": "lg:flex-row"
+        "gap_y": 0,
+        "layout_lg": "lg:flex-row",
+        "gap_x": 0
       }
     }
   },
