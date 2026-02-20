@@ -23,10 +23,9 @@
         "product": "",
         "use_variant": false,
         "variant_id": "",
-        "flex_col": "flex-col-reverse",
+        "flex_col": "flex-col",
         "gap_y": 60,
-        "enable_layout_lg": false,
-        "layout_lg": "lg:flex-row",
+        "enable_layout_lg": true,
         "gap_x": 100,
         "basis_lg": 50
       }
