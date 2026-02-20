@@ -54,7 +54,8 @@
           </div>
 
           <div class="pdp-detail{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} h-100 w-full bg-fuchsia-500">
-            {{ product_detail }}
+            {% comment %} {{ product_detail }} {% endcomment %}
+              {{ resource | json }}
           </div>
         </div>
       </div>
