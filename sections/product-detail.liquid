@@ -20,8 +20,8 @@
 -%}
 
 {%- comment -%} Start - Static Blocks {%- endcomment -%}
-  {%- capture product_detail -%}
-    {%- content_for 'block', type: '_product-information', id: 'product-detail', item: resource -%}
+  {%- capture product_information -%}
+    {%- content_for 'block', type: '_product-information', id: 'product-information', item: resource -%}
   {%- endcapture -%}
 
   {%- capture product_carousel -%}
@@ -58,7 +58,7 @@
           </div>
 
           <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} h-100 w-full bg-fuchsia-500">
-            {{ product_detail }}
+            {{ product_information }}
           </div>
         </div>
       </div>
