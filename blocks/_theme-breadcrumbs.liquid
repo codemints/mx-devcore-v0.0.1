@@ -89,6 +89,12 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         ],
         "visible_if": "{{ block.settings.enable_mt_lg == true }}"
       },
+      {
+        "type": "checkbox",
+        "id": "show_advanced_settings",
+        "label": "Show advanced settings",
+        "default": false
+      }
     ],
     "presets": [
       {
