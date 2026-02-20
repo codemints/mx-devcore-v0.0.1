@@ -20,6 +20,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  {%- content_for 'blocks', closest.product: resource -%}
 </div>
 
 {%- schema -%}
