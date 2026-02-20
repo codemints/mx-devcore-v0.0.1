@@ -15,7 +15,17 @@
     },
     "product_detail": {
       "type": "product-detail",
-      "settings": {}
+      "settings": {
+        "anchor_id": "",
+        "bg_color": "cobalt",
+        "bg_opacity": 100,
+        "bg_size": "full",
+        "product": "",
+        "use_variant": false,
+        "variant_id": "",
+        "layout_sm": "flex-col",
+        "layout_lg": "lg:flex-row"
+      }
     }
   },
   "order": [
