@@ -50,7 +50,11 @@
 
         <div class="section__main flex {{ flex_col }} {{ flex_row }} gap-x-(--gap-x) gap-y-(--gap-y)">
           <div class="pdp-carousel {% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} h-100 w-full bg-teal-500">
-            {{ product_carousel }}
+            {% comment %} {{ product_carousel }} {% endcomment %}
+            {{ resource.featured_image 
+              | image_tag: width: resource.featured_image.width
+              | image_url: class: 'w-full h-full object-cover'
+            }}
           </div>
 
           <div class="pdp-detail {% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} h-100 w-full bg-fuchsia-500">
