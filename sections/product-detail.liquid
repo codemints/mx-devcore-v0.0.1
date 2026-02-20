@@ -16,7 +16,7 @@
     assign basis_detail = s.basis_lg
   endif
 
-  assign resource = s.product | default: product
+  assign resource = all_products[s.product.handle] | default: product
 -%}
 
 {%- comment -%} Start - Static Blocks {%- endcomment -%}
