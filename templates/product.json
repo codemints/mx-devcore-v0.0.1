@@ -26,7 +26,8 @@
         "flex_col": "flex-col",
         "gap_y": 60,
         "enable_layout_lg": true,
-        "gap_x": 100,
+        "flex_row": "lg:flex-row-reverse",
+        "gap_x": 80,
         "basis_lg": 50
       }
     }
