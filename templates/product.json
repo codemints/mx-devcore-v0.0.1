@@ -25,7 +25,7 @@
         "variant_id": "",
         "flex_col": "flex-col",
         "gap_y": 60,
-        "enable_layout_lg": true,
+        "enable_layout_lg": false,
         "flex_row": "lg:flex-row",
         "gap_x": 80,
         "basis_lg": 45
