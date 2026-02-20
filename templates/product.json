@@ -20,7 +20,24 @@
           "type": "_product-detail",
           "static": true,
           "settings": {},
-          "blocks": {}
+          "blocks": {
+            "theme_breadcrumbs_AqYfmt": {
+              "type": "_theme-breadcrumbs",
+              "name": "Breadcrumbs",
+              "settings": {},
+              "blocks": {}
+            },
+            "product_title_KMJXiJ": {
+              "type": "_product-title",
+              "name": "Product Title",
+              "settings": {},
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "theme_breadcrumbs_AqYfmt",
+            "product_title_KMJXiJ"
+          ]
         },
         "product-carousel": {
           "type": "_carousel",
