@@ -12,6 +12,8 @@
   if s.enable_layout_lg
     assign gap_x = s.gap_x
     assign flex_row = s.flex_row
+    assign basis_carousel = 100 | minus: s.basis_lg
+    assign basis_detail = s.basis_lg
   endif
 
   assign resource = settings.product | default: product
@@ -24,6 +26,9 @@
 
     --gap-x: {{ gap_x }}px;
     --gap-y: {{ gap_y }}px;
+
+    --flex-carousel: 1 1 {{ basis_carousel }}%;
+    --flex-detail: 1 1 {{ basis_detail }}%;
   }
 {%- endstyle -%}
 
