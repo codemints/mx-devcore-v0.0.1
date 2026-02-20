@@ -9,7 +9,7 @@
     assign flex_row = 'lg:flex-row-reverse'
   endif
 
-  if s.enable_layout_lg
+  if s.enable_layout_lg == true
     assign gap_x = s.gap_x
     assign flex_row = s.flex_row
     assign basis_carousel = 100 | minus: s.basis_lg
@@ -26,9 +26,10 @@
 
     --gap-x: {{ gap_x }}px;
     --gap-y: {{ gap_y }}px;
-
+    {% if s.enable_layout_lg == true %}
     --flex-carousel: 1 1 {{ basis_carousel }}%;
     --flex-detail: 1 1 {{ basis_detail }}%;
+    {% endif %}
   }
 {%- endstyle -%}
 
@@ -38,11 +39,11 @@
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
 
         <div class="section__main flex {{ flex_col }} {{ flex_row }} gap-x-(--gap-x) gap-y-(--gap-y)">
-          <div class="pdp-carousel lg:flex-(--flex-carousel) h-100 w-full bg-teal-500">
+          <div class="pdp-carousel{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} h-100 w-full bg-teal-500">
 
           </div>
 
-          <div class="pdp-detail lg:flex-(--flex-detail) h-100 w-full bg-fuchsia-500">
+          <div class="pdp-detail{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} h-100 w-full bg-fuchsia-500">
 
           </div>
         </div>
