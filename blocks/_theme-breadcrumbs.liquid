@@ -119,6 +119,12 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         ],
         "info": "Only applicable on product templates.",
         "visible_if": "{{ block.settings.show_advanced_settings == true }}"
+      },
+      {
+        "type": "url",
+        "id": "collection_url",
+        "label": "Collection url",
+        "visible_if": "{{ block.settings.show_advanced_settings == true and block.settings.collection_link == 'custom' }}"
       }
     ],
     "presets": [
