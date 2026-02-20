@@ -15,6 +15,20 @@
     },
     "product_detail": {
       "type": "product-detail",
+      "blocks": {
+        "product-detail": {
+          "type": "_product-detail",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
+        "product-carousel": {
+          "type": "_carousel",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        }
+      },
       "settings": {
         "anchor_id": "",
         "bg_color": "default",
