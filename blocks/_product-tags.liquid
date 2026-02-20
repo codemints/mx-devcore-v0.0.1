@@ -15,7 +15,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <ul>
+  <ul class="flex items-center gap-2">
     {%- for tag in resource.tags -%}
       <li>{{ tag }}</li>
     {%- endfor -%}
