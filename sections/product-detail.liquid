@@ -113,7 +113,7 @@
       {
         "type": "select",
         "id": "layout_sm",
-        "label": "First on mobile",
+        "label": "First in layout",
         "default": "flex-col",
         "options": [
           { "value": "flex-col", "label": "Slider" },
@@ -122,13 +122,19 @@
       },
       {
         "type": "range",
-        "id": "gap_y",
-        "label": "Gap on mobile",
+        "id": "gap_sm",
+        "label": "Gap",
         "default": 40,
         "min": 0,
         "max": 200,
         "step": 2,
         "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_layout_lg",
+        "label": "Show custom layout settings for desktop",
+        "default": false
       },
       {
         "type": "select",
@@ -149,6 +155,16 @@
         "max": 200,
         "step": 2,
         "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "basis_lg",
+        "label": "Product detail column width",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
       },
     ],
     "blocks": [
