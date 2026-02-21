@@ -23,7 +23,7 @@
       {
         "type": "image_picker",
         "id": "logo_favicon",
-        "label": "The site favicon"
+        "label": "Site favicon"
       }
     ]
   },
