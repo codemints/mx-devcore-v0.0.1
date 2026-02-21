@@ -10,14 +10,25 @@
   assign resource = closest.product | default: product
 
   assign show_arrows_sm = false
+  assign show_arrows_lg = false
+
   assign show_pagination_sm = false
+  assign show_pagination_lg = false
 
   if s.arrows_sm == 'show'
     assign show_arrows_sm = true
   endif
 
+  if s.arrows_lg == 'show'
+    assign show_arrows_lg = true
+  endif
+
   if s.pagination_sm == 'show'
     assign show_pagination_sm = true
+  endif
+
+  if s.pagination_lg == 'show'
+    assign show_pagination_lg = true
   endif
 -%}
 
@@ -39,7 +50,8 @@
       "pagination": {{ show_pagination_sm }},
       "breakpoints": {
         "1024": {
-        
+          "arrows": {{ show_arrows_lg }},
+          "pagination": {{ show_pagination_lg }}
         }
       }
     }'
