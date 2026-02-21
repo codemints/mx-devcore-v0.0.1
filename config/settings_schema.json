@@ -37,8 +37,8 @@
       },
       {
         "type": "textarea",
-        "id": "scripts_header",
-        "label": "Header scripts"
+        "id": "scripts_head",
+        "label": "Head scripts"
       },
       {
         "type": "textarea",
