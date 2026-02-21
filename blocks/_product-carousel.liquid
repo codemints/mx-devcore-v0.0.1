@@ -42,8 +42,10 @@
       "type": "{{ s.type }}",
       "loop": {{ s.loop }},
       "autoplay": {{ s.autoplay }},
+      {% if s.autoplay == true -%}
       "interval": {{ s.interval }},
       "speed": {{ s.speed }},
+      {%- endif %}
       "perPage": {{ s.per_page_sm }},
       "gap": {{ s.gap_sm }},
       "arrows": {{ show_arrows_sm }},
