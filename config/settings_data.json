@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo_on_light": "shopify://shop_images/mx-devcore-logo-02.png",
+    "logo_on_light": "shopify://shop_images/mx-devcore-logo.png",
     "logo_favicon": "shopify://shop_images/mx-devcore-logo-04.png",
     "cart_type": "drawer",
     "cart_count_visible": true,
