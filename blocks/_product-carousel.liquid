@@ -152,8 +152,15 @@
         "visible_if": "{{ block.settings.autoplay == true }}"
       },
       {
+        "type": "checkbox",
+        "id": "show_thumbnail_nav",
+        "label": "Show thumbnail navigation",
+        "default": false
+      },
+      {
         "type": "header",
-        "content": "Thumbnail Settings"
+        "content": "Thumbnail Settings",
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
       },
       {
         "type": "select",
@@ -165,7 +172,8 @@
           { "value": "bottom", "label": "Bottom" },
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
-        ]
+        ],
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
       },
       {
         "type": "range",
@@ -184,13 +192,15 @@
         "min": 0,
         "max": 100,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
       },
       {
         "type": "checkbox",
         "id": "enable_thumbnail_lg",
         "label": "Enable desktop settings",
-        "default": false
+        "default": false,
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
       },
       {
         "type": "select",
@@ -203,7 +213,7 @@
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
         ],
-        "visible_if": "{{ block.settings.enable_thumbnail_lg == true }}"
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true and block.settings.enable_thumbnail_lg == true }}"
       },
       {
         "type": "range",
@@ -213,7 +223,7 @@
         "min": 3,
         "max": 8,
         "step": 1,
-        "visible_if": "{{ block.settings.enable_thumbnail_lg == true }}"
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true and block.settings.enable_thumbnail_lg == true }}"
       },
       {
         "type": "range",
@@ -224,7 +234,7 @@
         "max": 100,
         "step": 1,
         "unit": "px",
-        "visible_if": "{{ block.settings.enable_thumbnail_lg == true }}"
+        "visible_if": "{{ block.settings.show_thumbnail_nav == true and block.settings.enable_thumbnail_lg == true }}"
       },
       {
         "type": "header",
