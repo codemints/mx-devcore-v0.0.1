@@ -11,7 +11,8 @@
   "current": {
     "logo_on_light": "shopify://shop_images/mx-devcore-logo.png",
     "logo_favicon": "shopify://shop_images/mx-devcore-logo-04.png",
-    "hide_collections_list": false,
+    "font_embeds": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Space+Grotesk:wght@300..700&display=swap\" rel=\"stylesheet\">",
+    "list_collections_hide": false,
     "cart_type": "drawer",
     "cart_count_visible": true,
     "cart_count_hide": true,
@@ -19,6 +20,7 @@
     "cart_drawer_width": 485,
     "enable_devmode": true,
     "enable_hot_reload": true,
+    "hide_collections_list": false,
     "cart_drawer_type": "overlay",
     "content_for_index": []
   }
