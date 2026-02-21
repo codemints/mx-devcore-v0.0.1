@@ -10,6 +10,10 @@
   <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
 {%- endif -%}
 
+{%- if settings.font_embeds != blank -%}
+  {{ settings.font_embeds }}
+{%- endif -%}
+
 {% comment %} SEO Title {% endcomment %}
 {%- capture seo_title -%}
   {%- if template == 'search' and search.performed == true -%}
