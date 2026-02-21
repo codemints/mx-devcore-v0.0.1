@@ -15,7 +15,14 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  
+  <carousel
+    data-splide-config='{
+      "type": "{{ s.type }}",
+      "loop": "{{ s.loop }}"
+    }'
+  >
+
+  </carousel>
 </div>
 
 {%- schema -%}
