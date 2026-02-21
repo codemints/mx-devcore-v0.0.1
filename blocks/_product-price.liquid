@@ -30,10 +30,10 @@
         assign price_d = price | times: 1.0
         assign compare_d = compare | times: 1.0
         assign percent = price_d | divided_by: compare_d | round: 2 | times: 100 | round | minus: 100 | times: -1
-        assign discount_amount = percent
+        assign discount_amount = percent | append: '%'
       elsif s.discount_type == 'value'
         assign is_percent = false
-        assign discount_amount = compare | minus: price
+        assign discount_amount = compare | minus: price | money
       endif
     endif
   endif
@@ -49,8 +49,8 @@
       <span>{{ price | money }}</span>
       <span>{{ compare | money }}</span>
 
-      {%- if show_discount == true and is_percent == true -%}
-      {%- elsif show_discount == true and is_percent == false -%}
+      {%- if show_discount == true -%}
+        <span>{{ discount_amount }} off</span>
       {%- endif -%}
     {%- else -%}
       {{ price | money }}
