@@ -8,6 +8,13 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
+  assign price = resource.price
+  assign compare = resource.compare_at_price
+  assign is_sale = false
+
+  if compare != blank and compare > price
+    assign is_sale = true
+  endif
 -%}
 
 {%- capture classlist -%}
@@ -15,7 +22,6 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  {{ resource.price | money }}
 </div>
 
 {%- schema -%}
