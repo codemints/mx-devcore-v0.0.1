@@ -63,11 +63,11 @@
       }
     }'
   >
-    <div ref="slider-ui">
-      <div ref="slider-track">
-        <ul ref="slider-list">
+    <div class="splide" ref="slider-ui">
+      <div class="splide__track" ref="slider-track">
+        <ul class="splide__list" ref="slider-list">
           {%- for item in resource.media -%}
-            <li ref="[]slider-slide">
+            <li class="splide__slide" ref="[]slider-slide">
               <div class="product-media__wrapper">
                 <div class="product-media__inner">
                   {%- case item.media_type -%}
