@@ -32,10 +32,15 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
 
         {%- when 'article' -%}
           {%- liquid
-            assign parent = article.url | remove: article.handle | split: '/' | last
+            assign name = article.handle | split: '/' | first
+            assign url = routes.root_url | append: '/blogs/' | append: name
           -%}
 
-          <li>{{ article.handle }}</li>
+          <li>
+            <a href="{{ url }}">{{ name | capitalize }}</a>
+          </li>
+
+          <li>{{ article.title }}</li>
         {%- when 'collection' -%}
           {%- unless settings.hide_collection_list == true -%}
             <li class="flex items-center gap-2">
