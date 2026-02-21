@@ -8,6 +8,17 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
+
+  assign show_arrows = false
+  assign show_pagination = false
+
+  if s.arrows_sm == 'show'
+    assign show_arrows = true
+  endif
+
+  if s.pagination_sm == 'show'
+    assign show_pagination = true
+  endif
 -%}
 
 {%- capture classlist -%}
@@ -19,6 +30,13 @@
     data-splide-config='{
       "type": "{{ s.type }}",
       "loop": {{ s.loop }},
+      "autoplay": {{ s.autoplay }},
+      "interval": {{ s.interval }},
+      "speed": {{ s.speed }},
+      "perPage": {{ s.per_page_sm }},
+      "gap": {{ s.gap_sm }},
+      "arrows": {{ show_arrows }},
+      "pagination": {{ show_pagination }}
     }'
   >
 
@@ -161,20 +179,20 @@
         "type": "select",
         "id": "arrows_sm",
         "label": "Mobile arrow visibility",
-        "default": "hidden",
+        "default": "hide",
         "options": [
-          { "value": "flex", "label": "Show" },
-          { "value": "hidden", "label": "Hide" }
+          { "value": "show", "label": "Show" },
+          { "value": "hide", "label": "Hide" }
         ]
       },
       {
         "type": "select",
         "id": "arrows_lg",
         "label": "Desktop arrow visibility",
-        "default": "lg:hidden",
+        "default": "show",
         "options": [
-          { "value": "lg:flex", "label": "Show" },
-          { "value": "lg:hidden", "label": "Hide" }
+          { "value": "show", "label": "Show" },
+          { "value": "hide", "label": "Hide" }
         ]
       },
       {
@@ -185,20 +203,20 @@
         "type": "select",
         "id": "pagination_sm",
         "label": "Mobile pagination visibility",
-        "default": "hidden",
+        "default": "hide",
         "options": [
-          { "value": "flex", "label": "Show" },
-          { "value": "hidden", "label": "Hide" }
+          { "value": "show", "label": "Show" },
+          { "value": "hide", "label": "Hide" }
         ]
       },
       {
         "type": "select",
         "id": "pagination_lg",
         "label": "Desktop pagination visibility",
-        "default": "lg:hidden",
+        "default": "hide",
         "options": [
-          { "value": "lg:flex", "label": "Show" },
-          { "value": "lg:hidden", "label": "Hide" }
+          { "value": "show", "label": "Show" },
+          { "value": "hide", "label": "Hide" }
         ]
       },
     ],
