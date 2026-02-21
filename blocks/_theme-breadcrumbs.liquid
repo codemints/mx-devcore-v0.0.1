@@ -18,7 +18,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
       {%- unless s.show_advanced_settings == true and s.hide_root_url == true -%}
         <li class="flex items-center gap-2">
           <a href="{{ routes.root_url }}" class="block">Home</a>
-          
+
           <span class="block size-1.5">
             {%- render 'icon-delimiter' -%}
           </span>
@@ -49,7 +49,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
               endif
             -%}
 
-            <li>
+            <li class="flex items-center gap-2">
               <a href="{{ url }}" class="block">{{ text }}</a>
 
               <span class="block size-1.5">
