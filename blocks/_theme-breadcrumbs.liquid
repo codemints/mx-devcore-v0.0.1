@@ -18,12 +18,13 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
       {%- unless s.show_advanced_settings == true and s.hide_root_url == true -%}
         <li>
           <a href="{{ routes.root_url }}">Home</a>
+          <span class="block">{%- render 'icon-delimiter' -%}</span>
         </li>
       {%- endunless -%}
 
-      <li><a href="/collections">Collections</a></li>
+      {%- case template.name -%}
 
-      <li><a href="/collections/water" aria-current="page">Water</a></li>
+      {%- endcase -%}
     </ol>
   </nav>
 </div>
