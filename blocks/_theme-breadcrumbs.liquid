@@ -29,6 +29,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         {%- when 'page' -%}
           <li>{{ page.title }}</li>
         {%- when 'blog' -%}
+          <li>{{ blog.title }}</li>
 
         {%- when 'article' -%}
           {%- liquid
