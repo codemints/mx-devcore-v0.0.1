@@ -1,0 +1,34 @@
+{%- liquid
+  assign s = block.settings
+  assign attrs = block.shopify_attributes
+  assign prefix = 'theme-block__'
+  assign type = 'product-carousel'
+  assign unique_id = section.id | append: '--' | append: block.id
+  assign id = prefix | append: unique_id
+  assign classname = prefix | append: type
+-%}
+
+{%- capture classlist -%}
+  theme-block {{ classname }}
+{%- endcapture -%}
+
+<div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  
+</div>
+
+{%- schema -%}
+  {
+    "name": "Product Carousel",
+    "tag": null,
+    "settings": [],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Product Carousel",
+        "settings": {},
+        "blocks": [],
+        "category": "Product"
+      }
+    ]
+  }
+{%- endschema -%}
