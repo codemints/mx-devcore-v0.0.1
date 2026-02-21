@@ -28,6 +28,17 @@
     ]
   },
   {
+    "name": "Theme",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "hide_collections_list",
+        "label": "Hide collections list template",
+        "default": false
+      }
+    ]
+  },
+  {
     "name": "Menus",
     "settings": [
       {
