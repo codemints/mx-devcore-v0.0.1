@@ -55,7 +55,7 @@
               "type": "_product-price",
               "name": "Price",
               "settings": {
-                "mt_sm": "mt-6",
+                "mt_sm": "mt-2",
                 "enable_mt_lg": false,
                 "mt_lg": "lg:mt-0",
                 "show_range": false,
