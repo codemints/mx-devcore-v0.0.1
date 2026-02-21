@@ -40,6 +40,7 @@
   <slider-ui
     data-section-id="shopify-section-{{ section.id }}"
     data-slider-nav="{{ s.show_thumbnail_nav }}"
+    data-slider-modal="{{ s.enable_slider_modal }}"
     data-slider-config='{
       {% if s.autoplay == true -%}
       "interval": {{ s.interval }},
@@ -160,6 +161,12 @@
         "type": "checkbox",
         "id": "show_thumbnail_nav",
         "label": "Show thumbnail navigation",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_slider_modal",
+        "label": "Enable slider modal",
         "default": false
       },
       {
