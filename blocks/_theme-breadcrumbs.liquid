@@ -23,7 +23,18 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
       {%- endunless -%}
 
       {%- case template.name -%}
+        {%- when 'page' -%}
 
+        {%- when 'blog' -%}
+
+        {%- when 'article' -%}
+
+        {%- when 'collection' -%}
+
+        {%- when 'product' -%}
+          <li>
+            {{ product.title }}
+          </li>
       {%- endcase -%}
     </ol>
   </nav>
