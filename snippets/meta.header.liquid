@@ -4,7 +4,7 @@
 <link rel="canonical" href="{{ canonical_url }}">
 
 {% comment %} Favicon {% endcomment %}
-{%- if settings.favicon != blank -%}
+{%- if settings.logo_favicon != blank -%}
   <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.logo_favicon | image_url: width: 32 }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.logo_favicon | image_url: width: 16 }}">
   <link rel="apple-touch-icon" href="{{ settings.logo_favicon | image_url: width: 180 }}">
