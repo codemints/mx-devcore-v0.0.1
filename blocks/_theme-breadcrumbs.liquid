@@ -36,7 +36,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
           -%}
 
           <li class="flex items-center gap-2">
-            <a href="{{ routes.root_url }}/blogs/{{ name }}" class="block">{{ name | capitalize }}</a>
+            <a href="{{ routes.root_url }}blogs/{{ name }}" class="block">{{ name | capitalize }}</a>
 
             <span class="block size-1.5">
               {%- render 'icon-delimiter' -%}
