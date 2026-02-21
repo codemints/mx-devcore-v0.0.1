@@ -87,7 +87,7 @@
                 "enable_mt_lg": true,
                 "mt_lg": "lg:mt-10",
                 "use_custom_description": true,
-                "custom_description": ""
+                "custom_description": "{{ closest.product.metafields.display.description | metafield_tag }}"
               },
               "blocks": {}
             },
