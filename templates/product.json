@@ -56,7 +56,13 @@
             "product_price_q4AghV": {
               "type": "_product-price",
               "name": "Price",
-              "settings": {},
+              "settings": {
+                "mt_sm": "mt-6",
+                "enable_mt_lg": false,
+                "mt_lg": "lg:mt-0",
+                "hide_compare_price": false,
+                "show_sale_percentage": false
+              },
               "blocks": {}
             },
             "product_description_3MQMUA": {
