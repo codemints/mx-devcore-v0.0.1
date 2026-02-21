@@ -33,11 +33,10 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         {%- when 'article' -%}
           {%- liquid
             assign name = article.handle | split: '/' | first
-            assign url = routes.root_url | append: '/blogs/' | append: name
           -%}
 
           <li class="flex items-center gap-2">
-            <a href="{{ url }}" class="block">{{ name | capitalize }}</a>
+            <a href="{{ routes.root_url }}/blogs/{{ name }}" class="block">{{ name | capitalize }}</a>
 
             <span class="block size-1.5">
               {%- render 'icon-delimiter' -%}
