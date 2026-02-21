@@ -5,12 +5,8 @@
     <script type="module" src="{{ 'theme-critical.min.js' | asset_url }}"></script>
 
     {%- render 'f.set-css-vars' -%}
-
-    {%- if settings.logo_favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.logo_favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
-
-    <title>{{ page_title }}</title>
+    {%- render 'meta.header' -%}
+    
     {{ content_for_header }}
 
     {%- style -%}
