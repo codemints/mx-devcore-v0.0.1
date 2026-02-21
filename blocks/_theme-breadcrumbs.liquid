@@ -14,7 +14,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <nav aria-label="Breadcrumb">
-    <ol class="flex items-center gap-2">
+    <ol class="flex flex-wrap items-center gap-2 **:whitespace-nowrap">
       {%- unless s.show_advanced_settings == true and s.hide_root_url == true -%}
         <li class="flex items-center gap-2">
           <a href="{{ routes.root_url }}" class="block">Home</a>
