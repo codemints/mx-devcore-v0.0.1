@@ -50,10 +50,10 @@
       "pagination": {{ show_pagination_sm }},
       "breakpoints": {
         "1024": {
-          {% if s.enable_thumbnail_lg %}
-            "perPage": {{ s.per_page_lg }},
-            "gap": {{ s.gap_lg }},
-          {% endif %}
+          {%- if s.enable_thumbnail_lg -%}
+          "perPage": {{ s.per_page_lg }},
+          "gap": {{ s.gap_lg }},
+          {%- endif -%}
           "arrows": {{ show_arrows_lg }},
           "pagination": {{ show_pagination_lg }}
         }
