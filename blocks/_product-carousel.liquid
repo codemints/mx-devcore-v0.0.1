@@ -101,6 +101,41 @@
         </ul>
       </div>
     </div>
+
+    <script type="application/json" ref="slider-config">
+      {
+        "type": {{ s.type | json }},
+        "loop": {{ s.loop }},
+        "autoplay": {{ s.autoplay }},
+        "interval": {{ s.interval }},
+        "speed": {{ s.speed }},
+        "arrows": {{ show_arrows_sm }},
+        "pagination": {{ show_pagination_sm }},
+        "breakpoints": {
+          "1024": {
+            "arrows": {{ show_arrows_lg }},
+            "pagination": {{ show_pagination_lg }}
+          }
+        }
+      }
+    </script>
+
+    <script type="application/json" ref="nav-config">
+      {
+        "perPage": {{ s.per_page_sm }},
+        "gap": {{ s.gap_sm }},
+        "breakpoints": {
+          "1024": {
+            "perPage": {{ s.per_page_lg }},
+            "gap": {{ s.gap_lg }}
+          }
+        }
+      }
+    </script>
+
+    <script type="application/json" ref="modal-config">
+      {}
+    </script>
   </slider-ui>
 </div>
 
