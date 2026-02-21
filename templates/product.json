@@ -151,7 +151,7 @@
             "position_sm": "bottom",
             "per_page_sm": 4,
             "gap_sm": 10,
-            "enable_thumbnail_lg": true,
+            "enable_thumbnail_lg": false,
             "position_lg": "bottom",
             "per_page_lg": 4,
             "gap_lg": 10,
