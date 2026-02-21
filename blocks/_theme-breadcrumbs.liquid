@@ -27,7 +27,9 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
 
       {%- case template.name -%}
         {%- when 'page' -%}
-
+          <li>
+            <a href="{{ page.url }}">{{ page.title }}</a>
+          </li>
         {%- when 'blog' -%}
 
         {%- when 'article' -%}
@@ -44,10 +46,11 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
           </li>
 
           <li>{{ article.title }}</li>
+
         {%- when 'collection' -%}
           {%- unless settings.hide_collection_list == true -%}
             <li class="flex items-center gap-2">
-              <a href="{{ routes.root_url }}collections" class="block">All Collections</a>
+              <a href="{{ routes.collections_url }}" class="block">All Collections</a>
 
               <span class="block size-1.5">
                 {%- render 'icon-delimiter' -%}
