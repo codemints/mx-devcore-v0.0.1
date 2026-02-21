@@ -31,6 +31,26 @@
     "name": "Theme",
     "settings": [
       {
+        "type": "textarea",
+        "id": "font_embeds",
+        "label": "Embedded fonts"
+      },
+      {
+        "type": "textarea",
+        "id": "scripts_header",
+        "label": "Header scripts"
+      },
+      {
+        "type": "textarea",
+        "id": "scripts_body",
+        "label": "Body scripts"
+      },
+      {
+        "type": "textarea",
+        "id": "scripts_footer",
+        "label": "Footer scripts"
+      },
+      {
         "type": "checkbox",
         "id": "hide_collections_list",
         "label": "Hide collections list template",
