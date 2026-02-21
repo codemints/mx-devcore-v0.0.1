@@ -30,7 +30,7 @@
                 "mt_lg": "lg:mt-0",
                 "show_advanced_settings": true,
                 "hide_root_url": false,
-                "collection_link": "custom",
+                "collection_link": "all",
                 "collection_url": "shopify://collections/hydrogen"
               },
               "blocks": {}
