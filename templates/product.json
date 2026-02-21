@@ -38,7 +38,11 @@
             "product_tags_GMF6b9": {
               "type": "_product-tags",
               "name": "Tags",
-              "settings": {},
+              "settings": {
+                "mt_sm": "mt-6",
+                "enable_mt_lg": true,
+                "mt_lg": "lg:mt-10"
+              },
               "blocks": {}
             },
             "product_title_xRkMEi": {
