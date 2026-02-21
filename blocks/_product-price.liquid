@@ -28,7 +28,8 @@
       if s.discount_type == 'percent'
         assign price_d = price | times: 1.0
         assign compare_d = compare | times: 1.0
-        assign of_full = price_d | divided_by: compare_d | round: 2 | times: 100 | round | minus: 100 | times: -1
+        assign percent = price_d | divided_by: compare_d | round: 2 | times: 100 | round | minus: 100 | times: -1
+        assign discount_amount = percent
       elsif s.discount_type == 'value'
         assign discount_amount = compare | minus: price
       endif
@@ -39,14 +40,15 @@
 {%- capture classlist -%}
   theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
 {%- endcapture -%}
-<h1>DECIMAL: {{ of_full }}</h1>
-<h1>{{ price_d }} | {{ compare_d }}</h1>
+
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  {%- if show_sale -%}
-
-  {%- else -%}
-
-  {%- endif -%}
+  <div>
+    {%- if show_sale -%}
+  
+    {%- else -%}
+      {{ price | money }}
+    {%- endif -%}
+  </div>
 </div>
 
 {%- schema -%}
