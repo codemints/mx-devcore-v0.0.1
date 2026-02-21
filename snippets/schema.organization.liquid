@@ -1,0 +1,63 @@
+{%- liquid
+  assign logo = settings.logo_on_light
+  assign social_links = ''
+  assign separator = '~~~'
+  assign platforms = 'facebook,twitter,instagram,pinterest,tiktok,youtube,linkedin,vimeo'
+  assign platforms = platforms | split: ','
+
+  for platform in platforms
+    assign key = 'social_link_' | append: platform
+    assign value = settings[key]
+
+    if value != blank
+      assign social_links = social_links | append: value | append: separator
+    endif
+  endfor
+
+  assign social_links = social_links | split: separator
+-%}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "url": {{ shop.url | json }},
+    {%- if logo -%}
+      "logo": {{ logo | image_url: width: 600 | json }},
+    {%- endif -%}
+    {%- if shop.phone != blank -%}
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": {{ shop.phone | json }},
+        "contactType": "customer service"
+      },
+    {%- endif -%}
+    {%- if shop.address -%}
+      "address": {
+        "@type": "PostalAddress",
+        {%- if shop.address.street != blank -%}
+          "streetAddress": {{ shop.address.street | json }},
+        {%- endif -%}
+        {%- if shop.address.city != blank -%}
+          "addressLocality": {{ shop.address.city | json }},
+        {%- endif -%}
+        {%- if shop.address.province != blank -%}
+          "addressRegion": {{ shop.address.province | json }},
+        {%- endif -%}
+        {%- if shop.address.zip != blank -%}
+          "postalCode": {{ shop.address.zip | json }},
+        {%- endif -%}
+        "addressCountry": {{ shop.address.country.iso_code | json }}
+      },
+    {%- endif -%}
+    {%- if social_links.size > 0 -%}
+      "sameAs": [
+        {%- for link in social_links -%}
+          {{ link | json }}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+    {%- endif -%}
+    "description": {{ shop.description | strip_html | json }}
+  }
+</script>
