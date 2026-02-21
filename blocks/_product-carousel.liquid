@@ -38,6 +38,7 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui
+    data-section-id="shopify-section-{{ section.id }}"
     data-splide-config='{
       "type": "{{ s.type }}",
       "loop": {{ s.loop }},
