@@ -8,12 +8,12 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
-  assign price = resource.price
-  assign compare = resource.compare_at_price
+  assign sofav = resource.selected_or_first_available_variant
+  assign price = sofav.price
+  assign compare = sofav.compare_at_price
   assign is_sale = false
   assign show_sale = false
   assign show_discount = false
-  assign is_percent = true
   assign discount_amount = 0
 
   if compare != blank and compare > price
@@ -32,7 +32,6 @@
         assign percent = price_d | divided_by: compare_d | round: 2 | times: 100 | round | minus: 100 | times: -1
         assign discount_amount = percent | append: '%'
       elsif s.discount_type == 'value'
-        assign is_percent = false
         assign discount_amount = compare | minus: price | money
       endif
     endif
