@@ -84,9 +84,9 @@
               "name": "Product Description",
               "settings": {
                 "mt_sm": "mt-6",
-                "enable_mt_lg": true,
+                "enable_mt_lg": false,
                 "mt_lg": "lg:mt-10",
-                "use_custom_description": true,
+                "use_custom_description": false,
                 "custom_description": "{{ closest.product.metafields.display.description | metafield_tag }}"
               },
               "blocks": {}
@@ -148,6 +148,7 @@
             "autoplay": false,
             "interval": 4000,
             "speed": 1000,
+            "show_thumbnail_nav": false,
             "position_sm": "bottom",
             "per_page_sm": 4,
             "gap_sm": 10,
