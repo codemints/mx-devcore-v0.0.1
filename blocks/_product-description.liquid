@@ -8,6 +8,11 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
+  assign description = resource.description
+
+  if s.use_custom_description == true
+    assign description = s.custom_description
+  endif
 -%}
 
 {%- capture classlist -%}
@@ -15,7 +20,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  
+  {{ description }}
 </div>
 
 {%- schema -%}
