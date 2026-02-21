@@ -36,8 +36,12 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
             assign url = routes.root_url | append: '/blogs/' | append: name
           -%}
 
-          <li>
-            <a href="{{ url }}">{{ name | capitalize }}</a>
+          <li class="flex items-center gap-2">
+            <a href="{{ url }}" class="block">{{ name | capitalize }}</a>
+
+            <span class="block size-1.5">
+              {%- render 'icon-delimiter' -%}
+            </span>
           </li>
 
           <li>{{ article.title }}</li>
