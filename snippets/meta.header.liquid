@@ -5,9 +5,9 @@
 
 {% comment %} Favicon {% endcomment %}
 {%- if settings.favicon != blank -%}
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.favicon | image_url: width: 32 }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.favicon | image_url: width: 16 }}">
-  <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.logo_favicon | image_url: width: 32 }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.logo_favicon | image_url: width: 16 }}">
+  <link rel="apple-touch-icon" href="{{ settings.logo_favicon | image_url: width: 180 }}">
 {%- endif -%}
 
 {%- if settings.font_embeds != blank -%}
