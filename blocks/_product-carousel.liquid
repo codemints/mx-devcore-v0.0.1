@@ -76,6 +76,74 @@
         "content": "Thumbnail Settings"
       },
       {
+        "type": "select",
+        "id": "position_sm",
+        "label": "Position",
+        "default": "bottom",
+        "options": [
+          { "value": "top", "label": "Top" },
+          { "value": "bottom", "label": "Bottom" },
+          { "value": "left", "label": "Left" },
+          { "value": "right", "label": "Right" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "per_page_sm",
+        "label": "Per page",
+        "default": 4,
+        "min": 3,
+        "max": 8,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "gap_sm",
+        "label": "Gap",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_thumbnail_lg",
+        "label": "Enable desktop settings",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "position_lg",
+        "label": "Position (desktop)",
+        "default": "bottom",
+        "options": [
+          { "value": "top", "label": "Top" },
+          { "value": "bottom", "label": "Bottom" },
+          { "value": "left", "label": "Left" },
+          { "value": "right", "label": "Right" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "per_page_lg",
+        "label": "Per page (desktop)",
+        "default": 4,
+        "min": 3,
+        "max": 8,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "gap_lg",
+        "label": "Gap (desktop)",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
         "type": "header",
         "content": "Arrow Settings"
       },
