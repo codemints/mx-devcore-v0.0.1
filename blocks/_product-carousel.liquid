@@ -37,7 +37,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <theme-carousel
+  <slider-ui
     data-splide-config='{
       "type": "{{ s.type }}",
       "loop": {{ s.loop }},
@@ -62,8 +62,14 @@
       }
     }'
   >
+    <div ref="slider">
+      <div ref="track">
+        <ul>
 
-  </theme-carousel>
+        </ul>
+      </div>
+    </div>
+  </slider-ui>
 </div>
 
 {%- schema -%}
