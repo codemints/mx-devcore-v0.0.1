@@ -35,7 +35,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
             assign parent = article.url | remove: article.handle | split: '/' | last
           -%}
 
-          <li>{{ parent }}</li>
+          <li>{{ article.handle }}</li>
         {%- when 'collection' -%}
           {%- unless settings.hide_collection_list == true -%}
             <li class="flex items-center gap-2">
