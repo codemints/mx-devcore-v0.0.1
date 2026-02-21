@@ -64,8 +64,10 @@
   >
     <div ref="slider">
       <div ref="track">
-        <ul>
-
+        <ul ref="list">
+          {%- for item in resource.media -%}
+            <li>{{ item.media_type }}</li>
+          {%- endfor -%}
         </ul>
       </div>
     </div>
