@@ -59,7 +59,10 @@
               "settings": {
                 "mt_sm": "mt-6",
                 "enable_mt_lg": false,
-                "mt_lg": "lg:mt-0"
+                "mt_lg": "lg:mt-0",
+                "hide_sale_price": false,
+                "show_discount": true,
+                "discount_type": "percent"
               },
               "blocks": {}
             },
