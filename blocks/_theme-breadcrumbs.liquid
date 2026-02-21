@@ -57,7 +57,11 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
           {%- endunless -%}
 
           <li>
-            {{ collection.title }}
+            {%- if collection.handle == 'all' -%}
+              All Products
+            {%- else -%}
+              {{ collection.title }}
+            {%- endif -%}
           </li>
 
         {%- when 'product' -%}
