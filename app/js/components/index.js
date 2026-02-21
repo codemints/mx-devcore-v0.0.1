@@ -1,7 +1,9 @@
-import CartCount from './cart/cart-count'
+import OffCanvas from './ui/off-canvas'
+import CartUi from './cart/cart-ui'
 
-const registerComponents = () => {
-  customElements.define('cart-count', CartCount)
+export const registerCriticalComponents = () => {
+  customElements.define('off-canvas', OffCanvas)
+  customElements.define('cart-ui', CartUi)
 }
 
-export default registerComponents
+export const registerDereredComponents = () => {} 

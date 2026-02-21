@@ -1,0 +1,41 @@
+:root {
+  /* Core Modal Variables */
+  --modal-z-index: 10;
+  --modal-backdrop-color: #000000;
+  --modal-backdrop-opacity: 0.5;
+
+  /* Core Off-Canvas Variables */
+  --offcanvas-inset-top: 0;
+  --offcanvas-inset-bottom: 0;
+  --offcanvas-inset-left: 0;
+  --offcanvas-inset-right: 0;
+  --offcanvas-height: 100vh;
+  --offcanvas-width: 100vw;
+  --offcanvas-z-index: var(--modal-z-index);
+
+  --offcanvas-backdrop-color: var(--modal-backdrop-color);
+  --offcanvas-backdrop-opacity: var(--modal-backdrop-opacity);
+  --offcanvas-backdrop-duration: 200ms;
+  --offcanvas-backdrop-timing-function: ease-in-out;
+  --offcanvas-backdrop-transition: opacity var(--offcanvas-backdrop-duration) var(--offcanvas-backdrop-timing-function);
+
+  --offcanvas-drawer-inset-top: 0;
+  --offcanvas-drawer-inset-right: 0;
+  --offcanvas-drawer-inset-bottom: unset;
+  --offcanvas-drawer-inset-left: unset;
+
+  --offcanvas-drawer-translate-x: 100%;
+  --offcanvas-drawer-translate-y: 0;
+  --offcanvas-drawer-transform: translate(var(--offcanvas-drawer-translate-x), var(--offcanvas-drawer-translate-y));
+
+  --offcanvas-drawer-width: 100vw;
+  --offcanvas-drawer-height: 100vh;
+
+  --offcanvas-drawer-duration: 200ms;
+  --offcanvas-drawer-timing-function: ease-in;
+  --offcanvas-drawer-transition: transform var(--offcanvas-drawer-duration) var(--offcanvas-drawer-timing-function);
+
+  @media only screen and (min-width: 1024px) {
+    --offcanvas-drawer-width: 350px;
+  }
+}

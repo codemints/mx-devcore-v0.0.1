@@ -2,9 +2,10 @@ const root = 'app'
 const publicDir = 'public'
 const output = 'assets'
 const stylesDir = 'css'
-const stylesCore = 'theme-core.css'
+const stylesTheme = 'theme.css'
 const scriptsDir = 'js'
-const scriptsCore = 'theme-core.js'
+const scriptsCritical = 'theme-critical.js'
+const scriptsTheme = 'theme.js'
 const modulesDir = 'modules'
 
 const rootPath = `./${root}`
@@ -14,8 +15,9 @@ const stylesPath = `./${root}/${stylesDir}`
 const scriptsPath = `./${root}/${scriptsDir}`
 const modulesPath = `./${root}/${modulesDir}`
 
-const coreStyles = `${stylesPath}/${stylesCore}`
-const coreScripts = `${scriptsPath}/${scriptsCore}`
+const themeStyles = `${stylesPath}/${stylesTheme}`
+const criticalScripts = `${scriptsPath}/${scriptsCritical}`
+const themeScripts = `${scriptsPath}/${scriptsTheme}`
 
 const config = {
   root,
@@ -29,15 +31,18 @@ const config = {
     modules: modulesPath,
   },
   core: {
-    styles: coreStyles,
-    scripts: coreScripts,
+    styles: themeStyles,
+    critical: criticalScripts,
+    theme: themeScripts,
   },
   aliases: {
     '@': rootPath,
     '@css': stylesPath,
     '@js': scriptsPath,
+    '@components': `${scriptsPath}/components`,
     '@core': `${scriptsPath}/core`,
     '@lib': `${scriptsPath}/lib`,
+    '@stores': `${scriptsPath}/stores`
   },
   build: {
     outDir: outputPath,

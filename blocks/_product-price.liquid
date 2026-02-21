@@ -8,20 +8,185 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
+  assign sofav = resource.selected_or_first_available_variant
+  assign selected = resource.selected_variant
+  assign price = sofav.price
+  assign compare = sofav.compare_at_price
+  assign price_varies = resource.price_varies
+  assign price_min = resource.price_min
+  assign price_max = resource.price_max
+  assign is_sale = false
+  assign show_sale = false
+  assign show_discount = false
+  assign show_range = false
+  assign discount_amount = 0
+
+  if s.show_range and price_varies and selected == blank
+    assign show_range = true
+  endif
+
+  if show_range == false and compare != blank and compare > price
+    assign is_sale = true
+
+    if is_sale == true and s.hide_sale_price == false
+      assign show_sale = true
+    endif
+
+    if show_sale == true and s.show_discount == true
+      assign show_discount = true
+
+      if s.discount_type == 'percent'
+        assign price_d = price | times: 1.0
+        assign compare_d = compare | times: 1.0
+        assign percent = price_d | divided_by: compare_d | round: 2 | times: 100 | round | minus: 100 | times: -1
+        assign discount_amount = percent | append: '%'
+      elsif s.discount_type == 'value'
+        assign discount_amount = compare | minus: price | money
+      endif
+    endif
+  endif
 -%}
 
 {%- capture classlist -%}
-  theme-block {{ classname }}
+  theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  <div class="product-price flex items-center gap-2">
+    {%- if show_range == true -%}
+      <span class="sr-only">From</span>
+      <span data-price-min>{{ price_min | money }}</span>
+      <span aria-hidden="true">–</span>
+      <span class="sr-only">to</span>
+      <span data-price-max>{{ price_max | money }}</span>
+
+    {%- elsif show_sale == true -%}
+      <span class="sr-only">Sale price</span>
+      <span data-price-sale>{{ price | money }}</span>
+
+      <span class="sr-only">Regular price</span>
+      <s data-price-compare>{{ compare | money }}</s>
+
+      {%- if show_discount == true -%}
+        <span data-price-discount>{{ discount_amount }} off</span>
+      {%- endif -%}
+
+    {%- else -%}
+      <span class="sr-only">Price</span>
+      <span data-price-regular>{{ price | money }}</span>
+    {%- endif -%}
+  </div>
 </div>
 
 {%- schema -%}
   {
     "name": "Price",
     "tag": null,
-    "settings": [],
+    "settings": [
+      {
+        "type": "header",
+        "content": "Block Settings"
+      },
+      {
+        "type": "select",
+        "id": "mt_sm",
+        "label": "Space above",
+        "default": "mt-0",
+        "options": [
+          { "value": "mt-0", "label": "None" },
+          { "value": "mt-1", "label": "4px" },
+          { "value": "mt-2", "label": "8px" },
+          { "value": "mt-2.5", "label": "10px" },
+          { "value": "mt-3", "label": "12px" },
+          { "value": "mt-4", "label": "16px" },
+          { "value": "mt-5", "label": "20px" },
+          { "value": "mt-6", "label": "24px" },
+          { "value": "mt-7", "label": "28px" },
+          { "value": "mt-8", "label": "32px" },
+          { "value": "mt-9", "label": "36px" },
+          { "value": "mt-10", "label": "40px" },
+          { "value": "mt-11", "label": "44px" },
+          { "value": "mt-12", "label": "48px" },
+          { "value": "mt-13", "label": "54px" },
+          { "value": "mt-15", "label": "60px" },
+          { "value": "mt-16", "label": "64px" },
+          { "value": "mt-18", "label": "72px" },
+          { "value": "mt-21", "label": "84px" },
+          { "value": "mt-24", "label": "96px" },
+          { "value": "mt-25", "label": "100px" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_mt_lg",
+        "label": "Show spacing settings for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "mt_lg",
+        "label": "Space above (desktop)",
+        "default": "lg:mt-0",
+        "options": [
+          { "value": "lg:mt-0", "label": "None" },
+          { "value": "lg:mt-1", "label": "4px" },
+          { "value": "lg:mt-2", "label": "8px" },
+          { "value": "lg:mt-2.5", "label": "10px" },
+          { "value": "lg:mt-3", "label": "12px" },
+          { "value": "lg:mt-4", "label": "16px" },
+          { "value": "lg:mt-5", "label": "20px" },
+          { "value": "lg:mt-6", "label": "24px" },
+          { "value": "lg:mt-7", "label": "28px" },
+          { "value": "lg:mt-8", "label": "32px" },
+          { "value": "lg:mt-9", "label": "36px" },
+          { "value": "lg:mt-10", "label": "40px" },
+          { "value": "lg:mt-11", "label": "44px" },
+          { "value": "lg:mt-12", "label": "48px" },
+          { "value": "lg:mt-13", "label": "54px" },
+          { "value": "lg:mt-15", "label": "60px" },
+          { "value": "lg:mt-16", "label": "64px" },
+          { "value": "lg:mt-18", "label": "72px" },
+          { "value": "lg:mt-21", "label": "84px" },
+          { "value": "lg:mt-24", "label": "96px" },
+          { "value": "lg:mt-25", "label": "100px" }
+        ],
+        "visible_if": "{{ block.settings.enable_mt_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Price Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_range",
+        "label": "Show price range",
+        "info": "Displays a price range when variants have different prices and no variant is selected. Useful for product cards.",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_sale_price",
+        "label": "Hide sale price",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_discount",
+        "label": "Show discount",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "discount_type",
+        "label": "Discount type",
+        "default": "percent",
+        "options": [
+          { "value": "percent", "label": "Percent" },
+          { "value": "value", "label": "Value" }
+        ],
+        "visible_if": "{{ block.settings.show_discount == true }}"
+      }
+    ],
     "presets": [
       {
         "name": "Price",

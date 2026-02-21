@@ -7,11 +7,13 @@ import getModules from './app/build/get-modules.js'
 const dir = import.meta.dirname
 
 const modules = getModules(dir, config.root, config.modules)
-const coreJs = resolve(dir, config.core.scripts)
+const criticalJs = resolve(dir, config.core.critical)
+const themeJs = resolve(dir, config.core.theme)
 
 const input = {
   ...modules,
-  'theme-core': coreJs
+  'theme-critical': criticalJs,
+  'theme': themeJs,
 }
 
 const aliases = Object.entries(config.aliases).reduce((acc, [key, value]) => {

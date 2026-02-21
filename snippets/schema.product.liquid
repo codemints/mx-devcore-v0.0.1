@@ -1,0 +1,85 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  comment
+    Shopify standard review metafields — most apps populate these.
+    If your review app uses a different namespace, override here.
+  endcomment
+  assign rating_value = product.metafields.reviews.rating.value
+  assign rating_count = product.metafields.reviews.rating_count.value | plus: 0
+-%}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    "description": {{ product.description | strip_html | truncate: 5000 | json }},
+    {%- if product.vendor != blank -%}
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | json }}
+      },
+    {%- endif -%}
+    {%- if current_variant.sku != blank -%}
+      "sku": {{ current_variant.sku | json }},
+    {%- endif -%}
+    {%- if current_variant.barcode != blank -%}
+      {%- case current_variant.barcode.size -%}
+        {%- when 8 -%}
+          "gtin8": {{ current_variant.barcode | json }},
+        {%- when 12 -%}
+          "gtin12": {{ current_variant.barcode | json }},
+        {%- when 13 -%}
+          "gtin13": {{ current_variant.barcode | json }},
+        {%- when 14 -%}
+          "gtin14": {{ current_variant.barcode | json }},
+        {%- else -%}
+          "mpn": {{ current_variant.barcode | json }},
+      {%- endcase -%}
+    {%- endif -%}
+    {%- if product.featured_image -%}
+      "image": {{ product.featured_image | image_url: width: 1200 | json }},
+    {%- endif -%}
+    "offers": [
+      {%- for variant in product.variants -%}
+        {
+          "@type": "Offer",
+          "url": {{ shop.url | append: variant.url | json }},
+          "price": {{ variant.price | money_without_currency | remove: ',' | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "itemCondition": "https://schema.org/NewCondition",
+          "priceValidUntil": {{ 'now' | date: '%s' | plus: 2592000 | date: '%Y-%m-%d' | json }}
+          {%- if variant.sku != blank -%}
+            ,"sku": {{ variant.sku | json }}
+          {%- endif -%}
+          {%- if variant.barcode != blank -%}
+            {%- case variant.barcode.size -%}
+              {%- when 8 -%}
+                ,"gtin8": {{ variant.barcode | json }}
+              {%- when 12 -%}
+                ,"gtin12": {{ variant.barcode | json }}
+              {%- when 13 -%}
+                ,"gtin13": {{ variant.barcode | json }}
+              {%- when 14 -%}
+                ,"gtin14": {{ variant.barcode | json }}
+              {%- else -%}
+                ,"mpn": {{ variant.barcode | json }}
+            {%- endcase -%}
+          {%- endif -%}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+    {%- if rating_count > 0 and rating_value -%}
+      ,"aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ rating_value }},
+        "reviewCount": {{ rating_count }},
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    {%- endif -%}
+  }
+</script>

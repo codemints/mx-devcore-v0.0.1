@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="{{ settings.color_button }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+{% comment %} Favicon {% endcomment %}
+{%- if settings.logo_favicon != blank -%}
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.logo_favicon | image_url: width: 32 }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.logo_favicon | image_url: width: 16 }}">
+  <link rel="apple-touch-icon" href="{{ settings.logo_favicon | image_url: width: 180 }}">
+{%- endif -%}
+
+{%- if settings.font_embeds != blank -%}
+  {{ settings.font_embeds }}
+{%- endif -%}
+
+{% comment %} SEO Title {% endcomment %}
+{%- capture seo_title -%}
+  {%- if template == 'search' and search.performed == true -%}
+    Search results for "{{ search.terms }}" ({{ search.results_count }})
+  {%- else -%}
+    {{ page_title }}
+  {%- endif -%}
+
+  {%- if current_tags -%}
+    &ndash; {{ current_tags | join: ', ' }}
+  {%- endif -%}
+
+  {%- if current_page != 1 -%}
+    &ndash; Page {{ current_page }}
+  {%- endif -%}
+
+  {%- unless page_title contains shop.name -%}
+    &ndash; {{ shop.name }}
+  {%- endunless -%}
+{%- endcapture -%}
+<title>{{ seo_title | strip }}</title>
+
+{%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+{%- endif -%}
+
+{% comment %} Pagination hints {% endcomment %}
+{%- # theme-check-disable -%}
+{%- if paginate -%}
+  {%- if paginate.previous -%}
+    <link rel="prev" href="{{ paginate.previous.url }}">
+  {%- endif -%}
+  {%- if paginate.next -%}
+    <link rel="next" href="{{ paginate.next.url }}">
+  {%- endif -%}
+{%- endif -%}
+{%- # theme-check-enable -%}
+
+{% comment %} Social + OG + Twitter {% endcomment %}
+{% render 'meta.social' %}
+
+{% comment %} Structured Data {% endcomment %}
+{%- render 'schema.organization' -%}
+{%- render 'schema.website' -%}
+{%- render 'schema.breadcrumbs' -%}
+
+{%- if template contains 'product' -%}
+  {%- render 'schema.product' -%}
+{%- endif -%}
+
+{%- if template contains 'article' -%}
+  {%- render 'schema.article' -%}
+{%- endif -%}
+
+{%- if template contains 'collection' -%}
+  {%- render 'schema.collection' -%}
+{%- endif -%}

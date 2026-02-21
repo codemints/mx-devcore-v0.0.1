@@ -6,3 +6,6 @@
 
 /* SPLIDE */
 @import '@splidejs/splide/css/core';
+
+/* COMPONENTS */
+@import './components/index.css';

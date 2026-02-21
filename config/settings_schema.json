@@ -23,7 +23,44 @@
       {
         "type": "image_picker",
         "id": "logo_favicon",
-        "label": "The site favicon"
+        "label": "Site favicon"
+      }
+    ]
+  },
+  {
+    "name": "Theme",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "font_embeds",
+        "label": "Embedded fonts"
+      },
+      {
+        "type": "textarea",
+        "id": "scripts_head",
+        "label": "Head scripts"
+      },
+      {
+        "type": "textarea",
+        "id": "scripts_body",
+        "label": "Body scripts"
+      },
+      {
+        "type": "textarea",
+        "id": "scripts_footer",
+        "label": "Footer scripts"
+      },
+      {
+        "type": "checkbox",
+        "id": "list_collections_hide",
+        "label": "Hide list collections template",
+        "default": false
+      },
+      {
+        "type": "url",
+        "id": "list_collections_redirect",
+        "label": "Redirect list collections to",
+        "visible_if": "{{ settings.list_collections_hide == true }}"
       }
     ]
   },

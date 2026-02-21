@@ -1,1 +1,25 @@
-{}
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/js/components/*"],
+      "@core/*": ["src/js/core/*"],
+      "@lib/*": ["src/js/lib/*"],
+      "@stores/*": ["src/js/stores/*"],
+      "@css/*": ["src/css/*"],
+      "@js/*": ["src/js/*"],
+      "@/*": ["src/*"]
+    },
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["app/**/*"],
+  "exclude": ["node_modules", "dist", "assets"]
+}

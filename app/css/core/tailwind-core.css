@@ -9,10 +9,72 @@
     --color-stone: var(--c-stone);
 
   /* FONT FAMILY VARIABLES */
+    --font-display: var(--font-family-display);
+    --font-display--font-variation-settings: var(--font-variation-display);
 
+    --font-heading: var(--font-family-heading);
 
-  /* FONT SIZE FAMILIES */
+    --font-body: var(--font-family-body);
+    --font-body--font-variation-settings: var(--font-variation-body);
+
+  /* FONT SIZE VARIABLES */
+    /* Display */
+    --text-d1: var(--font-size-d1);
+    --text-d1--line-height: var(--leading-d1);
+    --text-d1--letter-spacing: var(--tracking-d1);
+
+    --text-d2: var(--font-size-d2);
+    --text-d2--line-height: var(--leading-d2);
+    --text-d2--letter-spacing: var(--tracking-d2);
+
+    --text-d3: var(--font-size-d3);
+    --text-d3--line-height: var(--leading-d3);
+    --text-d3--letter-spacing: var(--tracking-d3);
+
+    /* Headings */
+    --text-h1: var(--font-size-h1);
+    --text-h1--line-height: var(--leading-h1);
+    --text-h1--letter-spacing: var(--tracking-h1);
+
+    --text-h2: var(--font-size-h2);
+    --text-h2--line-height: var(--leading-h2);
+    --text-h2--letter-spacing: var(--tracking-h2);
+
+    --text-h3: var(--font-size-h3);
+    --text-h3--line-height: var(--leading-h3);
+    --text-h3--letter-spacing: var(--tracking-h3);
+
+    --text-h4: var(--font-size-h4);
+    --text-h4--line-height: var(--leading-h4);
+    --text-h4--letter-spacing: var(--tracking-h4);
+
+    --text-h5: var(--font-size-h5);
+    --text-h5--line-height: var(--leading-h5);
+    --text-h5--letter-spacing: var(--tracking-h5);
+
+    --text-h6: var(--font-size-h6);
+    --text-h6--line-height: var(--leading-h6);
+    --text-h6--letter-spacing: var(--tracking-h6);
+
+    /* Display */
+    --text-b1: var(--font-size-b1);
+    --text-b1--line-height: var(--leading-b1);
+    --text-b1--letter-spacing: var(--tracking-b1);
+
+    --text-b2: var(--font-size-b2);
+    --text-b2--line-height: var(--leading-b2);
+    --text-b2--letter-spacing: var(--tracking-b2);
+
+    --text-b3: var(--font-size-b3);
+    --text-b3--line-height: var(--leading-b3);
+    --text-b3--letter-spacing: var(--tracking-b3);
+
+    /* Label */
+    --text-label: var(--font-size-label);
+    --text-label--line-height: var(--leading-label);
+    --text-label--letter-spacing: var(--tracking-label);
 }
 
 @import './tailwind-base.css';
 @import './tailwind-utilities.css';
+@import './tailwind-variants.css';

@@ -1,0 +1,2 @@
+@custom-variant cart-page (&:where([data-cart-context="page"] *))
+@custom-variant cart-drawer (&:where([data-cart-context="drawer"] *))

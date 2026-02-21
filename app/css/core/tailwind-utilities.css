@@ -84,3 +84,79 @@ TABLE OF CONTENTS
   @utility accordion-item-close {
     grid-template-rows: 0fr;
   }
+
+/* TYPOGRAPHY */
+  @utility rte {
+    &:not(.metafield-rich_text_field) > * + * {
+      margin-top: var(--rte-mt);
+    }
+
+    > .metafield-rich_text_field > * + * {
+      margin-top: var(--rte-mt);
+    }
+  }
+
+  @utility type-d1 {
+    @apply font-display text-d1;
+    font-weight: var(--weight-display);
+  }
+
+  @utility type-d2 {
+    @apply font-display text-d2;
+    font-weight: var(--weight-display);
+  }
+
+  @utility type-d3 {
+    @apply font-display text-d3;
+    font-weight: var(--weight-display);
+  }
+
+  @utility type-h1 {
+    @apply font-heading text-h1;
+    font-weight: var(--weight-h1-2);
+  }
+
+  @utility type-h2 {
+    @apply font-heading text-h2;
+    font-weight: var(--weight-h1-2);
+  }
+
+  @utility type-h3 {
+    @apply font-heading text-h3;
+    font-weight: var(--weight-h3-4);
+  }
+
+  @utility type-h4 {
+    @apply font-heading text-h4;
+    font-weight: var(--weight-h3-4);
+  }
+
+  @utility type-h5 {
+    @apply font-heading text-h5;
+    font-weight: var(--weight-h5-6);
+  }
+
+  @utility type-h6 {
+    @apply font-heading text-h6;
+    font-weight: var(--weight-h5-6);
+  }
+
+  @utility type-b1 {
+    @apply font-body text-b1;
+    font-weight: var(--weight-body);
+  }
+
+  @utility type-b2 {
+    @apply font-body text-b2;
+    font-weight: var(--weight-body);
+  }
+
+  @utility type-b3 {
+    @apply font-body text-b3;
+    font-weight: var(--weight-body);
+  }
+
+  @utility type-label {
+    @apply font-heading text-label;
+    font-weight: var(--weight-label);
+  }

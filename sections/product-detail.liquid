@@ -1,0 +1,218 @@
+{%- liquid
+  assign s = section.settings
+  assign gap_x = s.gap_y
+  assign gap_y = s.gap_y
+  assign flex_col = s.flex_col
+  assign flex_row = 'lg:flex-row'
+
+  if s.flex_col == 'flex-col-reverse'
+    assign flex_row = 'lg:flex-row-reverse'
+  endif
+
+  if s.enable_layout_lg == true
+    assign gap_x = s.gap_x
+    assign flex_row = s.flex_row
+    assign basis_carousel = 100 | minus: s.basis_lg
+    assign basis_detail = s.basis_lg
+  endif
+
+  assign resource = all_products[s.product.handle] | default: product
+-%}
+
+{%- comment -%} Start - Static Blocks {%- endcomment -%}
+  {%- capture product_information -%}
+    {%- content_for 'block', type: '_product-information', id: 'product-information', item: resource -%}
+  {%- endcapture -%}
+
+  {%- capture product_carousel -%}
+    {%- content_for 'block', type: '_product-carousel', id: 'product-carousel' -%}
+  {%- endcapture -%}
+{%- comment -%} End - Static Blocks{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-bg-color: var(--c-{{ s.bg_color }});
+    --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+
+    --gap-x: {{ gap_x }}px;
+    --gap-y: {{ gap_y }}px;
+    {% if s.enable_layout_lg == true %}
+    --flex-carousel: 1 0 {{ basis_carousel }}%;
+    --flex-detail: 1 0 {{ basis_detail }}%;
+    {% endif %}
+  }
+{%- endstyle -%}
+
+<div {% if s.anchor_id != blank %}id="{{ s.anchor_id }}" {% endif %}class="section__wrapper">
+  <div class="{% if s.bg_size == 'full' %} background{% endif %}">
+    <div class="section__container container">
+      <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
+
+        <div class="section__main flex {{ flex_col }} {{ flex_row }} lg:items-start gap-x-(--gap-x) gap-y-(--gap-y)">
+          <div class="pdp-carousel flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} w-full">
+            {{ product_carousel }}
+          </div>
+
+          <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} w-full">
+            {{ product_information }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- schema -%}
+  {
+    "name": "Product Detail",
+    "tag": "section",
+    "class": "section__product-detail",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "text",
+        "id": "anchor_id",
+        "label": "Anchor ID"
+      },
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "default",
+        "options": [
+          { "value": "default", "label": "Default" },
+          { "value": "midnight", "label": "Midnight" },
+          { "value": "cobalt", "label": "Cobalt" },
+          { "value": "seafoam", "label": "Seafoam" },
+          { "value": "ivory", "label": "Ivory" },
+          { "value": "stone", "label": "Stone" },
+        ]
+      },
+      {
+        "type": "range",
+        "id": "bg_opacity",
+        "label": "Background opacity",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "visible_if": "{{ section.settings.bg_color != 'default' }}"
+      },
+      {
+        "type": "select",
+        "id": "bg_size",
+        "label": "Background size",
+        "default": "full",
+        "options": [
+          { "value": "full", "label": "Full" },
+          { "value": "contained", "label": "Contained" }
+        ],
+        "visible_if": "{{ section.settings.bg_color != 'default' }}"
+      },
+      {
+        "type": "header",
+        "content": "Product Settings"
+      },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product",
+        "info": "Required when used outside of the product template."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_variant",
+        "label": "Use product variant",
+        "default": false,
+        "visible_if": "{{ section.settings.product != blank }}"
+      },
+      {
+        "type": "text",
+        "id": "variant_id",
+        "label": "Variant ID",
+        "visible_if": "{{ section.settings.product != blank and section.settings.use_variant == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      },
+      {
+        "type": "select",
+        "id": "flex_col",
+        "label": "First in layout",
+        "default": "flex-col",
+        "options": [
+          { "value": "flex-col", "label": "Slider" },
+          { "value": "flex-col-reverse", "label": "Detail" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "gap_y",
+        "label": "Gap",
+        "default": 40,
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_layout_lg",
+        "label": "Show custom settings for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "flex_row",
+        "label": "First in layout (desktop)",
+        "default": "lg:flex-row",
+        "options": [
+          { "value": "lg:flex-row", "label": "Slider" },
+          { "value": "lg:flex-row-reverse", "label": "Detail" }
+        ],
+        "visible_if": "{{ section.settings.enable_layout_lg == true }}"
+      },
+      {
+        "type": "range",
+        "id": "gap_x",
+        "label": "Gap (desktop)",
+        "default": 80,
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "visible_if": "{{ section.settings.enable_layout_lg == true }}"
+      },
+      {
+        "type": "range",
+        "id": "basis_lg",
+        "label": "Product detail column width",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "visible_if": "{{ section.settings.enable_layout_lg == true }}"
+      }
+    ],
+    "blocks": [
+
+    ],
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "presets": [
+      {
+        "name": "Product Detail",
+        "settings": {},
+        "blocks": [],
+        "category": "Product"
+      }
+    ]
+  }
+{%- endschema -%}

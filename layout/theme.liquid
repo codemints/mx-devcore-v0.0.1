@@ -5,12 +5,8 @@
     <script type="module" src="{{ 'theme-critical.min.js' | asset_url }}"></script>
 
     {%- render 'f.set-css-vars' -%}
+    {%- render 'meta.header' -%}
 
-    {%- if settings.logo_favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.logo_favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
-
-    <title>{{ page_title }}</title>
     {{ content_for_header }}
 
     {%- style -%}
@@ -20,16 +16,21 @@
         {%- render 's.variables.spacing' -%}
         {%- render 's.variables.header' -%}
         {%- render 's.variables.cart' -%}
+
+        --rte-mt: 20px;
       }
     {%- endstyle -%}
 
     {{ 'theme.min.css' | asset_url | stylesheet_tag }}
+    {%- render 'scripts.head' -%}
   </head>
   
   <body class="">
     {%- capture cart_sections -%}
       {%- sections 'group-cart' -%}
     {%- endcapture -%}
+
+    {%- render 'scripts.body' -%}
 
     {%- sections 'group-header' -%}
 
@@ -50,5 +51,6 @@
     {%- endif -%}
 
     <script type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
+    {%- render 'scripts.footer' -%}
   </body>
 </html>

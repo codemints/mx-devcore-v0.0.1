@@ -14,7 +14,12 @@
   }
 
   body {
-
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-b2);
+    font-weight: var(--weight-body);
+    font-variation-settings: var(--font-variation-body);
+    line-height: var(--leading-b2);
+    letter-spacing: var(--tracking-b2);
   }
 
   h1,
@@ -23,30 +28,48 @@
   h4,
   h5,
   h6 {
-
+    font-family: var(--font-family-heaading);
   }
 
   h1 {
-
+    font-size: var(--font-size-h1);
+    font-weight: var(--weight-h1-2);
+    line-height: var(--leading-h1);
+    letter-spacing: var(--tracking-h1);
   }
 
   h2 {
-
+    font-size: var(--font-size-h2);
+    font-weight: var(--weight-h1-2);
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
   }
 
   h3 {
-
+    font-size: var(--font-size-h3);
+    font-weight: var(--weight-h3-4);
+    line-height: var(--leading-h3);
+    letter-spacing: var(--tracking-h3);
   }
 
   h4 {
-
+    font-size: var(--font-size-h4);
+    font-weight: var(--weight-h3-4);
+    line-height: var(--leading-h4);
+    letter-spacing: var(--tracking-h4);
   }
 
   h5 {
-
+    font-size: var(--font-size-h5);
+    font-weight: var(--weight-h5-6);
+    line-height: var(--leading-h5);
+    letter-spacing: var(--tracking-h5);
   }
 
   h6 {
-
+    font-size: var(--font-size-h6);
+    font-weight: var(--weight-h5-6);
+    line-height: var(--leading-h6);
+    letter-spacing: var(--tracking-h6);
   }
 }

@@ -1,0 +1,72 @@
+{%- liquid
+  assign crumbs = ''
+  assign separator = '|||'
+
+  case request.page_type
+    when 'product'
+      if collection
+        assign crumbs = collection.title | append: separator | append: collection.url | append: separator
+      endif
+      assign crumbs = crumbs | append: product.title | append: separator | append: product.url
+
+    when 'collection'
+      assign crumbs = collection.title | append: separator | append: collection.url
+
+    when 'blog'
+      assign crumbs = blog.title | append: separator | append: blog.url
+
+    when 'article'
+      assign crumbs = blog.title | append: separator | append: blog.url | append: separator
+      assign crumbs = crumbs | append: article.title | append: separator | append: article.url
+
+    when 'page'
+      assign crumbs = page.title | append: separator | append: page.url
+
+    when 'search'
+      assign crumbs = 'Search' | append: separator | append: '/search'
+
+    when 'customers/account'
+      assign crumbs = 'Account' | append: separator | append: '/account'
+
+    when 'customers/addresses'
+      assign crumbs = 'Account' | append: separator | append: '/account' | append: separator
+      assign crumbs = crumbs | append: 'Addresses' | append: separator | append: '/account/addresses'
+
+    when 'customers/order'
+      assign crumbs = 'Account' | append: separator | append: '/account' | append: separator
+      assign crumbs = crumbs | append: 'Orders' | append: separator | append: '/account'
+  endcase
+-%}
+
+{%- if crumbs != '' -%}
+  {%- assign crumb_parts = crumbs | split: separator -%}
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": {{ shop.url | json }}
+        }
+        {%- for i in (0..100) -%}
+          {%- assign name_index = i | times: 2 -%}
+          {%- assign url_index = i | times: 2 | plus: 1 -%}
+          {%- if name_index >= crumb_parts.size -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- assign position = i | plus: 2 -%}
+          ,{
+            "@type": "ListItem",
+            "position": {{ position }},
+            "name": {{ crumb_parts[name_index] | strip | json }},
+            "item": {{ shop.url | append: crumb_parts[url_index] | strip | json }}
+          }
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}

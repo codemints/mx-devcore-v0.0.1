@@ -2,12 +2,12 @@
   assign s = block.settings
   assign attrs = block.shopify_attributes
   assign prefix = 'theme-block__'
-  assign type = 'swatches'
+  assign type = 'block-type'
   assign unique_id = section.id | append: '--' | append: block.id
   assign id = prefix | append: unique_id
   assign classname = prefix | append: type
 
-  assign resource = closest.product | default: product
+  assign resource = 
 -%}
 
 {%- capture classlist -%}
@@ -15,16 +15,24 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  {%- content_for 'blocks' -%}
+  
+  {%- content_for 'block', type: '_product-buy-buttons', id: 'product-buy-buttons' -%}
 </div>
 
 {%- schema -%}
   {
-    "name": "Swatches",
+    "name": "Product Form",
     "tag": null,
     "settings": [],
+    "blocks": [
+      { "type": "_product-quantity" },
+      { "type": "_product-subscriptions" },
+      { "type": "_product-variant-selectors" }
+    ],
     "presets": [
       {
-        "name": "Swatches",
+        "name": "Product Form",
         "settings": {},
         "blocks": [],
         "category": "Product"

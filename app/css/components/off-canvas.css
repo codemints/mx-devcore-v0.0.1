@@ -1,0 +1,71 @@
+off-canvas {
+  position: fixed;
+  inset:
+    var(--offcanvas-inset-top)
+    var(--offcanvas-inset-right)
+    var(--offcanvas-inset-bottom)
+    var(--offcanvas-inset-left);
+  isolation: isolate;
+  width: var(--offcanvas-width);
+  height: var(--offcanvas-height);
+
+  display: none;
+  z-index: -1;
+  pointer-events: none;
+
+  &[data-offcanvas-position="top"],
+  &[data-offcanvas-position="bottom"] {
+    --offcanvas-drawer-inset-right: unset;
+    --offcanvas-drawer-inset-left: 0;
+
+    --offcanvas-drawer-translate-x: 0;
+
+    --offcanvas-drawer-width: 100%;
+    --offcanvas-drawer-height: auto;
+  }
+  
+  &[data-offcanvas-position="top"] {
+    --offcanvas-drawer-inset-top: 0;
+    --offcanvas-drawer-inset-bottom: unset;
+
+    --offcanvas-drawer-translate-y: -100%;
+  }
+
+  &[data-offcanvas-position="left"] {
+    --offcanvas-drawer-inset-left: 0;
+    --offcanvas-drawer-inset-right: unset;
+    --offcanvas-drawer-translate-x: -100%;
+  }
+  
+  &[data-offcanvas-position="bottom"] {
+    --offcanvas-drawer-inset-top: unset;
+    --offcanvas-drawer-inset-bottom: 0;
+
+    --offcanvas-drawer-translate-y: 100%;
+  }
+
+  [data-offcanvas-backdrop] {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: oklch(from var(--offcanvas-backdrop-color) l c h / var(--offcanvas-backdrop-opacity));
+    transition: var(--offcanvas-backdrop-transition);
+
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  [data-offcanvas-drawer] {
+    position: absolute;
+    inset:
+      var(--offcanvas-drawer-inset-top)
+      var(--offcanvas-drawer-inset-right)
+      var(--offcanvas-drawer-inset-bottom)
+      var(--offcanvas-drawer-inset-left);
+    z-index: 1;
+    width: var(--offcanvas-drawer-width);
+    height: var(--offcanvas-drawer-height);
+    transform: var(--offcanvas-drawer-transform);
+    transition: var(--offcanvas-drawer-transition);
+  }
+}
