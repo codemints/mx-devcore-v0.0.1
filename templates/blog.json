@@ -11,6 +11,25 @@
   "sections": {
     "title": {
       "type": "page-title",
+      "blocks": {
+        "theme_breadcrumbs_PtLVPG": {
+          "type": "_theme-breadcrumbs",
+          "name": "Breadcrumbs",
+          "settings": {
+            "mt_sm": "mt-0",
+            "enable_mt_lg": false,
+            "mt_lg": "lg:mt-0",
+            "show_advanced_settings": false,
+            "hide_root_url": false,
+            "collection_link": "all",
+            "collection_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "theme_breadcrumbs_PtLVPG"
+      ],
       "settings": {}
     }
   },
