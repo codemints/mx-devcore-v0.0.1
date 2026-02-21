@@ -25,7 +25,27 @@
     "settings": [
       {
         "type": "header",
-        "content": "Carousel Settings"
+        "content": "Main Settings"
+      },
+      {
+        "type": "select",
+        "id": "type",
+        "label": "Slide type",
+        "default": "slide",
+        "options": [
+          { "value": "slide", "label": "Slide" },
+          { "value": "fade", "label": "Fade" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Loop",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Thumbnail Settings"
       }
     ],
     "blocks": [],
