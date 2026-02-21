@@ -17,7 +17,7 @@
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <ul class="flex items-center gap-2">
     {%- for tag in resource.tags -%}
-      <li class="type-label leading-none uppercase bg-neutral-200 rounded-full px-6 py-2">{{ tag }}</li>
+      <li class="type-label leading-none lowercase bg-neutral-200 rounded-full px-6 py-2">{{ tag }}</li>
     {%- endfor -%}
   </ul>
 </div>
