@@ -38,6 +38,7 @@
   theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
 {%- endcapture -%}
 <h1>DECIMAL: {{ decimal }}</h1>
+<h1>{{ price }} | {{ compare }}</h1>
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   {%- if show_sale -%}
 
