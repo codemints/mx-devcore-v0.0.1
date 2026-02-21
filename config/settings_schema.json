@@ -52,9 +52,14 @@
       },
       {
         "type": "checkbox",
-        "id": "hide_collections_list",
-        "label": "Hide collections list template",
+        "id": "list_collections_hide",
+        "label": "Hide list collections template",
         "default": false
+      },
+      {
+        "type": "url",
+        "id": "list_collections_redirect",
+        "label": "Redirect list collections to"
       }
     ]
   },
