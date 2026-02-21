@@ -47,7 +47,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         {%- when 'collection' -%}
           {%- unless settings.hide_collection_list == true -%}
             <li class="flex items-center gap-2">
-              <a href="{{ routes.root_url }}/collections" class="block">All Collections</a>
+              <a href="{{ routes.root_url }}collections" class="block">All Collections</a>
 
               <span class="block size-1.5">
                 {%- render 'icon-delimiter' -%}
