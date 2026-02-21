@@ -11,11 +11,11 @@
 -%}
 
 {%- capture classlist -%}
-  theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
+  theme-block {{ classname }} rte {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  {{ resource.description }}
+  
 </div>
 
 {%- schema -%}
