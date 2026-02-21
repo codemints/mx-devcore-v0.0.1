@@ -98,6 +98,23 @@
         "label": "Show advanced settings",
         "default": false
       },
+      {
+        "type": "header",
+        "content": "Advanced Settings",
+        "visible_if": "{{ block.settings.show_advanced_settings == true }}"
+      },
+      {
+        "type": "select",
+        "id": "html_tag",
+        "label": "Tag",
+        "default": "h1",
+        "options": [
+          { "value": "h1", "label": "H1" },
+          { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" },
+          { "value": "h4", "label": "H4" }
+        ]
+      }
     ],
     "blocks": [],
     "presets": [
