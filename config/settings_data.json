@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo_on_light": "shopify://shop_images/logoipsum-350c.png",
-    "logo_favicon": "shopify://shop_images/logoipsum-351c.png",
+    "logo_on_light": "shopify://shop_images/mxdevcore-logo-on-light.png",
+    "logo_favicon": "shopify://shop_images/mxdevcore-favicon.png",
     "cart_type": "drawer",
     "cart_count_visible": true,
     "cart_count_hide": true,
