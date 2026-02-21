@@ -47,20 +47,22 @@
       "interval": {{ s.interval }},
       "speed": {{ s.speed }},
       {%- endif %}
-      "perPage": {{ s.per_page_sm }},
-      "gap": {{ s.gap_sm }},
       "arrows": {{ show_arrows_sm }},
       "pagination": {{ show_pagination_sm }},
       "breakpoints": {
         "1024": {
-          {% if s.enable_thumbnail_lg -%}
-          "perPage": {{ s.per_page_lg }},
-          "gap": {{ s.gap_lg }},
-          {%- endif %}
           "arrows": {{ show_arrows_lg }},
           "pagination": {{ show_pagination_lg }}
         }
       }
+    }',
+    data-slider-nav-config='{
+      "perPage": {{ s.per_page_sm }},
+      "gap": {{ s.gap_sm }},
+      {% if s.enable_thumbnail_lg -%}
+      "perPage": {{ s.per_page_lg }},
+      "gap": {{ s.gap_lg }},
+      {%- endif %}
     }'
   >
     <div class="splide" ref="slider-ui">
