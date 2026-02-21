@@ -18,7 +18,10 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
       {%- unless s.show_advanced_settings == true and s.hide_root_url == true -%}
         <li class="flex items-center gap-2">
           <a href="{{ routes.root_url }}" class="block">Home</a>
-          <span class="block size-1.5">{%- render 'icon-delimiter' -%}</span>
+          
+          <span class="block size-1.5">
+            {%- render 'icon-delimiter' -%}
+          </span>
         </li>
       {%- endunless -%}
 
@@ -30,11 +33,35 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         {%- when 'article' -%}
 
         {%- when 'collection' -%}
+          <li>
+            {{ collection.title }}
+          </li>
 
         {%- when 'product' -%}
+          {% if s.show_advanced_settings == true and s.collection_link != 'none' %}
+            {%- liquid
+              assign text = 'All products'
+              assign url = routes.all_products_collection_url
+
+              if s.collection_link == 'custom' and s.collection_url != blank
+                assign text = s.collection_url | split: '/' | last
+                assign url = s.collection_url
+              endif
+            -%}
+
+            <li>
+              <a href="{{ url }}" class="block">{{ text }}</a>
+
+              <span class="block size-1.5">
+                {%- render 'icon-delimiter' -%}
+              </span>
+            </li>
+          {%- endif -%}
+
           <li>
             {{ product.title }}
           </li>
+
       {%- endcase -%}
     </ol>
   </nav>
