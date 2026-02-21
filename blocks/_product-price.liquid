@@ -28,7 +28,7 @@
       if s.discount_type == 'percent'
         assign price_d = price | times: 1.0
         assign compare_d = price | times: 1.0
-        assign decimal = price | divided_by: compare
+        assign decimal = price_d | divided_by: compare_d
       elsif s.discount_type == 'value'
         assign discount_amount = compare | minus: price
       endif
