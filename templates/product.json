@@ -68,7 +68,7 @@
                 "mt_lg": "lg:mt-0",
                 "show_range": false,
                 "hide_sale_price": false,
-                "show_discount": true,
+                "show_discount": false,
                 "discount_type": "percent"
               },
               "blocks": {}
