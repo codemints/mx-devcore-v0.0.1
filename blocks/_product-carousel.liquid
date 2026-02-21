@@ -39,37 +39,8 @@
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui
     data-section-id="shopify-section-{{ section.id }}"
-    data-slider-nav="{{ s.show_thumbnail_nav }}"
-    data-slider-modal="{{ s.enable_slider_modal }}"
-    data-slider-config='{
-      {% if s.autoplay == true -%}
-      "interval": {{ s.interval }},
-      "speed": {{ s.speed }},
-      {%- endif %}
-      "type": "{{ s.type }}",
-      "loop": {{ s.loop }},
-      "autoplay": {{ s.autoplay }},
-      "arrows": {{ show_arrows_sm }},
-      "pagination": {{ show_pagination_sm }},
-      "breakpoints": {
-        "1024": {
-          "arrows": {{ show_arrows_lg }},
-          "pagination": {{ show_pagination_lg }}
-        }
-      }
-    }',
-    data-slider-nav-config='{
-      {% if s.enable_thumbnail_lg -%}
-      "breakpoints": {
-        "1024": {
-          "perPage": {{ s.per_page_lg }},
-          "gap": {{ s.gap_lg }}
-        }
-      },
-      {%- endif %}
-      "perPage": {{ s.per_page_sm }},
-      "gap": {{ s.gap_sm }}
-    }'
+    data-slider-enable-nav="{{ s.show_thumbnail_nav }}"
+    data-slider-enable-modal="{{ s.enable_slider_modal }}"
   >
     <div class="splide" ref="slider-ui">
       <div class="splide__track" ref="slider-track">
