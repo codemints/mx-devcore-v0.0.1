@@ -13,6 +13,7 @@
   assign is_sale = false
   assign show_sale = false
   assign show_discount = false
+  assign is_percent = true
   assign discount_amount = 0
 
   if compare != blank and compare > price
@@ -31,6 +32,7 @@
         assign percent = price_d | divided_by: compare_d | round: 2 | times: 100 | round | minus: 100 | times: -1
         assign discount_amount = percent
       elsif s.discount_type == 'value'
+        assign is_percent = false
         assign discount_amount = compare | minus: price
       endif
     endif
@@ -44,7 +46,12 @@
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <div>
     {%- if show_sale -%}
-  
+      <span>{{ price | money }}</span>
+      <span>{{ compare | money }}</span>
+
+      {%- if show_discount == true and is_percent == true -%}
+      {%- elsif show_discount == true and is_percent == false -%}
+      {%- endif -%}
     {%- else -%}
       {{ price | money }}
     {%- endif -%}
