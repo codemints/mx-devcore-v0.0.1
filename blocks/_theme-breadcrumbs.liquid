@@ -47,7 +47,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
           <li>{{ article.title }}</li>
 
         {%- when 'collection' -%}
-          {%- unless settings.hide_collection_list == true -%}
+          {%- unless settings.hide_collections_list == true -%}
             <li class="flex items-center gap-2">
               <a href="{{ routes.collections_url }}" class="block">All Collections</a>
 
