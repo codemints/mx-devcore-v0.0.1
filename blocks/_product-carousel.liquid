@@ -39,8 +39,8 @@
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui
     data-section-id="shopify-section-{{ section.id }}"
-    data-slider-enable-nav="{{ s.show_thumbnail_nav }}"
-    data-slider-enable-modal="{{ s.enable_slider_modal }}"
+    data-slider-enable-nav="{{ s.enable_slider_nav }}"
+    data-slider-enable-mod="{{ s.enable_slider_modal }}"
   >
     <div class="splide" ref="slider-ui">
       <div class="splide__track" ref="slider-track">
@@ -73,6 +73,74 @@
       </div>
     </div>
 
+    {% comment %} {%- if s.enable_slider_nav == true -%}
+      <div class="splide" ref="slider-nav-ui">
+        <div class="splide__track" ref="slider-nav-track">
+          <div class="splide__list" ref="slider-nav-list">
+            {%- for item in resource.media -%}
+              <li class="splide__slide" ref="[]slider-nav-slide">
+                <div class="product-media__wrapper">
+                  <div class="product-media__inner">
+                    {%- case item.media_type -%}
+                      {%- when 'image' -%}
+                        {{ item 
+                          | image_url: width: item.width
+                          | image_tag: class: 'w-full h-full object-cover'
+                        }}
+                      {%- when 'video' -%}
+                        {{  item
+                          | video_tag
+                        }}
+                      {%- when 'external_video' -%}
+                        {{ item 
+                          | external_video_url: color: 'white'
+                          | external_video_tag: class: 'w-full h-full object-cover'
+                        }}
+                    {%- endcase -%}
+                  </div>
+                </div>
+              </li>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if s.enable_slider_modal == true -%}
+      <modal-ui>
+        <div class="splide" ref="slider-mod-ui">
+          <div class="splide__track" ref="slider-mod-track">
+            <ul class="splide__list" ref="slider-mod-list">
+              {%- for item in resource.media -%}
+                <li class="splide__slide" ref="[]slider-mod-slide">
+                  <div class="product-media__wrapper">
+                    <div class="product-media__inner">
+                      {%- case item.media_type -%}
+                        {%- when 'image' -%}
+                          {{ item 
+                            | image_url: width: item.width
+                            | image_tag: class: 'w-full h-full object-cover'
+                          }}
+                        {%- when 'video' -%}
+                          {{  item
+                            | video_tag
+                          }}
+                        {%- when 'external_video' -%}
+                          {{ item 
+                            | external_video_url: color: 'white'
+                            | external_video_tag: class: 'w-full h-full object-cover'
+                          }}
+                      {%- endcase -%}
+                    </div>
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      </modal-ui>
+    {%- endif -%} {% endcomment %}
+
     <script type="application/json" ref="slider-config">
       {
         "type": {{ s.type | json }},
@@ -91,7 +159,8 @@
       }
     </script>
 
-    <script type="application/json" ref="nav-config">
+    {%- if s.enable_slider_nav == true -%}
+      <script type="application/json" ref="slider-nav-config">
       {
         "perPage": {{ s.per_page_sm }},
         "gap": {{ s.gap_sm }},
@@ -102,11 +171,14 @@
           }
         }
       }
-    </script>
+      </script>
+    {%- endif -%}
 
-    <script type="application/json" ref="modal-config">
-      {}
-    </script>
+    {%- if s.enable_slider_modal == true -%}
+      <script type="application/json" ref="slider-mod-config">
+        {}
+      </script>
+    {%- endif -%}
   </slider-ui>
 </div>
 
@@ -165,8 +237,8 @@
       },
       {
         "type": "checkbox",
-        "id": "show_thumbnail_nav",
-        "label": "Show thumbnail navigation",
+        "id": "enable_slider_nav",
+        "label": "Enable thumbnail navigation",
         "default": false
       },
       {
@@ -178,7 +250,7 @@
       {
         "type": "header",
         "content": "Thumbnail Settings",
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
       },
       {
         "type": "select",
@@ -191,7 +263,7 @@
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
         ],
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
       },
       {
         "type": "range",
@@ -201,7 +273,7 @@
         "min": 3,
         "max": 8,
         "step": 1,
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
       },
       {
         "type": "range",
@@ -212,14 +284,14 @@
         "max": 100,
         "step": 1,
         "unit": "px",
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
       },
       {
         "type": "checkbox",
-        "id": "enable_thumbnail_lg",
+        "id": "enable_nav_lg",
         "label": "Enable desktop settings",
         "default": false,
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
       },
       {
         "type": "select",
@@ -232,7 +304,7 @@
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
         ],
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true and block.settings.enable_thumbnail_lg == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true and block.settings.enable_nav_lg == true }}"
       },
       {
         "type": "range",
@@ -242,7 +314,7 @@
         "min": 3,
         "max": 8,
         "step": 1,
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true and block.settings.enable_thumbnail_lg == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true and block.settings.enable_nav_lg == true }}"
       },
       {
         "type": "range",
@@ -253,7 +325,12 @@
         "max": 100,
         "step": 1,
         "unit": "px",
-        "visible_if": "{{ block.settings.show_thumbnail_nav == true and block.settings.enable_thumbnail_lg == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav == true and block.settings.enable_nav_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Modal Settings",
+        "visible_if": "{{ block.settings.enable_slider_modal == true }}"
       },
       {
         "type": "header",
