@@ -41,13 +41,13 @@
     data-section-id="shopify-section-{{ section.id }}"
     data-slider-nav="{{ s.show_thumbnail_nav }}"
     data-slider-config='{
-      "type": "{{ s.type }}",
-      "loop": {{ s.loop }},
-      "autoplay": {{ s.autoplay }},
       {% if s.autoplay == true -%}
       "interval": {{ s.interval }},
       "speed": {{ s.speed }},
       {%- endif %}
+      "type": "{{ s.type }}",
+      "loop": {{ s.loop }},
+      "autoplay": {{ s.autoplay }},
       "arrows": {{ show_arrows_sm }},
       "pagination": {{ show_pagination_sm }},
       "breakpoints": {
@@ -58,12 +58,16 @@
       }
     }',
     data-slider-nav-config='{
+      {% if s.enable_thumbnail_lg -%}
+      "breakpoints": {
+        "1024": {
+          "perPage": {{ s.per_page_lg }},
+          "gap": {{ s.gap_lg }}
+        }
+      },
+      {%- endif %}
       "perPage": {{ s.per_page_sm }},
       "gap": {{ s.gap_sm }}
-      {% if s.enable_thumbnail_lg -%}
-      "perPage": {{ s.per_page_lg }},
-      "gap": {{ s.gap_lg }},
-      {%- endif %}
     }'
   >
     <div class="splide" ref="slider-ui">
