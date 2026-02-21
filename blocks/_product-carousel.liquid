@@ -62,11 +62,32 @@
       }
     }'
   >
-    <div ref="slider">
-      <div ref="track">
-        <ul ref="list">
+    <div ref="slider-ui">
+      <div ref="slider-track">
+        <ul ref="slider-list">
           {%- for item in resource.media -%}
-            <li ref="[]slide">{{ item.media_type }}</li>
+            <li ref="[]slider-slide">
+              <div class="product-media__wrapper">
+                <div class="product-media__inner">
+                  {%- case item.media_type -%}
+                    {%- when 'image' -%}
+                      {{ item 
+                        | image_url: width: item.width
+                        | image_tag: class: 'w-full h-full object-cover'
+                      }}
+                    {%- when 'video' -%}
+                      {{  item
+                        | video_tag
+                      }}
+                    {%- when 'external_video' -%}
+                      {{ item 
+                        | external_video_url: color: 'white'
+                        | external_video_tag: class: 'w-full h-full object-cover'
+                      }}
+                  {%- endcase -%}
+                </div>
+              </div>
+            </li>
           {%- endfor -%}
         </ul>
       </div>
