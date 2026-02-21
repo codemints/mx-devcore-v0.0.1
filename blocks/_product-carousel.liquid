@@ -6,6 +6,8 @@
   assign unique_id = section.id | append: '--' | append: block.id
   assign id = prefix | append: unique_id
   assign classname = prefix | append: type
+
+  assign resource = closest.product | default: product
 -%}
 
 {%- capture classlist -%}
@@ -20,7 +22,12 @@
   {
     "name": "Product Carousel",
     "tag": null,
-    "settings": [],
+    "settings": [
+      {
+        "type": "header",
+        "content": "Carousel Settings"
+      }
+    ],
     "blocks": [],
     "presets": [
       {
