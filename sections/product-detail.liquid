@@ -55,12 +55,24 @@
 
           <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} w-full">
             {{ product_information }}
+
+            <script type="application/json" data-product-json data-product-id="{{ resource.id }}">
+              {{ product.json }}
+            </script>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script type="module">
+  const section = document.getElementById('shopify-section-{{ section.id }}')
+  const json = section.querySelector('[data-product-json]')
+  const data = JSON.parse(json.textContent)
+
+  console.log(data)
+</script>
 
 {%- schema -%}
   {
