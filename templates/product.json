@@ -52,7 +52,7 @@
                 "mt_sm": "mt-2.5",
                 "enable_mt_lg": false,
                 "mt_lg": "lg:mt-0",
-                "use_custom_title": true,
+                "use_custom_title": false,
                 "custom_title": "{{ closest.product.metafields.display.title.value }}",
                 "show_advanced_settings": false,
                 "tag_name": "h1"
