@@ -52,7 +52,8 @@
                 "mt_sm": "mt-0",
                 "enable_mt_lg": false,
                 "mt_lg": "lg:mt-0",
-                "show_advanced_settings": true
+                "show_advanced_settings": true,
+                "tag_name": "h3"
               },
               "blocks": {}
             },
