@@ -27,9 +27,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
 
       {%- case template.name -%}
         {%- when 'page' -%}
-          <li>
-            <a href="{{ page.url }}">{{ page.title }}</a>
-          </li>
+          <li>{{ page.title }}</li>
         {%- when 'blog' -%}
 
         {%- when 'article' -%}
