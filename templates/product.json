@@ -156,7 +156,7 @@
             "per_page_lg": 4,
             "gap_lg": 10,
             "arrows_sm": "hide",
-            "arrows_lg": "show",
+            "arrows_lg": "hide",
             "pagination_sm": "hide",
             "pagination_lg": "hide"
           },
