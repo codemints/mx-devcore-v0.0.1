@@ -52,6 +52,8 @@
                 "mt_sm": "mt-2.5",
                 "enable_mt_lg": false,
                 "mt_lg": "lg:mt-0",
+                "use_custom_title": false,
+                "custom_title": "{{ closest.product.metafields.display.title.value }}",
                 "show_advanced_settings": false,
                 "tag_name": "h1"
               },
@@ -85,7 +87,7 @@
                 "enable_mt_lg": true,
                 "mt_lg": "lg:mt-10",
                 "use_custom_description": true,
-                "custom_description": "{{ closest.product.metafields.display.description | metafield_tag }}"
+                "custom_description": ""
               },
               "blocks": {}
             },

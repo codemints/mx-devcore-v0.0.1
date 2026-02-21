@@ -10,7 +10,7 @@
   assign resource = closest.product | default: product
   assign description = resource.description
 
-  if s.use_custom_description == true
+  if s.use_custom_description == true and s.custom_description != blank
     assign description = s.custom_description
   endif
 -%}
