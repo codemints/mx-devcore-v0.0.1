@@ -25,7 +25,7 @@
   {%- endcapture -%}
 
   {%- capture product_carousel -%}
-    {%- content_for 'block', type: '_carousel', id: 'product-carousel' -%}
+    {%- content_for 'block', type: '_product-carousel', id: 'product-carousel' -%}
   {%- endcapture -%}
 {%- comment -%} End - Static Blocks{%- endcomment -%}
 
@@ -50,11 +50,7 @@
 
         <div class="section__main flex {{ flex_col }} {{ flex_row }} lg:items-start gap-x-(--gap-x) gap-y-(--gap-y)">
           <div class="pdp-carousel flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} w-full">
-            {% comment %} {{ product_carousel }} {% endcomment %}
-            {{ resource.featured_image 
-              | image_url: width: resource.featured_image.width
-              | image_tag: class: 'w-full h-full object-contain'
-            }}
+            {{ product_carousel }}
           </div>
 
           <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} w-full">
