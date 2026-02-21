@@ -23,24 +23,23 @@
       assign crumbs = page.title | append: separator | append: page.url
 
     when 'search'
-      assign crumbs = 'general.search.title' | t | append: separator | append: '/search'
+      assign crumbs = 'Search' | append: separator | append: '/search'
 
     when 'customers/account'
-      assign crumbs = 'customer.account.title' | t | append: separator | append: '/account'
+      assign crumbs = 'Account' | append: separator | append: '/account'
 
     when 'customers/addresses'
-      assign crumbs = 'customer.account.title' | t | append: separator | append: '/account' | append: separator
-      assign crumbs = crumbs | append: 'customer.addresses.title' | t | append: separator | append: '/account/addresses'
+      assign crumbs = 'Account' | append: separator | append: '/account' | append: separator
+      assign crumbs = crumbs | append: 'Addresses' | append: separator | append: '/account/addresses'
 
     when 'customers/order'
-      assign crumbs = 'customer.account.title' | t | append: separator | append: '/account' | append: separator
-      assign crumbs = crumbs | append: 'customer.orders.title' | t | append: separator | append: '/account'
+      assign crumbs = 'Account' | append: separator | append: '/account' | append: separator
+      assign crumbs = crumbs | append: 'Orders' | append: separator | append: '/account'
   endcase
 -%}
 
 {%- if crumbs != '' -%}
   {%- assign crumb_parts = crumbs | split: separator -%}
-  {%- assign crumb_count = crumb_parts.size | divided_by: 2 -%}
 
   <script type="application/ld+json">
     {
@@ -50,7 +49,7 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "name": {{ 'general.breadcrumbs.home' | t | json }},
+          "name": "Home",
           "item": {{ shop.url | json }}
         }
         {%- for i in (0..100) -%}
