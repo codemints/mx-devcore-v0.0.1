@@ -31,7 +31,11 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
         {%- when 'blog' -%}
 
         {%- when 'article' -%}
+          {%- liquid
+            assign parent = article.url | remove: article.handle | split: '/' | last
+          -%}
 
+          <li>{{ parent }}</li>
         {%- when 'collection' -%}
           {%- unless settings.hide_collection_list == true -%}
             <li class="flex items-center gap-2">
