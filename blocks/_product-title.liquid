@@ -8,6 +8,12 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
+
+  assign tag_name = 'h1'
+
+  if s.show_advanced_settings == true
+    assign tag_name = s.tag_name
+  endif
 -%}
 
 {%- capture classlist -%}
@@ -15,7 +21,7 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <h1>{{ resource.title }}</h1>
+  <{{ tag_name }}>{{ resource.title }}</{{ tag_name }}>
 </div>
 
 {%- schema -%}
@@ -105,8 +111,8 @@
       },
       {
         "type": "select",
-        "id": "html_tag",
-        "label": "Tag",
+        "id": "tag_name",
+        "label": "HTML tag",
         "default": "h1",
         "options": [
           { "value": "h1", "label": "H1" },
