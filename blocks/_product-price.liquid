@@ -9,14 +9,23 @@
 
   assign resource = closest.product | default: product
   assign sofav = resource.selected_or_first_available_variant
+  assign selected = resource.selected_variant
   assign price = sofav.price
   assign compare = sofav.compare_at_price
+  assign price_varies = resource.price_varies
+  assign price_min = resource.price_min
+  assign price_max = resource.price_max
   assign is_sale = false
   assign show_sale = false
   assign show_discount = false
+  assign show_range = false
   assign discount_amount = 0
 
-  if compare != blank and compare > price
+  if s.show_range and price_varies and selected == blank
+    assign show_range = true
+  endif
+
+  if show_range == false and compare != blank and compare > price
     assign is_sale = true
 
     if is_sale == true and s.hide_sale_price == false
@@ -25,7 +34,7 @@
 
     if show_sale == true and s.show_discount == true
       assign show_discount = true
-      
+
       if s.discount_type == 'percent'
         assign price_d = price | times: 1.0
         assign compare_d = compare | times: 1.0
@@ -43,15 +52,27 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <div class="product-price{% if show_sale == true %} flex items-center gap-2{% endif %}">
-    {%- if show_sale == true -%}
+  <div class="product-price flex items-center gap-2">
+    {%- if show_range == true -%}
+      <span class="sr-only">From</span>
+      <span data-price-min>{{ price_min | money }}</span>
+      <span aria-hidden="true">–</span>
+      <span class="sr-only">to</span>
+      <span data-price-max>{{ price_max | money }}</span>
+
+    {%- elsif show_sale == true -%}
+      <span class="sr-only">Sale price</span>
       <span data-price-sale>{{ price | money }}</span>
-      <span data-price-compare>{{ compare | money }}</span>
+
+      <span class="sr-only">Regular price</span>
+      <s data-price-compare>{{ compare | money }}</s>
 
       {%- if show_discount == true -%}
         <span data-price-discount>{{ discount_amount }} off</span>
       {%- endif -%}
+
     {%- else -%}
+      <span class="sr-only">Price</span>
       <span data-price-regular>{{ price | money }}</span>
     {%- endif -%}
   </div>
@@ -134,6 +155,13 @@
       {
         "type": "header",
         "content": "Price Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_range",
+        "label": "Show price range",
+        "info": "Displays a price range when variants have different prices and no variant is selected. Useful for product cards.",
+        "default": false
       },
       {
         "type": "checkbox",
