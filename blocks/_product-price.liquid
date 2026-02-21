@@ -46,14 +46,14 @@
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <div class="product-price{% if show_sale == true %} flex items-center gap-2{% endif %}">
     {%- if show_sale == true -%}
-      <span>{{ price | money }}</span>
-      <span>{{ compare | money }}</span>
+      <span data-price-sale>{{ price | money }}</span>
+      <span data-price-compare>{{ compare | money }}</span>
 
       {%- if show_discount == true -%}
-        <span>{{ discount_amount }} off</span>
+        <span data-price-discount>{{ discount_amount }} off</span>
       {%- endif -%}
     {%- else -%}
-      {{ price | money }}
+      <span data-price-regular>{{ price | money }}</span>
     {%- endif -%}
   </div>
 </div>
