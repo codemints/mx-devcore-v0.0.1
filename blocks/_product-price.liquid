@@ -11,17 +11,39 @@
   assign price = resource.price
   assign compare = resource.compare_at_price
   assign is_sale = false
+  assign show_sale = false
+  assign show_discount = false
+  assign discount_amount = 0
 
   if compare != blank and compare > price
     assign is_sale = true
+
+    if is_sale == true and s.hide_sale_price == false
+      assign show_sale = true
+    endif
+
+    if show_sale == true and s.show_discount == true
+      assign show_discount = true
+      
+      if s.discount_type == 'percent'
+        assign decimal = price | divided_by: compare
+      elsif s.discount_type == 'value'
+        assign discount_amount = compare | minus: price
+      endif
+    endif
   endif
 -%}
 
 {%- capture classlist -%}
   theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
 {%- endcapture -%}
-
+<h1>{{ decimal }}</h1>
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+  {%- if show_sale -%}
+
+  {%- else -%}
+
+  {%- endif -%}
 </div>
 
 {%- schema -%}
@@ -104,15 +126,26 @@
       },
       {
         "type": "checkbox",
-        "id": "hide_compare_price",
+        "id": "hide_sale_price",
         "label": "Hide sale price",
         "default": false
       },
       {
         "type": "checkbox",
-        "id": "show_sale_percentage",
-        "label": "Show sale percentage",
+        "id": "show_discount",
+        "label": "Show discount",
         "default": false
+      },
+      {
+        "type": "select",
+        "id": "discount_type",
+        "label": "Discount type",
+        "default": "percent",
+        "options": [
+          { "value": "percent", "label": "Percent" },
+          { "value": "value", "label": "Value" }
+        ],
+        "visible_if": "{{ block.settings.show_discount == true }}"
       }
     ],
     "presets": [
