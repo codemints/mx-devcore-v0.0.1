@@ -44,7 +44,7 @@ theme-block {{ classname }} {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{%
               assign url = routes.all_products_collection_url
 
               if s.collection_link == 'custom' and s.collection_url != blank
-                assign text = s.collection_url | split: '/' | last
+                assign text = s.collection_url | split: '/' | last | capitalize
                 assign url = s.collection_url
               endif
             -%}
