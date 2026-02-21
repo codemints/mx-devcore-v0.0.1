@@ -44,8 +44,8 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <div>
-    {%- if show_sale -%}
+  <div class="product-price{% if show_sale == true %} flex items-center gap-2{% endif %}">
+    {%- if show_sale == true -%}
       <span>{{ price | money }}</span>
       <span>{{ compare | money }}</span>
 
