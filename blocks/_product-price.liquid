@@ -28,7 +28,93 @@
   {
     "name": "Price",
     "tag": null,
-    "settings": [],
+    "settings": [
+      {
+        "type": "header",
+        "content": "Block Settings"
+      },
+      {
+        "type": "select",
+        "id": "mt_sm",
+        "label": "Space above",
+        "default": "mt-0",
+        "options": [
+          { "value": "mt-0", "label": "None" },
+          { "value": "mt-1", "label": "4px" },
+          { "value": "mt-2", "label": "8px" },
+          { "value": "mt-2.5", "label": "10px" },
+          { "value": "mt-3", "label": "12px" },
+          { "value": "mt-4", "label": "16px" },
+          { "value": "mt-5", "label": "20px" },
+          { "value": "mt-6", "label": "24px" },
+          { "value": "mt-7", "label": "28px" },
+          { "value": "mt-8", "label": "32px" },
+          { "value": "mt-9", "label": "36px" },
+          { "value": "mt-10", "label": "40px" },
+          { "value": "mt-11", "label": "44px" },
+          { "value": "mt-12", "label": "48px" },
+          { "value": "mt-13", "label": "54px" },
+          { "value": "mt-15", "label": "60px" },
+          { "value": "mt-16", "label": "64px" },
+          { "value": "mt-18", "label": "72px" },
+          { "value": "mt-21", "label": "84px" },
+          { "value": "mt-24", "label": "96px" },
+          { "value": "mt-25", "label": "100px" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_mt_lg",
+        "label": "Show spacing settings for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "mt_lg",
+        "label": "Space above (desktop)",
+        "default": "lg:mt-0",
+        "options": [
+          { "value": "lg:mt-0", "label": "None" },
+          { "value": "lg:mt-1", "label": "4px" },
+          { "value": "lg:mt-2", "label": "8px" },
+          { "value": "lg:mt-2.5", "label": "10px" },
+          { "value": "lg:mt-3", "label": "12px" },
+          { "value": "lg:mt-4", "label": "16px" },
+          { "value": "lg:mt-5", "label": "20px" },
+          { "value": "lg:mt-6", "label": "24px" },
+          { "value": "lg:mt-7", "label": "28px" },
+          { "value": "lg:mt-8", "label": "32px" },
+          { "value": "lg:mt-9", "label": "36px" },
+          { "value": "lg:mt-10", "label": "40px" },
+          { "value": "lg:mt-11", "label": "44px" },
+          { "value": "lg:mt-12", "label": "48px" },
+          { "value": "lg:mt-13", "label": "54px" },
+          { "value": "lg:mt-15", "label": "60px" },
+          { "value": "lg:mt-16", "label": "64px" },
+          { "value": "lg:mt-18", "label": "72px" },
+          { "value": "lg:mt-21", "label": "84px" },
+          { "value": "lg:mt-24", "label": "96px" },
+          { "value": "lg:mt-25", "label": "100px" }
+        ],
+        "visible_if": "{{ block.settings.enable_mt_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Price Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_compare_price",
+        "label": "Hide sale price",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sale_percentage",
+        "label": "Show sale percentage",
+        "default": false
+      }
+    ],
     "presets": [
       {
         "name": "Price",
