@@ -6,7 +6,7 @@
 
     {%- render 'f.set-css-vars' -%}
     {%- render 'meta.header' -%}
-    
+
     {{ content_for_header }}
 
     {%- style -%}
@@ -22,12 +22,15 @@
     {%- endstyle -%}
 
     {{ 'theme.min.css' | asset_url | stylesheet_tag }}
+    {%- render 'scripts.head' -%}
   </head>
   
   <body class="">
     {%- capture cart_sections -%}
       {%- sections 'group-cart' -%}
     {%- endcapture -%}
+
+    {%- render 'scripts.body' -%}
 
     {%- sections 'group-header' -%}
 
@@ -48,5 +51,6 @@
     {%- endif -%}
 
     <script type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
+    {%- render 'scripts.footer' -%}
   </body>
 </html>
