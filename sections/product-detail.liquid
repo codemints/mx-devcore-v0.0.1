@@ -66,13 +66,13 @@
   </div>
 </div>
 
-<script type="module">
+{% comment %} <script type="module">
   const section = document.getElementById('shopify-section-{{ section.id }}')
   const json = section.querySelector('[data-product-json]')
   const data = JSON.parse(json.textContent)
 
   console.log(data)
-</script>
+</script> {% endcomment %}
 
 {%- schema -%}
   {
