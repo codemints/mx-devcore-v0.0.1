@@ -35,11 +35,7 @@
 {%- endcapture -%}
 
 <div {% render 'block.attributes' %}>
-  <slider-ui
-    data-section-id="{{ section.id }}"
-    data-slider-navigation=""
-    data-slider-modal=""
-  >
+  <slider-ui data-section-id="{{ section.id }}">
     {%- render 'component.slider',
       prefix: 'main',
       slides: main_slides
