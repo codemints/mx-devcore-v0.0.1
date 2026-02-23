@@ -4,7 +4,7 @@
   Accepts:
     - prefix: {String}  Ref prefix for element targeting (default: 'slider')
     - variation: {String}  CSS variant identifier (default: 'default')
-    - slides_markup: {String}  Pre-rendered slide <li> elements
+    - slides: {String}  Pre-rendered slide <li> elements
     - arrows_markup: {String}  Custom arrow markup; ignored if has_arrows is false
     - has_arrows: {Boolean} Show arrow controls (default: false)
     - has_pagination: {Boolean} Show pagination dots (default: false)
@@ -13,7 +13,7 @@
     {%- render 'component.slider',
       prefix: 'slider',
       variation: 'thumbnail',
-      slides_markup: slide_markup,
+      slides: slide_markup,
       arrows_markup: '',
       has_arrows: true
       has_pagination: false
@@ -21,7 +21,7 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign prefix = prefix | default: 'slider'
+  assign prefix = prefix | default: 'main'
   assign variation = variation | default: 'default'
   assign has_arrows = has_arrows | default: false
   assign has_pagination = has_pagination | default: false
@@ -30,7 +30,7 @@
 <div class="splide" ref="{{ prefix }}-ui" data-custom-variant="{{ variation }}">
   <div class="splide__track" ref="{{ prefix }}-track">
     <ul class="splide__list" ref="{{ prefix }}-list">
-      {{ slides_markup }}
+      {{ slides }}
     </ul>
   </div>
 
