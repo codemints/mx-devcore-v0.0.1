@@ -8,54 +8,6 @@
   assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
-
-  # Main slider config
-  assign main_type = s.type
-  assign main_rewind = false
-
-  if s.type == 'slide' and s.loop
-    assign main_type = 'loop'
-  elsif s.type == 'fade' and s.loop
-    assign main_rewind = true
-  endif
-
-  assign main_arrows_sm = false
-  assign main_arrows_lg = false
-  assign main_pagination_sm = false
-  assign main_pagination_lg = false
-
-  if s.arrows_sm == 'show'
-    assign main_arrows_sm = true
-  endif
-
-  if s.arrows_lg == 'show'
-    assign main_arrows_lg = true
-  endif
-
-  if s.pagination_sm == 'show'
-    assign main_pagination_sm = true
-  endif
-
-  if s.pagination_lg == 'show'
-    assign main_pagination_lg = true
-  endif
-  
-  # Nav slider config
-  assign nav_type = 'slide'
-
-  if s.loop
-    assign nav_type = 'loop'
-  endif
-
-  # Modal slider config
-  assign mod_type = s.mod_type
-  assign mod_rewind = false
-
-  if s.mod_type == 'slide' and s.loop
-    assign mod_type = 'loop'
-  elsif s.mod_type == 'fade' and s.loop
-    assign mod_rewind = true
-  endif
 -%}
 
 {%- capture classlist -%}
@@ -98,78 +50,10 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <slider-ui
-    data-section-id="{{ section.id }}"
-    data-slider-enable-nav="{{ s.enable_slider_nav }}"
-    data-slider-enable-mod="{{ s.enable_slider_mod }}"
-  >
-    {%- render 'component.slider',
-      slides_markup: main_slides
-    -%}
+  <slider-ui data-section-id="{{ section.id }}">
+    {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav' -%}
 
-    {%- if s.enable_slider_nav -%}
-      <div class="product-carousel__nav {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}">
-        {%- render 'component.slider',
-          prefix: 'slider-nav'
-          slides_markup: nav_slides
-        -%}
-      </div>
-    {%- endif -%}
-
-    <script type="application/json" ref="slider-config">
-      {
-        "type": {{ main_type | json }},
-        "rewind": {{ main_rewind }}{% unless s.type == 'fade' %},
-        "perPage": 1,
-        "perMove": 1,
-        "snap": true,
-        "drag": "free"{% endunless %},
-        "autoplay": {{ s.autoplay }},
-        "interval": {{ s.interval }},
-        "speed": {{ s.speed }},
-        "arrows": {{ main_arrows_sm }},
-        "pagination": {{ main_pagination_sm }},
-        "breakpoints": {
-          "1024": {
-            "arrows": {{ main_arrows_lg }},
-            "pagination": {{ main_pagination_lg }}
-          }
-        }
-      }
-    </script>
-
-    {%- if s.enable_slider_nav -%}
-      <script type="application/json" ref="slider-nav-config">
-        {
-          "type": {{ nav_type | json }},
-          "perPage": {{ s.nav_per_page_sm }},
-          "gap": {{ s.nav_gap_sm }},
-          "breakpoints": {
-            "1024": {
-              "perPage": {{ s.nav_per_page_lg }},
-              "gap": {{ s.nav_gap_lg }}
-            }
-          }
-        }
-      </script>
-    {%- endif -%}
-
-    {%- if s.enable_slider_mod -%}
-      <script type="application/json" ref="slider-mod-config">
-        {
-          "type": {{ mod_type | json }},
-          "rewind": {{ mod_rewind }}{% unless s.mod_type == 'fade' %},
-          "perPage": {{ s.mod_per_page_sm }},
-          "gap": {{ s.mod_gap_sm }}{% endunless %},
-          "breakpoints": {
-            "1024": {% unless s.mod_type == 'fade' %}{
-              "perPage": {{ s.mod_per_page_lg }},
-              "gap": {{ s.mod_gap_lg }}
-            }{% else %}{}{% endunless %}
-          }
-        }
-      </script>
-    {%- endif -%}
+    {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal' -%}
   </slider-ui>
 </div>
 
@@ -521,11 +405,15 @@
         "blocks": [
           {
             "type": "_slider-modal",
-            "name": "Product slider modal"
+            "name": "Product slider modal",
+            "static": true,
+            "id": "product-slider-modal"
           },
           {
             "type": "_slider-nav",
-            "name": "Product slider nav"
+            "name": "Product slider nav",
+            "static": true,
+            "id": "product-slider-nav"
           }
         ],
         "category": "Product"
