@@ -143,7 +143,7 @@
           "type": "_product-carousel",
           "static": true,
           "settings": {
-            "type": "slide",
+            "type": "fade",
             "loop": true,
             "autoplay": false,
             "interval": 4000,
