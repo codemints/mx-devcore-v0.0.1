@@ -15,6 +15,7 @@
   if s.loop == true and s.type == 'slide'
     assign main_type = 'loop'
   elsif s.loop == true and s.type == 'fade'
+    assign main_type = 'fade'
     assign main_rewind = true
   endif
 -%}
@@ -98,6 +99,7 @@
     {%- if s.enable_slider_nav -%}
       <script type="application/json" ref="slider-nav-config">
       {
+        "type": {{ s.loop }} == true ? 'loop' : 'slide'
         "perPage": {{ s.nav_per_page_sm }},
         "gap": {{ s.nav_gap_sm }},
         "breakpoints": {
