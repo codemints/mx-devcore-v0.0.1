@@ -1,15 +1,8 @@
 {%- liquid
   assign s = block.settings
-  assign attrs = block.shopify_attributes
-  assign prefix = 'theme-block__'
-  assign type = 'product-carousel'
-  assign unique_id = section.id | append: '--' | append: block.id
-  assign id = prefix | append: unique_id
-  assign classname = prefix | append: type
 
   assign resource = closest.product | default: product
 -%}
-
 
 {%- capture product_media -%}
   {%- for item in resource.media -%}
@@ -68,6 +61,7 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui data-section-id="{{ section.id }}">
+    {{ block | json }}
     {%- if slider_nav != blank -%}
       {{ slider_nav }}
     {%- endif -%}
