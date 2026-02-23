@@ -67,36 +67,22 @@
       },
       {
         "type": "header",
-        "content": "Arrow Settings"
+        "content": "Control Settings"
       },
       {
         "type": "select",
         "id": "arrows_sm",
-        "label": "Mobile arrow visibility",
+        "label": "Arrow visibility",
         "default": "hide",
         "options": [
           { "value": "show", "label": "Show" },
           { "value": "hide", "label": "Hide" }
         ]
-      },
-      {
-        "type": "select",
-        "id": "arrows_lg",
-        "label": "Desktop arrow visibility",
-        "default": "show",
-        "options": [
-          { "value": "show", "label": "Show" },
-          { "value": "hide", "label": "Hide" }
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Pagination Settings"
       },
       {
         "type": "select",
         "id": "pagination_sm",
-        "label": "Mobile pagination visibility",
+        "label": "Pagination visibility",
         "default": "hide",
         "options": [
           { "value": "show", "label": "Show" },
@@ -104,14 +90,32 @@
         ]
       },
       {
+        "type": "checkbox",
+        "id": "enable_controls_lg",
+        "label": "Show separate settings for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "arrows_lg",
+        "label": "Arrow visibility (desktop)",
+        "default": "show",
+        "options": [
+          { "value": "show", "label": "Show" },
+          { "value": "hide", "label": "Hide" }
+        ],
+        "visible_if": "{{ block.settings.enable_controls_lg }}"
+      },
+      {
         "type": "select",
         "id": "pagination_lg",
-        "label": "Desktop pagination visibility",
+        "label": "Pagination visibility (desktop)",
         "default": "hide",
         "options": [
           { "value": "show", "label": "Show" },
           { "value": "hide", "label": "Hide" }
-        ]
+        ],
+        "visible_if": "{{ block.settings.enable_controls_lg }}"
       },
       {
         "type": "header",
