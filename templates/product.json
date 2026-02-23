@@ -160,7 +160,7 @@
             "autoplay_video": false,
             "arrows_sm": "hide",
             "pagination_sm": "hide",
-            "enable_controls_lg": true,
+            "enable_controls_lg": false,
             "arrows_lg": "hide",
             "pagination_lg": "hide",
             "show_slider_nav": false,
