@@ -57,11 +57,15 @@
 {%- endcapture -%}
 
 {%- capture main_slides -%}
-  {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
+  {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
 {%- endcapture -%}
 
 {%- capture navigation_slides -%}
-  {{ slider_slides | replace: '$PREFIX$', 'navigation' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
+  {{ slider_slides | replace: '$PREFIX$', 'navigation' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
+{%- endcapture -%}
+
+{%- capture modal_slides -%}
+  {{ slider_slides | replace: '$PREFIX$', 'modal' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
 {%- endcapture -%}
 
 <div {% render 'block.attributes' %}>
