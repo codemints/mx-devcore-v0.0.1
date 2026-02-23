@@ -15,6 +15,9 @@
                 | image_tag: class: 'w-full h-full object-$IMAGE_FIT$'
               }}
             {%- when 'video' -%}
+              {{ item
+                | video_tag: class: 'w-full h-full object-$VIDEO_FIT$'
+              }}
             {%- when 'external_video' -%}
           {%- endcase -%}
         </div>
@@ -24,7 +27,7 @@
 {%- endcapture -%}
 
 {%- capture main_slides -%}
-  {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' }}
+  {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
 {%- endcapture -%}
 
 <div {% render 'block.attributes' %}>
