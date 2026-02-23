@@ -14,7 +14,7 @@
   theme-block {{ attrs[1] }}
 {%- endcapture -%}
 
-<div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
+<div render block.attributes>
 </div>
 
 {%- schema -%}
