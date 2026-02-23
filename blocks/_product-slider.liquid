@@ -5,7 +5,7 @@
     render 'block.attributes'
   endcapture
 
-  assign const = attrs | split: ','
+  assign const = attrs | split: '%'
 
   assign resource = closest.product | default: product
 -%}
