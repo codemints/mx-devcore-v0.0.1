@@ -10,76 +10,11 @@
   assign resource = closest.product | default: product
 -%}
 
-{%- capture product_media -%}
-  {%- for item in resource.media -%}
-    <li class="splide__slide" ref="[]$PREFIX-slide">
-      <div class="product-media__wrapper h-full">
-        <div class="product-media__inner h-full">
-          {%- case item.media_type -%}
-            {%- when 'image' -%}
-              {{ item 
-                | image_url: width: item.width
-                | image_tag: class: 'w-full h-full object-$IMAGE_FIT'
-              }}
-            {%- when 'video' -%}
-              {{  item
-                | video_tag
-              }}
-            {%- when 'external_video' -%}
-              {{ item 
-                | external_video_url: color: 'white'
-                | external_video_tag: class: 'w-full h-full object-$VIDEO_FIT'
-              }}
-          {%- endcase -%}
-        </div>
-      </div>
-    </li>
-  {%- endfor -%}
-{%- endcapture -%}
-
-{%- capture main_slides -%}
-  {{ product_media | replace: '$PREFIX', 'slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
-{%- endcapture -%}
-
-{%- capture modal_slides -%}
-  {{ product_media | replace: '$PREFIX', 'mod=slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
-{%- endcapture -%}
-
-{%- capture nav_slides -%}
-  {{ product_media | replace: '$PREFIX', 'nav-slider' | replace: '$IMAGE_FIT', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
-{%- endcapture -%}
-
-{%- capture slider_modal -%}
-  {%- if s.show_slider_modal == true -%}
-    {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal', slides: modal_slides -%}
-  {%- endif%}
-{%- endcapture -%}
-
-{%- capture slider_nav -%}
-  {%- if s.show_slider_nav == true -%}
-    {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav', slides: nav_slides -%}
-  {%- endif -%}
-{%- endcapture -%}
-
 {%- capture classlist -%}
   theme-block {{ attrs[1] }}
 {%- endcapture -%}
 
 <div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
-  {{ const.size }}
-  {{ const[0] }}
-  {{ const[1] }}
-  {{ const[2] }}
-  {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
-    {% comment %} <h1>{{ block.id }}</h1>
-    {%- if slider_nav != blank -%}
-      {{ slider_nav }}
-    {%- endif -%}
-
-    {%- if slider_modal != blank -%}
-      {{ slider_modal }}
-    {%- endif -%} {% endcomment %}
-  {% comment %} </slider-ui> {% endcomment %}
 </div>
 
 {%- schema -%}
