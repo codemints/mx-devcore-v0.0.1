@@ -7,7 +7,11 @@
   # theme-check-enable UndefinedObject
 -%}
 
-<div {% render 'block.attributes' %}>
+{%- capture margin_classlist -%}
+{{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
+{%- endcapture -%}
+
+<div {% render 'block.attributes', classlist: margin_classlist %}>
   {%- render 'component.slider',
     prefix: 'navigation',
     variation: 'navigation',
