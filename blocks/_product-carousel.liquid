@@ -111,12 +111,12 @@
     {%- if s.enable_slider_nav -%}
       <script type="application/json" ref="slider-nav-config">
       {
-        "perPage": {{ s.per_page_sm }},
-        "gap": {{ s.gap_sm }},
+        "perPage": {{ s.nav_per_page_sm }},
+        "gap": {{ s.nav_gap_sm }},
         "breakpoints": {
           "1024": {
-            "perPage": {{ s.per_page_lg }},
-            "gap": {{ s.gap_lg }}
+            "perPage": {{ s.nav_per_page_lg }},
+            "gap": {{ s.nav_gap_lg }}
           }
         }
       }
@@ -281,7 +281,7 @@
       },
       {
         "type": "range",
-        "id": "per_page_sm",
+        "id": "nav_per_page_sm",
         "label": "Per page",
         "default": 4,
         "min": 3,
@@ -291,7 +291,7 @@
       },
       {
         "type": "range",
-        "id": "gap_sm",
+        "id": "nav_gap_sm",
         "label": "Gap",
         "default": 10,
         "min": 0,
@@ -322,6 +322,60 @@
       },
       {
         "type": "range",
+        "id": "nav_per_page_lg",
+        "label": "Per page (desktop)",
+        "default": 4,
+        "min": 3,
+        "max": 8,
+        "step": 1,
+        "visible_if": "{{ block.settings.enable_slider_nav and block.settings.enable_nav_lg }}"
+      },
+      {
+        "type": "range",
+        "id": "nav_gap_lg",
+        "label": "Gap (desktop)",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "visible_if": "{{ block.settings.enable_slider_nav and block.settings.enable_nav_lg }}"
+      },
+      {
+        "type": "header",
+        "content": "Modal Settings",
+        "visible_if": "{{ block.settings.enable_slider_mod }}"
+      },
+      {
+        "type": "range",
+        "id": "per_page_sm",
+        "label": "Per page",
+        "default": 4,
+        "min": 3,
+        "max": 8,
+        "step": 1,
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
+      },
+      {
+        "type": "range",
+        "id": "gap_sm",
+        "label": "Gap",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_modal_lg",
+        "label": "Enable desktop settings",
+        "default": false,
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
+      },
+      {
+        "type": "range",
         "id": "per_page_lg",
         "label": "Per page (desktop)",
         "default": 4,
@@ -340,11 +394,6 @@
         "step": 1,
         "unit": "px",
         "visible_if": "{{ block.settings.enable_slider_nav and block.settings.enable_nav_lg }}"
-      },
-      {
-        "type": "header",
-        "content": "Modal Settings",
-        "visible_if": "{{ block.settings.enable_slider_mod }}"
       },
       {
         "type": "header",
