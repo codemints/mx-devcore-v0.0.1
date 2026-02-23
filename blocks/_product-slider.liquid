@@ -41,6 +41,14 @@
       slides: main_slides
     -%}
 
+    {%- if s.show_slider_navigation -%}
+      {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation'-%}
+    {%- endif -%}
+
+    {%- if s.show_slider_modal -%}
+      {%- content_for 'block', type: '_slider_modal', id: 'product_slider_modal' -%}
+    {%- endif %}
+
     <script type="application/json" ref="main-config">
       {{ s | json }}
     </script>
@@ -164,8 +172,8 @@
       },
       {
         "type": "checkbox",
-        "id": "show_slider_nav",
-        "label": "Show slider nav",
+        "id": "show_slider_navigation",
+        "label": "Show slider navigation",
         "default": false
       },
       {
