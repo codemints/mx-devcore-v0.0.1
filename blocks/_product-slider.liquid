@@ -5,7 +5,7 @@
     render 'block.attributes'
   endcapture
 
-  assign attrs = attrs | split: ','
+  assign const = attrs | split: ','
 
   assign resource = closest.product | default: product
 -%}
@@ -66,10 +66,10 @@
 {%- endcapture -%}
 
 <div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
-  {{ attrs.size }}
-  {{ attrs[0] }}
-  {{ attrs[1] }}
-  {{ attrs[2] }}
+  {{ const.size }}
+  {{ const[0] }}
+  {{ const[1] }}
+  {{ const[2] }}
   {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
     {% comment %} <h1>{{ block.id }}</h1>
     {%- if slider_nav != blank -%}
