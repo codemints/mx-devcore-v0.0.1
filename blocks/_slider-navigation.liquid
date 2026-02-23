@@ -7,15 +7,17 @@
   # theme-check-enable UndefinedObject
 -%}
 
-{%- render 'component.slider',
-  prefix: 'navigation',
-  variation: 'navigation',
-  slides: slides
--%}
-
-<script type="application/json" ref="navigation-slider-config">
-  {{ s | json }}
-</script>
+<div {% render 'block.attributes' %}>
+  {%- render 'component.slider',
+    prefix: 'navigation',
+    variation: 'navigation',
+    slides: slides
+  -%}
+  
+  <script type="application/json" ref="navigation-slider-config">
+    {{ s | json }}
+  </script>
+</div>
 
 {%- schema -%}
   {
