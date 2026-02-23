@@ -11,11 +11,15 @@
 -%}
 
 {%- capture slider_modal -%}
-  {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal' -%}
+  {%- if s.show_slider_modal == true -%}
+    {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal' -%}
+  {%- endif%}
 {%- endcapture -%}
 
 {%- capture slider_nav -%}
-  {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav' -%}
+  {%- if s.show_slider_nav == true -%}
+    {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav' -%}
+  {%- endif -%}
 {%- endcapture -%}
 
 {%- capture classlist -%}
@@ -59,12 +63,12 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui data-section-id="{{ section.id }}">
-    {%- if s.show_slider_modal == true -%}
-      {{ slider_modal }}
-    {% endif %}
-
-    {%- if s.show_slider_nav == true -%}
+    {%- if slider_nav != blank -%}
       {{ slider_nav }}
+    {%- endif -%}
+
+    {%- if slider_modal != blank -%}
+      {{ slider_modal }}
     {%- endif -%}
   </slider-ui>
 </div>
