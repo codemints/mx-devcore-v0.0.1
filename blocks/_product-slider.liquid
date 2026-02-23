@@ -5,6 +5,8 @@
     render 'block.attributes'
   endcapture
 
+  assign attrs = attrs | sort
+
   assign resource = closest.product | default: product
 -%}
 
