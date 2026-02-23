@@ -1,18 +1,7 @@
 {%- liquid
   assign s = block.settings
-
-  capture attrs
-    render 'block.attributes'
-  endcapture
-
-  assign attrs = attrs | split: '%'
-
   assign resource = closest.product | default: product
 -%}
-
-{%- capture classlist -%}
-  theme-block {{ attrs[1] }}
-{%- endcapture -%}
 
 <div {% render 'block.attributes' %}>
 </div>
