@@ -63,86 +63,17 @@
   {%- endfor -%}
 {%- endcapture -%}
 
+{%- capture main_slider -%}
+  {{ product_media | replace: '$PREFIX', 'slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
+{%- endcapture -%}
+
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui
     data-section-id="{{ section.id }}"
     data-slider-enable-nav="{{ s.enable_slider_nav }}"
     data-slider-enable-mod="{{ s.enable_slider_mod }}"
   >
-    
-
-    <overlay-ui>
-      <div ref="backdrop"></div>
-      <div ref="dialog"></div>
-    </overlay-ui>
-
-    {% comment %} {%- if s.enable_slider_nav == true -%}
-      <div class="splide" ref="slider-nav-ui">
-        <div class="splide__track" ref="slider-nav-track">
-          <div class="splide__list" ref="slider-nav-list">
-            {%- for item in resource.media -%}
-              <li class="splide__slide" ref="[]slider-nav-slide">
-                <div class="product-media__wrapper">
-                  <div class="product-media__inner">
-                    {%- case item.media_type -%}
-                      {%- when 'image' -%}
-                        {{ item 
-                          | image_url: width: item.width
-                          | image_tag: class: 'w-full h-full object-cover'
-                        }}
-                      {%- when 'video' -%}
-                        {{  item
-                          | video_tag
-                        }}
-                      {%- when 'external_video' -%}
-                        {{ item 
-                          | external_video_url: color: 'white'
-                          | external_video_tag: class: 'w-full h-full object-cover'
-                        }}
-                    {%- endcase -%}
-                  </div>
-                </div>
-              </li>
-            {%- endfor -%}
-          </div>
-        </div>
-      </div>
-    {%- endif -%}
-
-    {%- if s.enable_slider_modal == true -%}
-      <modal-ui>
-        <div class="splide" ref="slider-mod-ui">
-          <div class="splide__track" ref="slider-mod-track">
-            <ul class="splide__list" ref="slider-mod-list">
-              {%- for item in resource.media -%}
-                <li class="splide__slide" ref="[]slider-mod-slide">
-                  <div class="product-media__wrapper">
-                    <div class="product-media__inner">
-                      {%- case item.media_type -%}
-                        {%- when 'image' -%}
-                          {{ item 
-                            | image_url: width: item.width
-                            | image_tag: class: 'w-full h-full object-cover'
-                          }}
-                        {%- when 'video' -%}
-                          {{  item
-                            | video_tag
-                          }}
-                        {%- when 'external_video' -%}
-                          {{ item 
-                            | external_video_url: color: 'white'
-                            | external_video_tag: class: 'w-full h-full object-cover'
-                          }}
-                      {%- endcase -%}
-                    </div>
-                  </div>
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        </div>
-      </modal-ui>
-    {%- endif -%} {% endcomment %}
+    {{ main_slider }}
 
     <script type="application/json" ref="slider-config">
       {
