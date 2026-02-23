@@ -39,7 +39,9 @@
       slides: main_slides
     -%}
 
-    <script type="application/json" ref="slider-config">{{ block.settings | json }}</script>
+    <script type="application/json" ref="slider-config">
+      {{ block.settings | json }}
+    </script>
   </slider-ui>
 </div>
 
