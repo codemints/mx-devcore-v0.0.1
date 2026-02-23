@@ -67,6 +67,10 @@
   {{ product_media | replace: '$PREFIX', 'slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
 {%- endcapture -%}
 
+{%- capture nav_slides -%}
+  {{ product_media | replace: '$PREFIX', 'nav-slider' | replace: '$IMAGE_FIT', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
+{%- endcapture -%}
+
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui
     data-section-id="{{ section.id }}"
@@ -76,6 +80,13 @@
     {%- render 'component.slider',
       slides_markup: main_slides
     -%}
+
+    {%- if s.enable_slider_nav -%}
+      {%- render 'component.slider',
+        prefix: 'slider-nav'
+        slides_markup: nav_slides
+      -%}
+    {%- endif -%}
 
     <script type="application/json" ref="slider-config">
       {
@@ -158,7 +169,7 @@
         "max": 9750,
         "step": 250,
         "unit": "ms",
-        "visible_if": "{{ block.settings.autoplay == true }}"
+        "visible_if": "{{ block.settings.autoplay }}"
       },
       {
         "type": "range",
@@ -169,7 +180,7 @@
         "max": 5000,
         "step": 100,
         "unit": "ms",
-        "visible_if": "{{ block.settings.autoplay == true }}"
+        "visible_if": "{{ block.settings.autoplay }}"
       },
       {
         "type": "checkbox",
@@ -186,7 +197,7 @@
       {
         "type": "header",
         "content": "Thumbnail Settings",
-        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
       },
       {
         "type": "select",
@@ -199,7 +210,7 @@
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
         ],
-        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
       },
       {
         "type": "range",
@@ -209,7 +220,7 @@
         "min": 3,
         "max": 8,
         "step": 1,
-        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
       },
       {
         "type": "range",
@@ -220,14 +231,14 @@
         "max": 100,
         "step": 1,
         "unit": "px",
-        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
       },
       {
         "type": "checkbox",
         "id": "enable_nav_lg",
         "label": "Enable desktop settings",
         "default": false,
-        "visible_if": "{{ block.settings.enable_slider_nav == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav }}"
       },
       {
         "type": "select",
@@ -240,7 +251,7 @@
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
         ],
-        "visible_if": "{{ block.settings.enable_slider_nav == true and block.settings.enable_nav_lg == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav and block.settings.enable_nav_lg }}"
       },
       {
         "type": "range",
@@ -250,7 +261,7 @@
         "min": 3,
         "max": 8,
         "step": 1,
-        "visible_if": "{{ block.settings.enable_slider_nav == true and block.settings.enable_nav_lg == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav and block.settings.enable_nav_lg }}"
       },
       {
         "type": "range",
@@ -261,12 +272,12 @@
         "max": 100,
         "step": 1,
         "unit": "px",
-        "visible_if": "{{ block.settings.enable_slider_nav == true and block.settings.enable_nav_lg == true }}"
+        "visible_if": "{{ block.settings.enable_slider_nav and block.settings.enable_nav_lg }}"
       },
       {
         "type": "header",
         "content": "Modal Settings",
-        "visible_if": "{{ block.settings.enable_slider_mod == true }}"
+        "visible_if": "{{ block.settings.enable_slider_mod }}"
       },
       {
         "type": "header",
