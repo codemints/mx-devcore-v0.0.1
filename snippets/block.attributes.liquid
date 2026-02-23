@@ -2,7 +2,6 @@
   assign attributes = null | sort
   assign sid = section.id
   assign bid = block.id
-  assign attrs = block.shopify_attributes
 
   assign prefix = 'theme-block__'
 
@@ -14,18 +13,6 @@
 
   assign id = prefix | append: block_id | append: unique
   assign classname = prefix | append: name
-
-  assign sorted_id = id | sort
-  assign sorted_classname = classname | sort
-  assign sorted_attrs = attrs | sort
-
-  assign attributes = attributes | concat: sorted_id
-  assign attributes = attributes | concat: sorted_classname
-  assign attributes = attributes | concat: sorted_attrs
 -%}
 
-{%- capture attrs -%}
-  {{ attributes | sort }}
-{%- endcapture -%}
-
-{{ attrs }}
+{{ id }}, {{ classname }}, {{ block.shopfiy_attributes }}
