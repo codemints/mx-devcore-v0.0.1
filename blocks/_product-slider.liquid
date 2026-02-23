@@ -59,7 +59,7 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui data-section-id="{{ section.id }}">
-    {%- if s.show_slider_modal and slider_modal != blank -%}
+    {%- if s.show_slider_modal -%}
       {{ slider_modal }}
     {% endif %}
 
