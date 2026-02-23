@@ -6,7 +6,7 @@
 
   assign prefix = 'theme-block__'
 
-  assign id_parts = block_id | split: '__'
+  assign id_parts = bid | split: '__'
   assign unique = id_parts | first
   assign name = id_parts | last
 
