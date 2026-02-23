@@ -139,7 +139,7 @@
             "product_form_PcAqHc"
           ]
         },
-        "product-carousel": {
+        "product-slider": {
           "type": "_product-slider",
           "static": true,
           "settings": {
