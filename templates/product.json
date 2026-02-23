@@ -124,13 +124,13 @@
               "type": "_slider-navigation",
               "static": true,
               "settings": {
-                "mt_sm": "mt-0",
+                "mt_sm": "mt-2.5",
                 "enable_mt_lg": false,
                 "mt_lg": "lg:mt-0",
                 "position_sm": "bottom",
                 "nav_per_page_sm": 4,
                 "nav_gap_sm": 10,
-                "enable_nav_lg": false,
+                "enable_settings_lg": false,
                 "position_lg": "bottom",
                 "nav_per_page_lg": 4,
                 "nav_gap_lg": 10
