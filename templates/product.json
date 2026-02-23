@@ -117,7 +117,7 @@
             "arrows_lg": "false",
             "pagination_lg": "false",
             "show_slider_navigation": true,
-            "show_slider_modal": false
+            "show_slider_modal": true
           },
           "blocks": {
             "product_slider_navigation": {
