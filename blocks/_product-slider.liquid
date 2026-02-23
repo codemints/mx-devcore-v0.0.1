@@ -82,7 +82,7 @@
     {%- endif -%}
 
     {%- if s.show_slider_modal -%}
-      {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal' -%}
+      {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal', slides: modal_slides -%}
     {%- endif %}
 
     <script type="application/json" ref="main-slider-config">
