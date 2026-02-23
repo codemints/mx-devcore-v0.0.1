@@ -363,7 +363,8 @@
         "options": [
           { "value": "slide", "label": "Slide" },
           { "value": "fade", "label": "Fade" }
-        ]
+        ],
+        "visible_if": "{{ block.settings.enable_slider_mod }}"
       },
       {
         "type": "range",
