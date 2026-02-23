@@ -35,12 +35,12 @@
   </div>
 
   {%- if has_arrows -%}
-    <div class="splide__arrows">
+    <div class="splide__arrows" ref="{{ prefix }}-arrows">
       {{ arrows_markup }}
     </div>
   {%- endif -%}
 
   {%- if has_pagination -%}
-    <ul class="splide__pagination"></ul>
+    <ul class="splide__pagination" ref="{{ prefix }}-pagination"></ul>
   {%- endif -%}
 </div>
