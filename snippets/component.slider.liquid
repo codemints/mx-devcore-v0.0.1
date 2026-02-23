@@ -4,43 +4,40 @@
   Accepts:
     - prefix: {String}  Ref prefix for element targeting (default: 'slider')
     - variation: {String}  CSS variant identifier (default: 'default')
-    - slides: {String}  Pre-rendered slide <li> elements
-    - arrows_markup: {String}  Custom arrow markup; ignored if has_arrows is false
-    - has_arrows: {Boolean} Show arrow controls (default: false)
-    - has_pagination: {Boolean} Show pagination dots (default: false)
+    - slides_html: {String}  Pre-rendered slide <li> elements
+    - arrows_html: {String}  Custom arrow markup; ignored if has_arrows is false
+    - arrows_classlist: {String} Arrows container classlist to show/hide
+    - pagination_classlist: {String} Pagination container classlist to show/hide
 
   Usage:
     {%- render 'component.slider',
       prefix: 'navigation',
       variation: 'thumbnail',
-      slides: slide_markup,
-      arrows: '',
-      has_arrows: true
-      has_pagination: false
+      slides_html: slide_markup
     -%}
 {%- endcomment -%}
 
 {%- liquid
   assign prefix = prefix | default: 'main'
   assign variation = variation | default: 'default'
-  assign has_arrows = has_arrows | default: false
-  assign has_pagination = has_pagination | default: false
+  assign arrows_classlist = arrows_classlist | default: 'hidden'
+  assign pagination_classlist = pagination_classlist | default: 'hidden'
 -%}
 
 <div class="splide" ref="{{ prefix }}-slider-ui" data-custom-variant="{{ variation }}">
   <div class="splide__track" ref="{{ prefix }}-slider-track">
     <ul class="splide__list" ref="{{ prefix }}-slider-list">
-      {{ slides }}
+      {%- if slides_html != blank -%}
+        {{ slides }}
+      {%- endif -%}
     </ul>
   </div>
-
-  {%- if has_arrows -%}
-    <div class="splide__arrows" ref="{{ prefix }}-slider-arrows">
-      {{ arrows_markup }}
-    </div>
-  {%- endif -%}
-
-  {%- if has_pagination -%}
-    <ul class="splide__pagination" ref="{{ prefix }}-slider-pagination"></ul>
-  {%- endif -%}
+  
+  <div class="splide__arrows {{ arrows_classlist }}" ref="{{ prefix }}-slider-arrows">
+    {%- if arrows_html != blank -%}
+      {{ arrows_html }}
+    {%- endif -%}
+  </div>
+  
+  <ul class="splide__pagination {{ pagination_classlist }}" ref="{{ prefix }}-slider-pagination"></ul>
 </div>
