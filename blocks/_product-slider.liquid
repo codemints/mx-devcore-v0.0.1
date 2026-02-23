@@ -64,9 +64,7 @@
 {%- endcapture -%}
 
 <div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
-  {{ attrs[0] }}<br>
-  {{ attrs[1] }}<br>
-  {{ attrs[2] }}
+  {{ attrs }}
   {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
     {% comment %} <h1>{{ block.id }}</h1>
     {%- if slider_nav != blank -%}
