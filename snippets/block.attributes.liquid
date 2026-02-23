@@ -21,6 +21,16 @@
   assign attributes = attributes | concat: sorted_id
   assign attributes = attributes | concat: sorted_classname
   assign attributes = attributes | concat: sorted_attrs
+
+  assign array = null | sort
+  assign a = 'a' | sort
+  assign b = 'b' | sort
+  assign c = 'c' | sort
+
+
+  assign array = array | concat: a
+  assign array = array | concat: b
+  assign array = array | concat: c
 -%}
 
-{{ attributes }}
+{{ array }}
