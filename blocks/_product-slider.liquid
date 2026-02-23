@@ -63,6 +63,8 @@
   theme-block {{ attrs[1] }}
 {%- endcapture -%}
 
+{{ attrs }}
+
 <div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
   {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
     <h1>{{ block.id }}</h1>
