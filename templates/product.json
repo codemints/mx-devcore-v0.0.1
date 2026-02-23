@@ -105,7 +105,7 @@
           "type": "_product-slider",
           "static": true,
           "settings": {
-            "show_slider_nav": true,
+            "show_slider_nav": false,
             "show_slider_modal": false,
             "type": "slide",
             "loop": true,
