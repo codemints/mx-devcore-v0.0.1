@@ -30,6 +30,10 @@
   {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
 {%- endcapture -%}
 
+{%- capture navigation_slides -%}
+  {{ slider_slides | replace: '$PREFIX$', 'navigation' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
+{%- endcapture -%}
+
 <div {% render 'block.attributes' %}>
   <slider-ui
     data-section-id="{{ section.id }}"
