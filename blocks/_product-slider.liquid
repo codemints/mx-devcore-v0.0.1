@@ -5,7 +5,7 @@
 
 {%- capture slider_slides -%}
   {% for item in resource.media %}
-    <li class="splide__slide" ref="[]$PREFIX$slide">
+    <li class="splide__slide" ref="[]$PREFIX$-slide">
       <div class="slider-image__wrapper">
         <div class="slider-image__inner">
           {{ item.media_type }}
@@ -16,6 +16,10 @@
       </div>
     </li>
   {%- endfor -%}
+{%- endcapture -%}
+
+{%- capture main_slides -%}
+  {{ slider_slides | replace: '$PREFIX$', 'main' }}
 {%- endcapture -%}
 
 <div {% render 'block.attributes' %}>
