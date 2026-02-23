@@ -1,7 +1,38 @@
-<div class="splide" ref="{{ prefix }}-ui" data-custom-variant="{{ custom }}">
+{%- comment -%}
+  This snippet provides a flexible wrapper for rendering Splide sliders.
+
+  Accepts:
+    - prefix: {String} the ref prefix; defaults to 'slider'
+    - variation: {String} used to apply a specific variant CSS
+    - slides_markup: {String} the HTML markup for the slides
+    - arrows_markup: {String} the HTML markup for arrows
+    - has_arrows: {Boolean} whether or not to show the arrows
+    - has_pagination: {Boolean} whether or not to show pagination
+{%- endcomment -%}
+
+{%- liquid
+  assign prefix = prefix | default: 'slider'
+  assign variation = variation | default: 'default'
+  assign has_arrows = has_arrows | default: false
+  assign has_pagination = has_pagination | default: false
+-%}
+
+<div class="splide" ref="{{ prefix }}-ui" data-custom-variant="{{ variation }}">
   <div class="splide__track" ref="{{ prefix }}-track">
     <ul class="splide__list" ref="{{ prefix }}-list">
-      {{ slides }}
+      {{ slides_markup }}
     </ul>
   </div>
+
+  {%- if has_arrows == true -%}
+    <div class="splide__arrows">
+      {%- if arrows_markup != blank -%}
+        {{ arrows_markup }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if has_pagination == true -%}
+    <ul class="splide__pagination"></ul>
+  {%- endif -%}
 </div>
