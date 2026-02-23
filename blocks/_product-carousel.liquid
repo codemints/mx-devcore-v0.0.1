@@ -195,6 +195,12 @@
       },
       {
         "type": "checkbox",
+        "id": "autoplay_video",
+        "label": "Autoplay video",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "enable_slider_nav",
         "label": "Enable thumbnail navigation",
         "default": false
@@ -353,6 +359,13 @@
       {
         "type": "header",
         "content": "Modal Settings",
+        "visible_if": "{{ block.settings.enable_slider_mod }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable zoom",
+        "default": true,
         "visible_if": "{{ block.settings.enable_slider_mod }}"
       },
       {
