@@ -23,6 +23,6 @@
   assign attributes = attributes | concat: sorted_attrs
 -%}
 
-{{ sorted_id }}<br>
-{{ sorted_classname }}<br>
-{{ sorted_attrs }}<br>
+{%- capture block_id -%}{{ id }}{%- endcapture -%}
+{%- capture block_class -%}{{ classname }}{%- endcapture -%}
+{%- capture block_attrs -%}{{ attrs }}{%- endcapture -%}
