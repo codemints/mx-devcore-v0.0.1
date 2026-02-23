@@ -139,7 +139,7 @@
             "product_form_PcAqHc"
           ]
         },
-        "product-slider": {
+        "product-carousel": {
           "type": "_product-slider",
           "static": true,
           "settings": {
@@ -192,6 +192,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "settings": {
         "anchor_id": "",
         "bg_color": "default",
