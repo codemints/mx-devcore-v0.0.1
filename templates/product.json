@@ -143,6 +143,8 @@
           "type": "_product-slider",
           "static": true,
           "settings": {
+            "show_slider_nav": true,
+            "show_slider_modal": true,
             "type": "slide",
             "loop": false,
             "autoplay": false,
@@ -173,7 +175,21 @@
             "pagination_sm": "hide",
             "pagination_lg": "hide"
           },
-          "blocks": {}
+          "blocks": {
+            "product-slider-modal": {
+              "type": "_slider-modal",
+              "static": true,
+              "settings": {},
+              "blocks": {}
+            },
+            "product-slider-nav": {
+              "type": "_slider-nav",
+              "static": true,
+              "settings": {},
+              "blocks": {}
+            }
+          },
+          "block_order": []
         }
       },
       "settings": {
