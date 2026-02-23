@@ -49,9 +49,9 @@
       {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal' -%}
     {%- endif %}
 
-    <script type="application/json" ref="main-config">
+    {% comment %} <script type="application/json" ref="main-config">
       {{ s | json }}
-    </script>
+    </script> {% endcomment %}
   </slider-ui>
 </div>
 
