@@ -36,42 +36,40 @@
   theme-block {{ classname }}
 {%- endcapture -%}
 
+{%- capture product_media -%}
+  {%- for item in resource.media -%}
+    <li class="splide__slide" ref="[]$PREFIX-slide">
+      <div class="product-media__wrapper">
+        <div class="product-media__inner">
+          {%- case item.media_type -%}
+            {%- when 'image' -%}
+              {{ item 
+                | image_url: width: item.width
+                | image_tag: class: 'w-full h-full object-$IMAGE_FIT'
+              }}
+            {%- when 'video' -%}
+              {{  item
+                | video_tag
+              }}
+            {%- when 'external_video' -%}
+              {{ item 
+                | external_video_url: color: 'white'
+                | external_video_tag: class: 'w-full h-full object-$VIDEO_FIT'
+              }}
+          {%- endcase -%}
+        </div>
+      </div>
+    </li>
+  {%- endfor -%}
+{%- endcapture -%}
+
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui
     data-section-id="{{ section.id }}"
     data-slider-enable-nav="{{ s.enable_slider_nav }}"
     data-slider-enable-mod="{{ s.enable_slider_mod }}"
   >
-    <div class="splide" ref="slider-ui">
-      <div class="splide__track" ref="slider-track">
-        <ul class="splide__list" ref="slider-list">
-          {%- for item in resource.media -%}
-            <li class="splide__slide" ref="[]slider-slide">
-              <div class="product-media__wrapper">
-                <div class="product-media__inner">
-                  {%- case item.media_type -%}
-                    {%- when 'image' -%}
-                      {{ item 
-                        | image_url: width: item.width
-                        | image_tag: class: 'w-full h-full object-cover'
-                      }}
-                    {%- when 'video' -%}
-                      {{  item
-                        | video_tag
-                      }}
-                    {%- when 'external_video' -%}
-                      {{ item 
-                        | external_video_url: color: 'white'
-                        | external_video_tag: class: 'w-full h-full object-cover'
-                      }}
-                  {%- endcase -%}
-                </div>
-              </div>
-            </li>
-          {%- endfor -%}
-        </ul>
-      </div>
-    </div>
+    
 
     <overlay-ui>
       <div ref="backdrop"></div>

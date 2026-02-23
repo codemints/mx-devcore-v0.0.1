@@ -1,13 +1,21 @@
 {%- comment -%}
-  This snippet provides a flexible wrapper for rendering Splide sliders.
+  Reusable Splide slider wrapper.
 
   Accepts:
-    - prefix: {String} the ref prefix; defaults to 'slider'
-    - variation: {String} used to apply a specific variant CSS
-    - slides_markup: {String} the HTML markup for the slides
-    - arrows_markup: {String} the HTML markup for arrows
-    - has_arrows: {Boolean} whether or not to show the arrows
-    - has_pagination: {Boolean} whether or not to show pagination
+    - prefix: {String}  Ref prefix for element targeting (default: 'slider')
+    - variation: {String}  CSS variant identifier (default: 'default')
+    - slides_markup: {String}  Pre-rendered slide <li> elements
+    - arrows_markup: {String}  Custom arrow markup; ignored if has_arrows is false
+    - has_arrows: {Boolean} Show arrow controls (default: false)
+    - has_pagination: {Boolean} Show pagination dots (default: false)
+
+  Usage:
+    {%- render 'component.slider',
+      prefix: 'nav',
+      variation: 'thumbnail',
+      slides_markup: slide_markup,
+      has_pagination: true
+    -%}
 {%- endcomment -%}
 
 {%- liquid
@@ -24,15 +32,13 @@
     </ul>
   </div>
 
-  {%- if has_arrows == true -%}
+  {%- if has_arrows -%}
     <div class="splide__arrows">
-      {%- if arrows_markup != blank -%}
-        {{ arrows_markup }}
-      {%- endif -%}
+      {{ arrows_markup }}
     </div>
   {%- endif -%}
 
-  {%- if has_pagination == true -%}
+  {%- if has_pagination -%}
     <ul class="splide__pagination"></ul>
   {%- endif -%}
 </div>
