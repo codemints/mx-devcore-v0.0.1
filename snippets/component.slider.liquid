@@ -11,10 +11,12 @@
 
   Usage:
     {%- render 'component.slider',
-      prefix: 'nav',
+      prefix: 'slider',
       variation: 'thumbnail',
       slides_markup: slide_markup,
-      has_pagination: true
+      arrows_markup: '',
+      has_arrows: true
+      has_pagination: false
     -%}
 {%- endcomment -%}
 
