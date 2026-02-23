@@ -61,7 +61,7 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui data-section-id="{{ section.id }}">
-    {{ block | json }}
+    {{ block.type | json }}
     {%- if slider_nav != blank -%}
       {{ slider_nav }}
     {%- endif -%}
