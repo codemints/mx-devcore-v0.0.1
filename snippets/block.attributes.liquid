@@ -11,7 +11,7 @@
   assign name = id_parts | last
 
   assign block_id = sid | append: '--' | append: bid | append: '__'
-  
+
   assign id = prefix | append: block_id | append: unique
   assign classname = prefix | append: name
 
@@ -25,5 +25,5 @@
 -%}
 
 {%- capture attrs -%}
-  {{ attributes }}
+  {{ attributes | sort }}
 {%- endcapture -%}
