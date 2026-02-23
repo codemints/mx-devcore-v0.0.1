@@ -1,6 +1,10 @@
 {%- liquid
   assign s = block.settings
 
+  capture attrs
+    render 'block.attributes'
+  endcapture
+
   assign resource = closest.product | default: product
 -%}
 
@@ -56,10 +60,10 @@
 {%- endcapture -%}
 
 {%- capture classlist -%}
-  theme-block {{ classname }}
+  theme-block {{ attrs[1] }}
 {%- endcapture -%}
 
-<div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
+<div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
   {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
     <h1>{{ block.id }}</h1>
     {%- if slider_nav != blank -%}
