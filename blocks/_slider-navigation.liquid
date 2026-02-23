@@ -1,4 +1,17 @@
-<h1>Slider Nav</h1>
+{%- liquid
+  assign s = block.settings
+
+  # PROP DECLARATIONS
+  # theme-check-disable UndefinedObject
+  assign slides = slides
+  # theme-check-enable UndefinedObject
+-%}
+
+{%- render 'component.slider',
+  prefix: 'navigation',
+  variation: 'navigation',
+  slides: slides
+-%}
 
 {%- schema -%}
   {
