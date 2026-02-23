@@ -27,20 +27,20 @@
   assign has_pagination = has_pagination | default: false
 -%}
 
-<div class="splide" ref="{{ prefix }}-ui" data-custom-variant="{{ variation }}">
-  <div class="splide__track" ref="{{ prefix }}-track">
-    <ul class="splide__list" ref="{{ prefix }}-list">
+<div class="splide" ref="{{ prefix }}-slider-ui" data-custom-variant="{{ variation }}">
+  <div class="splide__track" ref="{{ prefix }}-slider-track">
+    <ul class="splide__list" ref="{{ prefix }}-slider-list">
       {{ slides }}
     </ul>
   </div>
 
   {%- if has_arrows -%}
-    <div class="splide__arrows" ref="{{ prefix }}-arrows">
+    <div class="splide__arrows" ref="{{ prefix }}-slider-arrows">
       {{ arrows_markup }}
     </div>
   {%- endif -%}
 
   {%- if has_pagination -%}
-    <ul class="splide__pagination" ref="{{ prefix }}-pagination"></ul>
+    <ul class="splide__pagination" ref="{{ prefix }}-slider-pagination"></ul>
   {%- endif -%}
 </div>
