@@ -9,14 +9,52 @@
 
   assign resource = closest.product | default: product
 
-  assign main_type = 'slide'
+  # Main slider config
+  assign main_type = s.type
   assign main_rewind = false
 
-  if s.loop == true and s.type == 'slide'
+  if s.type == 'slide' and s.loop
     assign main_type = 'loop'
-  elsif s.loop == true and s.type == 'fade'
-    assign main_type = 'fade'
+  elsif s.type == 'fade' and s.loop
     assign main_rewind = true
+  endif
+
+  assign main_arrows_sm = false
+  assign main_arrows_lg = false
+  assign main_pagination_sm = false
+  assign main_pagination_lg = false
+
+  if s.arrows_sm == 'show'
+    assign main_arrows_sm = true
+  endif
+
+  if s.arrows_lg == 'show'
+    assign main_arrows_lg = true
+  endif
+
+  if s.pagination_sm == 'show'
+    assign main_pagination_sm = true
+  endif
+
+  if s.pagination_lg == 'show'
+    assign main_pagination_lg = true
+  endif
+  
+  # Nav slider config
+  assign nav_type = 'slide'
+
+  if s.loop
+    assign nav_type = 'loop'
+  endif
+
+  # Modal slider config
+  assign mod_type = s.mod_type
+  assign mod_rewind = false
+
+  if s.mod_type == 'slide' and s.loop
+    assign mod_type = 'loop'
+  elsif s.mod_type == 'fade' and s.loop
+    assign mod_rewind = true
   endif
 -%}
 
@@ -81,16 +119,20 @@
     <script type="application/json" ref="slider-config">
       {
         "type": {{ main_type | json }},
-        "rewind": {{ main_rewind }}
+        "rewind": {{ main_rewind }}{% unless s.type == 'fade' %},
+        "perPage": 1,
+        "perMove": 1,
+        "snap": true,
+        "drag": "free"{% endunless %},
         "autoplay": {{ s.autoplay }},
         "interval": {{ s.interval }},
         "speed": {{ s.speed }},
-        "arrows": {{ s.arrows_sm }} === 'show' ? true : false,
-        "pagination": {{ s.pagination_sm }} === 'show' ? true : false,
+        "arrows": {{ main_arrows_sm }},
+        "pagination": {{ main_pagination_sm }},
         "breakpoints": {
           "1024": {
-            "arrows": {{ s.arrows_lg }} === 'show' ? true : false,
-            "pagination": {{ s.pagination_lg }} === 'show' ? true : false
+            "arrows": {{ main_arrows_lg }},
+            "pagination": {{ main_pagination_lg }}
           }
         }
       }
@@ -98,32 +140,34 @@
 
     {%- if s.enable_slider_nav -%}
       <script type="application/json" ref="slider-nav-config">
-      {
-        "type": {{ s.loop }} == true ? 'loop' : 'slide'
-        "perPage": {{ s.nav_per_page_sm }},
-        "gap": {{ s.nav_gap_sm }},
-        "breakpoints": {
-          "1024": {
-            "perPage": {{ s.nav_per_page_lg }},
-            "gap": {{ s.nav_gap_lg }}
+        {
+          "type": {{ nav_type | json }},
+          "perPage": {{ s.nav_per_page_sm }},
+          "gap": {{ s.nav_gap_sm }},
+          "breakpoints": {
+            "1024": {
+              "perPage": {{ s.nav_per_page_lg }},
+              "gap": {{ s.nav_gap_lg }}
+            }
           }
         }
-      }
       </script>
     {%- endif -%}
 
     {%- if s.enable_slider_mod -%}
       <script type="application/json" ref="slider-mod-config">
-      {
-        "perPage": {{ s.mod_per_page_sm }},
-        "gap": {{ s.mod_gap_sm }},
-        "breakpoints": {
-          "1024": {
-            "perPage": {{ s.mod_per_page_lg }},
-            "gap": {{ s.mod_gap_lg }}
+        {
+          "type": {{ mod_type | json }},
+          "rewind": {{ mod_rewind }}{% unless s.mod_type == 'fade' %},
+          "perPage": {{ s.mod_per_page_sm }},
+          "gap": {{ s.mod_gap_sm }}{% endunless %},
+          "breakpoints": {
+            "1024": {% unless s.mod_type == 'fade' %}{
+              "perPage": {{ s.mod_per_page_lg }},
+              "gap": {{ s.mod_gap_lg }}
+            }{% else %}{}{% endunless %}
           }
         }
-      }
       </script>
     {%- endif -%}
   </slider-ui>
