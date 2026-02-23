@@ -1,5 +1,4 @@
 {%- liquid
-  assign attributes = null | sort
   assign sid = section.id
   assign bid = block.id
 
@@ -15,4 +14,4 @@
   assign classname = prefix | append: name
 -%}
 
-{{ id }}%{{ classname }}%{{ block.shopify_attributes }}
+id="{{ id }}" class="theme-block {{ classname }}{% if classlist != blank %} {{ classlist }}{% endif %}" {{ block.shopify_attributes }}
