@@ -63,7 +63,7 @@
   {%- endfor -%}
 {%- endcapture -%}
 
-{%- capture main_slider -%}
+{%- capture main_slides -%}
   {{ product_media | replace: '$PREFIX', 'slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
 {%- endcapture -%}
 
@@ -73,7 +73,9 @@
     data-slider-enable-nav="{{ s.enable_slider_nav }}"
     data-slider-enable-mod="{{ s.enable_slider_mod }}"
   >
-    {{ main_slider }}
+    {%- render 'component.slider',
+      slides_markup: main_slides
+    -%}
 
     <script type="application/json" ref="slider-config">
       {
