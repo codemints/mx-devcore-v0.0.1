@@ -77,7 +77,7 @@
       slides_markup: main_slides
     -%}
 
-    <script type="application/json" ref="slider-config">
+    {% comment %} <script type="application/json" ref="slider-config">
       {
         "type": {{ s.type | json }},
         "loop": {{ s.loop }},
@@ -93,7 +93,7 @@
           }
         }
       }
-    </script>
+    </script> {% endcomment %}
 
     {%- if s.enable_slider_nav -%}
       <script type="application/json" ref="slider-nav-config">
