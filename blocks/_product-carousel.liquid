@@ -39,8 +39,8 @@
 {%- capture product_media -%}
   {%- for item in resource.media -%}
     <li class="splide__slide" ref="[]$PREFIX-slide">
-      <div class="product-media__wrapper">
-        <div class="product-media__inner">
+      <div class="product-media__wrapper h-full">
+        <div class="product-media__inner h-full">
           {%- case item.media_type -%}
             {%- when 'image' -%}
               {{ item 
