@@ -95,7 +95,7 @@
       }
     </script>
 
-    {%- if s.enable_slider_nav == true -%}
+    {%- if s.enable_slider_nav -%}
       <script type="application/json" ref="slider-nav-config">
       {
         "perPage": {{ s.per_page_sm }},
@@ -110,7 +110,7 @@
       </script>
     {%- endif -%}
 
-    {%- if s.enable_slider_mod == true -%}
+    {%- if s.enable_slider_mod -%}
       <script type="application/json" ref="slider-mod-config">
         {}
       </script>
