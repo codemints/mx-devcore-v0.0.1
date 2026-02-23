@@ -150,7 +150,7 @@
             "speed": 1000,
             "enable_slider_nav": true,
             "enable_slider_mod": false,
-            "mt_sm": "mt-5",
+            "mt_sm": "mt-2.5",
             "enable_mt_lg": false,
             "mt_lg": "lg:mt-0",
             "position_sm": "bottom",
