@@ -140,7 +140,7 @@
           ]
         },
         "product-carousel": {
-          "type": "_product-carousel",
+          "type": "_product-slider",
           "static": true,
           "settings": {
             "type": "slide",
