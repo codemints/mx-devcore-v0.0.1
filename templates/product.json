@@ -148,7 +148,7 @@
             "autoplay": false,
             "interval": 4000,
             "speed": 1000,
-            "enable_slider_nav": false,
+            "enable_slider_nav": true,
             "enable_slider_mod": false,
             "position_sm": "bottom",
             "per_page_sm": 4,
