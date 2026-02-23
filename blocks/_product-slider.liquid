@@ -3,6 +3,12 @@
   assign resource = closest.product | default: product
 -%}
 
+{%- capture arrow_classlist -%}
+{%- endcapture -%}
+
+{%- capture pagination_classlist -%}
+{%- endcapture -%}
+
 {%- capture slider_slides -%}
   {% for item in resource.media %}
     <li class="splide__slide" ref="[]$PREFIX$-slide">
@@ -122,20 +128,20 @@
         "type": "select",
         "id": "arrows_sm",
         "label": "Arrow visibility",
-        "default": "hide",
+        "default": "false",
         "options": [
-          { "value": "show", "label": "Show" },
-          { "value": "hide", "label": "Hide" }
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
         ]
       },
       {
         "type": "select",
         "id": "pagination_sm",
         "label": "Pagination visibility",
-        "default": "hide",
+        "default": "false",
         "options": [
-          { "value": "show", "label": "Show" },
-          { "value": "hide", "label": "Hide" }
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
         ]
       },
       {
@@ -148,10 +154,10 @@
         "type": "select",
         "id": "arrows_lg",
         "label": "Arrow visibility (desktop)",
-        "default": "hide",
+        "default": "false",
         "options": [
-          { "value": "show", "label": "Show" },
-          { "value": "hide", "label": "Hide" }
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
         ],
         "visible_if": "{{ block.settings.enable_controls_lg }}"
       },
@@ -159,10 +165,10 @@
         "type": "select",
         "id": "pagination_lg",
         "label": "Pagination visibility (desktop)",
-        "default": "hide",
+        "default": "false",
         "options": [
-          { "value": "show", "label": "Show" },
-          { "value": "hide", "label": "Hide" }
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
         ],
         "visible_if": "{{ block.settings.enable_controls_lg }}"
       },
