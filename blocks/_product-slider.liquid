@@ -1,12 +1,36 @@
 {%- liquid
   assign s = block.settings
   assign resource = closest.product | default: product
+
+  assign arrows_sm = 'hidden'
+  assign pagination_sm = 'hidden'
+
+  assign arrows_lg = 'lg:hidden'
+  assign pagination_lg = 'lg:hidden'
+
+  if s.arrows_sm
+    assign arrows_sm = 'block'
+  endif
+
+  if s.pagination_sm
+    assign pagination_sm = 'block'
+  endif
+
+  if s.arrow_lg
+    assign arrows_lg = 'lg:block'
+  endif
+
+  if s.pagination_lg
+    assign pagination_lg = 'lg:block'
+  endif
 -%}
 
-{%- capture arrow_classlist -%}
+{%- capture arrows_classlist -%}
+{{ arrows_sm }}{% if s.enable_controls_lg %} {{ arrows_lg }}{% endif %}
 {%- endcapture -%}
 
 {%- capture pagination_classlist -%}
+{{ pagination_sm }}{% if s.enable_controls_lg %} {{ pagination_lg }}{% endif %}
 {%- endcapture -%}
 
 {%- capture slider_slides -%}
@@ -44,7 +68,9 @@
   <slider-ui data-section-id="{{ section.id }}">
     {%- render 'component.slider',
       prefix: 'main',
-      slides: main_slides
+      slides_html: main_slides,
+      arrows_classlist: arrows_classlist
+      pagination_classlist: pagination_classlist
     -%}
 
     {%- if s.show_slider_navigation -%}
