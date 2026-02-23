@@ -106,7 +106,7 @@
           "static": true,
           "settings": {
             "type": "fade",
-            "loop": true,
+            "loop": false,
             "autoplay": false,
             "interval": 4000,
             "speed": 1000,
