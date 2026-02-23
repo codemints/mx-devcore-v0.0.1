@@ -9,26 +9,13 @@
 
   assign resource = closest.product | default: product
 
-  assign show_arrows_sm = false
-  assign show_arrows_lg = false
+  assign main_type = 'slide'
+  assign main_rewind = false
 
-  assign show_pagination_sm = false
-  assign show_pagination_lg = false
-
-  if s.arrows_sm == 'show'
-    assign show_arrows_sm = true
-  endif
-
-  if s.arrows_lg == 'show'
-    assign show_arrows_lg = true
-  endif
-
-  if s.pagination_sm == 'show'
-    assign show_pagination_sm = true
-  endif
-
-  if s.pagination_lg == 'show'
-    assign show_pagination_lg = true
+  if s.loop == true and s.type == 'slide'
+    assign main_type = 'loop'
+  elsif s.loop == true and s.type == 'fade'
+    assign main_rewind = true
   endif
 -%}
 
@@ -92,17 +79,17 @@
 
     <script type="application/json" ref="slider-config">
       {
-        "type": {{ s.type | json }},
-        "loop": {{ s.loop }},
+        "type": {{ main_type | json }},
+        "rewind": {{ main_rewind }}
         "autoplay": {{ s.autoplay }},
         "interval": {{ s.interval }},
         "speed": {{ s.speed }},
-        "arrows": {{ show_arrows_sm }},
-        "pagination": {{ show_pagination_sm }},
+        "arrows": {{ s.arrows_sm }} === 'show' ? true : false,
+        "pagination": {{ s.pagination_sm }} === 'show' ? true : false,
         "breakpoints": {
           "1024": {
-            "arrows": {{ show_arrows_lg }},
-            "pagination": {{ show_pagination_lg }}
+            "arrows": {{ s.arrows_lg }} === 'show' ? true : false,
+            "pagination": {{ s.pagination_lg }} === 'show' ? true : false
           }
         }
       }
