@@ -3,7 +3,32 @@
   assign resource = closest.product | default: product
 -%}
 
+{%- capture slider_slides -%}
+  {% for item in resource.media %}
+    <li class="splide__slide" ref="[]$PREFIX$slide">
+      <div class="slider-image__wrapper">
+        <div class="slider-image__inner">
+          {{ item.media_type }}
+          {%- case item.media_type -%}
+            {%- when 'image' -%}
+          {%- endcase -%}
+        </div>
+      </div>
+    </li>
+  {%- endfor -%}
+{%- endcapture -%}
+
 <div {% render 'block.attributes' %}>
+  <slider-ui
+    data-section-id="{{ section.id }}"
+    data-slider-navigation=""
+    data-slider-modal=""
+  >
+    {%- render 'component.slider',
+      prefix: 'main',
+      slides: main_slides
+    -%}
+  </slider-ui>
 </div>
 
 {%- schema -%}
