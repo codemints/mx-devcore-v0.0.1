@@ -10,6 +10,14 @@
   assign resource = closest.product | default: product
 -%}
 
+{%- capture slider_modal -%}
+  {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal' -%}
+{%- endcapture -%}
+
+{%- capture slider_nav -%}
+  {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav' -%}
+{%- endcapture -%}
+
 {%- capture classlist -%}
   theme-block {{ classname }}
 {%- endcapture -%}
@@ -51,9 +59,13 @@
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
   <slider-ui data-section-id="{{ section.id }}">
-    {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav' -%}
+    {%- if s.show_slider_modal and slider_modal != blank -%}
+      {{ slider_modal }}
+    {% endif %}
 
-    {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal' -%}
+    {%- if s.show_slider_nav and slider_nav != blank -%}
+      {{ slider_nav }}
+    {%- endif -%}
   </slider-ui>
 </div>
 
@@ -65,6 +77,18 @@
       {
         "type": "header",
         "content": "Main Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_slider_nav",
+        "label": "Show slider nav",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_slider_modal",
+        "label": "Show slider modal",
+        "default": false
       },
       {
         "type": "select",
