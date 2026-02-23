@@ -1,6 +1,6 @@
 {%- liquid
   assign s = block.settings
-
+  
   capture attrs
     render 'block.attributes'
   endcapture
@@ -62,8 +62,6 @@
 {%- capture classlist -%}
   theme-block {{ attrs[1] }}
 {%- endcapture -%}
-
-{{ attrs }}
 
 <div id="{{ attrs[0] }}" class="{{ classlist | strip }}" {{ attrs[2] }}>
   {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
