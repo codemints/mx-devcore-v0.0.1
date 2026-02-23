@@ -10,21 +10,6 @@
   assign resource = closest.product | default: product
 -%}
 
-{%- capture slider_modal -%}
-  {%- if s.show_slider_modal == true -%}
-    {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal' -%}
-  {%- endif%}
-{%- endcapture -%}
-
-{%- capture slider_nav -%}
-  {%- if s.show_slider_nav == true -%}
-    {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav' -%}
-  {%- endif -%}
-{%- endcapture -%}
-
-{%- capture classlist -%}
-  theme-block {{ classname }}
-{%- endcapture -%}
 
 {%- capture product_media -%}
   {%- for item in resource.media -%}
@@ -57,8 +42,28 @@
   {{ product_media | replace: '$PREFIX', 'slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
 {%- endcapture -%}
 
+{%- capture modal_slides -%}
+  {{ product_media | replace: '$PREFIX', 'mod=slider' | replace: '$IMAGE_FIT', 'contain' | replace: '$VIDEO_FIT', 'contain' }}
+{%- endcapture -%}
+
 {%- capture nav_slides -%}
   {{ product_media | replace: '$PREFIX', 'nav-slider' | replace: '$IMAGE_FIT', 'cover' | replace: '$VIDEO_FIT', 'cover' }}
+{%- endcapture -%}
+
+{%- capture slider_modal -%}
+  {%- if s.show_slider_modal == true -%}
+    {%- content_for 'block', type: '_slider-modal', id: 'product-slider-modal', slides: modal_slides -%}
+  {%- endif%}
+{%- endcapture -%}
+
+{%- capture slider_nav -%}
+  {%- if s.show_slider_nav == true -%}
+    {%- content_for 'block', type: '_slider-nav', id: 'product-slider-nav', slides: nav_slides -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture classlist -%}
+  theme-block {{ classname }}
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
