@@ -60,16 +60,16 @@
 {%- endcapture -%}
 
 <div id="{{ id }}" class="{{ classlist | strip }}" {{ attrs }}>
-  <slider-ui data-section-id="{{ section.id }}">
+  {% comment %} <slider-ui data-section-id="{{ section.id }}"> {% endcomment %}
+    <h1>{{ block.id }}</h1>
     {%- if slider_nav != blank -%}
-      <h1>{{ block.id }}</h1>
       {{ slider_nav }}
     {%- endif -%}
 
     {%- if slider_modal != blank -%}
       {{ slider_modal }}
     {%- endif -%}
-  </slider-ui>
+  {% comment %} </slider-ui> {% endcomment %}
 </div>
 
 {%- schema -%}
