@@ -5,7 +5,37 @@
   # theme-check-disable UndefinedObject
   assign slides = slides
   # theme-check-enable UndefinedObject
+  
+  assign arrows_sm = 'hidden'
+  assign pagination_sm = 'hidden'
+
+  assign arrows_lg = 'lg:hidden'
+  assign pagination_lg = 'lg:hidden'
+
+  if s.arrows_sm
+    assign arrows_sm = 'block'
+  endif
+
+  if s.pagination_sm
+    assign pagination_sm = 'block'
+  endif
+
+  if s.arrow_lg
+    assign arrows_lg = 'lg:block'
+  endif
+
+  if s.pagination_lg
+    assign pagination_lg = 'lg:block'
+  endif
 -%}
+
+{%- capture arrows_classlist -%}
+  {{ arrows_sm }}{% if s.enable_controls_lg %} {{ arrows_lg }}{% endif %}
+{%- endcapture -%}
+
+{%- capture pagination_classlist -%}
+  {{ pagination_sm }}{% if s.enable_controls_lg %} {{ pagination_lg }}{% endif %}
+{%- endcapture -%}
 
 <div {% render 'block.attributes' %}>
   <overlay-ui>
@@ -16,6 +46,8 @@
         prefix: 'modal',
         variation: 'modal',
         slides_html: slides
+        arrows_classlist: arrows_classlist
+        pagination_classlist: pagination_classlist
       -%}
     </div>
   </overlay-ui>
