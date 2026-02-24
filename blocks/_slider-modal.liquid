@@ -94,6 +94,58 @@
         "step": 1,
         "unit": "px",
       },
+      {
+        "type": "header",
+        "content": "Control Settings"
+      },
+      {
+        "type": "select",
+        "id": "arrows_sm",
+        "label": "Arrow visibility",
+        "default": "false",
+        "options": [
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "pagination_sm",
+        "label": "Pagination visibility",
+        "default": "false",
+        "options": [
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_controls_lg",
+        "label": "Show separate settings for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "arrows_lg",
+        "label": "Arrow visibility (desktop)",
+        "default": "false",
+        "options": [
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
+        ],
+        "visible_if": "{{ block.settings.enable_controls_lg }}"
+      },
+      {
+        "type": "select",
+        "id": "pagination_lg",
+        "label": "Pagination visibility (desktop)",
+        "default": "false",
+        "options": [
+          { "value": "true", "label": "Show" },
+          { "value": "false", "label": "Hide" }
+        ],
+        "visible_if": "{{ block.settings.enable_controls_lg }}"
+      }
     ],
     "blocks": [],
     "presets": [
