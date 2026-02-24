@@ -101,12 +101,14 @@
         "max": 100,
         "step": 1,
         "unit": "px",
+        "visible_if": "{{ block.settings.type != 'fade' }}"
       },
       {
         "type": "checkbox",
         "id": "enable_settings_lg",
         "label": "Enable desktop settings",
         "default": false,
+        "visible_if": "{{ block.settings.type != 'fade' }}"
       },
       {
         "type": "range",
@@ -116,7 +118,7 @@
         "min": 1,
         "max": 4,
         "step": 1,
-        "visible_if": "{{ block.settings.enable_settings_lg }}"
+        "visible_if": "{{ block.settings.type != 'fade' and block.settings.enable_settings_lg }}"
       },
       {
         "type": "range",
@@ -127,7 +129,7 @@
         "max": 100,
         "step": 1,
         "unit": "px",
-        "visible_if": "{{ block.settings.enable_settings_lg }}"
+        "visible_if": "{{ block.settings.type != 'fade' and block.settings.enable_settings_lg }}"
       },
       {
         "type": "header",
