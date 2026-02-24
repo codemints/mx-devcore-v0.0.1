@@ -242,6 +242,101 @@
         "step": 1,
         "unit": "%",
         "visible_if": "{{ section.settings.enable_layout_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Aspect Ratio"
+      },
+      {
+        "type": "select",
+        "id": "aspect_sm",
+        "label": "Aspect ratio",
+        "default": "16:9",
+        "options": [
+          { "value": "custom", "label": "Custom" },
+          { "value": "square", "label": "Square" },
+          { "value": "fill", "label": "Fill" },
+          { "value": "2:1", "label": "2:1" },
+          { "value": "3:2", "label": "3:2" },
+          { "value": "4:3", "label": "4:3"},
+          { "value": "5:4", "label": "5:4" },
+          { "value": "6:5", "label": "6:5" },
+          { "value": "7:6", "label": "7:6" },
+          { "value": "8:7", "label": "8:7" },
+          { "value": "9:8", "label": "9:8" },
+          { "value": "10:9", "label": "10:9" },
+          { "value": "16:9", "label": "16:9" },
+          { "value": "21:9", "label": "21:9" },
+          { "value": "32:9", "label": "32:9" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_aspect_sm",
+        "label": "Custom aspect ratio",
+        "default": "16:9",
+        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
+        "visible_if": "{{ section.settings.aspect_sm == 'custom' }}"
+      },
+      {
+        "type": "radio",
+        "id": "orientation_sm",
+        "label": "Media orientation",
+        "default": "horizontal",
+        "options": [
+          { "value": "vertical", "label": "Portrait" },
+          { "value": "horizontal", "label": "Landscape" }
+        ],
+        "visible_if": "{{ section.settings.aspect_sm != 'custom' and section.settings.aspect_sm != 'square' and section.settings.aspect_sm != 'adapt' and section.settings.aspect_sm != 'fill' }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "aspect_lg_on",
+        "label": "Enable different aspect ratio for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "aspect_lg",
+        "label": "Aspect ratio (desktop)",
+        "default": "16:9",
+        "options": [
+          { "value": "custom", "label": "Custom" },
+          { "value": "square", "label": "Square" },
+          { "value": "fill", "label": "Fill" },
+          { "value": "2:1", "label": "2:1" },
+          { "value": "3:2", "label": "3:2" },
+          { "value": "4:3", "label": "4:3"},
+          { "value": "5:4", "label": "5:4" },
+          { "value": "6:5", "label": "6:5" },
+          { "value": "7:6", "label": "7:6" },
+          { "value": "8:7", "label": "8:7" },
+          { "value": "9:8", "label": "9:8" },
+          { "value": "10:9", "label": "10:9" },
+          { "value": "16:9", "label": "16:9" },
+          { "value": "21:9", "label": "21:9" },
+          { "value": "32:9", "label": "32:9" }
+        ],
+        "visible_if": "{{ section.settings.aspect_lg_on == true }}"
+      },
+      {
+        "type": "text",
+        "id": "custom_aspect_lg",
+        "label": "Custom aspect ratio (desktop)",
+        "default": "16:9",
+        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
+        "visible_if": "{{ section.settings.aspect_lg_on == true and section.settings.aspect_lg == 'custom' }}"
+      },
+      {
+        "type": "radio",
+        "id": "orientation_lg",
+        "label": "Media orientation (desktop)",
+        "default": "horizontal",
+        "options": [
+          { "value": "vertical", "label": "Portrait" },
+          { "value": "horizontal", "label": "Landscape" }
+        ],
+        "visible_if": "{{ section.settings.aspect_lg_on == true and section.settings.aspect_lg != 'custom' and section.settings.aspect_lg != 'square' and section.settings.aspect_lg != 'adapt' and section.settings.aspect_lg != 'fill' }}"
       }
     ],
     "blocks": [],
