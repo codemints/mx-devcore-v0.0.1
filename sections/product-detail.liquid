@@ -1,3 +1,9 @@
+{%- comment -%} SECTION SPACING {%- endcomment -%}
+{%- capture section_spacing -%}
+{%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
+{%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
+
 {%- liquid
   assign s = section.settings
   assign gap_x = s.gap_y
@@ -31,6 +37,10 @@
 
 {%- style -%}
   #shopify-section-{{ section.id }} {
+    {% if section_spacing != blank -%}
+    {{ section_spacing }}
+    {%- endif %}
+
     --section-bg-color: var(--c-{{ s.bg_color }});
     --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
 
