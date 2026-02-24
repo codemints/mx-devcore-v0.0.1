@@ -1,0 +1,107 @@
+{%- liquid
+  assign s = block.settings
+-%}
+
+{%- capture spacing_variables -%}
+  --theme-section-pt: {{ s.pt_sm }}px;
+  --theme-section-pb: {{ s.pb_sm }}px;
+
+  --theme-section-mt: {{ s.mt_sm }}px;
+  --theme-section-mb: {{ s.mb_sm }}px;
+  {% if s.enable_padding_lg == true or s.enable_margin_lg == true -%}
+    @media only screen and (min-width: 1024px) {
+      {% if s.enable_padding_lg == true -%}
+        --theme-section-pt: {{ s.pt_lg }}px;
+        --theme-section-pb: {{ s.pb_lg }}px;
+      {% endif -%}
+
+      {% if s.enable_margin_lg == true -%}
+        --theme-section-mt: {{ s.mt_lg }}px;
+        --theme-section-mb: {{ s.mb_lg }}px;
+      {% endif -%}
+    }
+  {%- endif %}
+{%- endcapture -%}
+
+{{ spacing_variables | strip }}
+
+{%- schema -%}
+  {
+    "name": "Section Spacing",
+    "tag": null,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "pt_sm",
+        "label": "Padding top",
+        "default": 40
+      },
+      {
+        "type": "number",
+        "id": "pb_sm",
+        "label": "Padding bottom",
+        "default": 40
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_padding_lg",
+        "label": "Enable different padding for desktop",
+        "default": false
+      },
+      {
+        "type": "number",
+        "id": "pt_lg",
+        "label": "Padding top (desktop)",
+        "default": 80,
+        "visible_if": "{{ block.settings.enable_padding_lg == true }}"
+      },
+      {
+        "type": "number",
+        "id": "pb_lg",
+        "label": "Padding bottom (desktop)",
+        "default": 80,
+        "visible_if": "{{ block.settings.enable_padding_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Margin Settings"
+      },
+      {
+        "type": "number",
+        "id": "mt_sm",
+        "label": "Margin top (mobile)",
+        "default": 0
+      },
+      {
+        "type": "number",
+        "id": "mb_sm",
+        "label": "Margin bottom (mobile)",
+        "default": 0
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_margin_lg",
+        "label": "Enable different margin for desktop",
+        "default": false
+      },
+      {
+        "type": "number",
+        "id": "mt_lg",
+        "label": "Margin top (desktop)",
+        "default": 0,
+        "visible_if": "{{ block.settings.enable_margin_lg == true }}"
+      },
+      {
+        "type": "number",
+        "id": "mb_lg",
+        "label": "Margin bottom (desktop)",
+        "default": 0,
+        "visible_if": "{{ block.settings.enable_margin_lg == true }}"
+      }
+    ]
+  }
+{%- endschema -%}
