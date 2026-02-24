@@ -3,24 +3,24 @@
 -%}
 
 {%- capture spacing_variables -%}
-  --theme-pt: {{ s.pt_sm }}px;
-  --theme-pb: {{ s.pb_sm }}px;
+--theme-pt: {{ s.pt_sm }}px;
+--theme-pb: {{ s.pb_sm }}px;
 
-  --theme-mt: {{ s.mt_sm }}px;
-  --theme-mb: {{ s.mb_sm }}px;
-  {% if s.enable_padding_lg == true or s.enable_margin_lg == true -%}
-    @media only screen and (min-width: 1024px) {
-      {% if s.enable_padding_lg == true -%}
-        --theme-pt: {{ s.pt_lg }}px;
-        --theme-pb: {{ s.pb_lg }}px;
-      {% endif -%}
+--theme-mt: {{ s.mt_sm }}px;
+--theme-mb: {{ s.mb_sm }}px;
+{% if s.enable_padding_lg == true or s.enable_margin_lg == true -%}
+@media only screen and (min-width: 1024px) {
+  {% if s.enable_padding_lg == true -%}
+    --theme-pt: {{ s.pt_lg }}px;
+    --theme-pb: {{ s.pb_lg }}px;
+  {% endif -%}
 
-      {% if s.enable_margin_lg == true -%}
-        --theme-mt: {{ s.mt_lg }}px;
-        --theme-mb: {{ s.mb_lg }}px;
-      {% endif -%}
-    }
-  {%- endif %}
+  {% if s.enable_margin_lg == true -%}
+    --theme-mt: {{ s.mt_lg }}px;
+    --theme-mb: {{ s.mb_lg }}px;
+  {% endif -%}
+}
+{%- endif %}
 {%- endcapture -%}
 
 {{ spacing_variables | strip }}
