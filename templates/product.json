@@ -20,8 +20,10 @@
           "type": "_section-spacing",
           "static": true,
           "settings": {
-            "pt_sm": 0,
-            "pb_sm": 0,
+            "enable_custom_padding": false,
+            "enable_custom_margin": false,
+            "pt_sm": 40,
+            "pb_sm": 40,
             "enable_padding_lg": false,
             "pt_lg": 80,
             "pb_lg": 80,
