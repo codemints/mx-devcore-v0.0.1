@@ -135,13 +135,6 @@
             "enable_controls_lg": false,
             "arrows_lg": "false",
             "pagination_lg": "false",
-            "aspect_sm": "16:9",
-            "custom_aspect_sm": "16:9",
-            "orientation_sm": "horizontal",
-            "aspect_lg_on": false,
-            "aspect_lg": "16:9",
-            "custom_aspect_lg": "16:9",
-            "orientation_lg": "horizontal",
             "show_slider_navigation": true,
             "show_slider_modal": true
           },
