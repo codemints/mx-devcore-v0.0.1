@@ -12,6 +12,8 @@
     - overlay: {Boolean} Whether the header overlays the section
 {%- endcomment -%}
 
+{%- assign enable_lg = enable_lg | default: false -%}
+
 {%- capture aspect_sm -%}
   {%- render 'u.aspect-padding',
     ratio: aspect_sm,
