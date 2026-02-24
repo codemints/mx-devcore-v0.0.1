@@ -83,9 +83,9 @@
       {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation', slides: navigation_slides -%}
     {%- endif -%}
 
-    {% comment %} {%- if s.show_slider_modal -%}
+    {%- if s.show_slider_modal -%}
       {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal', slides: modal_slides -%}
-    {%- endif %} {% endcomment %}
+    {%- endif %}
 
     <script type="application/json" ref="main-slider-config">
       {{ s | json }}
