@@ -23,7 +23,7 @@
   assign arrows_classlist = arrows_classlist | default: 'hidden'
   assign pagination_classlist = pagination_classlist | default: 'hidden'
 -%}
-
+<h1>{{ prefix }}</h1>
 <div class="splide" ref="{{ prefix }}-slider-ui" data-custom-variant="{{ variation }}">
   <div class="splide__track" ref="{{ prefix }}-slider-track">
     <ul class="splide__list" ref="{{ prefix }}-slider-list">
