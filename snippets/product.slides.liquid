@@ -23,7 +23,7 @@
 {%- capture slides -%}
   {% for item in resource.media %}
     {%- capture media_type -%}
-      {% comment %} {%- render 'u.media-type', source: item -%} {% endcomment %}
+      {%- render 'u.media-type', source: item -%}
     {%- endcapture -%}
 
     <li class="splide__slide" ref="[]{{ prefix }}-slide">

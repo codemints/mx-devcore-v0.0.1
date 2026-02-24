@@ -53,7 +53,7 @@
 
 <div {% render 'block.attributes' %}>
   <slider-ui data-section-id="{{ section.id }}">
-    {%- render main_slides -%}
+    {{ main_slides }}
 
     {%- if s.show_slider_navigation -%}
       {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation', slides: navigation_slides -%}
