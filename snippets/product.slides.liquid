@@ -1,0 +1,31 @@
+{%- comment -%}
+  This snippet is used to render slides for the product media carousel.
+
+  Accepts:
+    - resource: {Object} the product object for media loop
+    - prefix: {String} determines the slider refs for the <slider-ui> </slider-ui> component
+    - image_classlist: {String} a classlist string to apply to images
+    - video_classlist: {String} a classlist string to apply to videos
+    - iframe_classlist: {String} a classlist string to apply to external videos
+{%- endcomment -%}
+
+{% for item in resource.media %}
+  <li class="splide__slide" ref="[]{{ prefix }}-slide">
+    <div class="slider-image__wrapper relative after:block after:pb-[135%]">
+      <div class="slider-image__inner absolute w-full h-full">
+        {%- case item.media_type -%}
+          {%- when 'image' -%}
+            {{ item
+              | image_url: width: item.width
+              | image_tag: class: 'w-full h-full object-cover'
+            }}
+          {%- when 'video' -%}
+            {{ item
+              | video_tag: class: 'w-full h-full object-cover'
+            }}
+          {%- when 'external_video' -%}
+        {%- endcase -%}
+      </div>
+    </div>
+  </li>
+{%- endfor -%}
