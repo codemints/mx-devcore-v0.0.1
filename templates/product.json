@@ -152,7 +152,14 @@
                 "enable_settings_lg": false,
                 "position_lg": "bottom",
                 "per_page_lg": 4,
-                "gap_lg": 10
+                "gap_lg": 10,
+                "aspect_sm": "square",
+                "custom_aspect_sm": "16:9",
+                "orientation_sm": "horizontal",
+                "enable_aspect_lg": false,
+                "aspect_lg": "16:9",
+                "custom_aspect_lg": "16:9",
+                "orientation_lg": "horizontal"
               },
               "blocks": {}
             },
