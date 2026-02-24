@@ -19,10 +19,14 @@
 -%}
 
 {% for item in resource.media %}
+  {%- capture media_type -%}
+    {%- render 'u.media-type', source: item -%}
+  {%- endcapture -%}
+
   <li class="splide__slide" ref="[]{{ prefix }}-slide">
-    <div class="slider-image__wrapper relative after:block after:pb-[135%]">
+    <div class="slider-image__wrapper relative after:block after:pb-(--aspect-pb)">
       <div class="slider-image__inner absolute w-full h-full">
-        {%- case item.media_type -%}
+        {%- case media_type -%}
           {%- when 'image' -%}
             {{ item
               | image_url: width: item.width
