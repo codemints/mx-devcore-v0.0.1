@@ -195,10 +195,10 @@
         "flex_row": "lg:flex-row",
         "gap_x": 80,
         "basis_lg": 50,
-        "aspect_sm": "16:9",
+        "aspect_sm": "4:3",
         "custom_aspect_sm": "16:9",
         "orientation_sm": "vertical",
-        "aspect_lg_on": false,
+        "enable_aspect_lg": false,
         "aspect_lg": "16:9",
         "custom_aspect_lg": "16:9",
         "orientation_lg": "horizontal"
