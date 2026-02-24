@@ -142,9 +142,9 @@
               "static": true,
               "settings": {
                 "enable_zoom": true,
-                "type": "slide",
-                "per_page_sm": 6,
-                "gap_sm": 10,
+                "type": "fade",
+                "per_page_sm": 2,
+                "gap_sm": 26,
                 "enable_settings_lg": false,
                 "per_page_lg": 4,
                 "gap_lg": 10,
