@@ -32,18 +32,6 @@
   endif
 -%}
 
-<div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
-  <slider-ui>
-
-    <script type="application/json" ref="main-config">
-      {
-        "settings": {},
-        "config": {}
-      }
-    </script>
-  </slider-ui>
-</div>
-
 {%- comment -%} ASPECT RATIO {%- endcomment -%}
   {%- capture aspect_padding -%}
     {%- render 'u.aspect-composition',
@@ -61,11 +49,37 @@
 
 {%- comment -%} STYLES {%- endcomment -%}
   {%- style -%}
-    #shopify-section-{{ section.id }} {
+    #{{ id }} {
       {{ aspect_padding }}
     }
   {%- endstyle -%}
 {%- comment -%} END {%- endcomment -%}
+
+<div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
+  <slider-ui>
+
+    <script type="application/json" ref="main-config">
+      {%- liquid
+        assign type = s.type
+        
+        if s.type == 'slide' and s.loop
+          assign type = 'loop'
+        endif
+      -%}
+
+      {
+        "settings": {},
+        "config": {
+          "type": {{ type | json }},
+          {% if s.type == 'fade' and s.loop %}"rewind": true,{% endif %}
+          "autoplay": {{ s.autoplay }},
+          "arrows": {{ s.show_arrows }},
+          "pagination": {{ s.show_pagination }}
+        }
+      }
+    </script>
+  </slider-ui>
+</div>
 
 {%- schema -%}
   {
