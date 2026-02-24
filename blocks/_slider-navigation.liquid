@@ -30,38 +30,24 @@
 {%- capture margin_classlist -%}
 {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
 {%- endcapture -%}
-{%- comment -%} ASPECT RATIO {%- endcomment -%}
-  {%- capture aspect_pb_sm -%}
-    {%- render 'u.aspect-padding',
-      ratio: s.aspect_sm,
-      custom: s.custom_aspect_sm,
-      orientation: s.orientation_sm,
-      overlay: s.section_overlay_header
-    -%}
-  {%- endcapture -%}
 
-  {%- if s.enable_aspect_lg -%}
-    {%- capture aspect_pb_lg -%}
-      {%- render 'u.aspect-padding',
-        ratio: s.aspect_lg,
-        custom: s.custom_aspect_lg,
-        orientation: s.orientation_lg,
-        overlay: s.section_overlay_header
-      -%}
-    {%- endcapture -%}
-  {%- endif -%}
-{%- comment -%} END {%- endcomment -%}
+{%- capture aspect_padding -%}
+  {%- render 'u.aspect-composition',
+    enable_lg: s.enable_aspect_lg,
+    aspect_sm: s.aspect_sm,
+    custom_sm: s.custom_aspect_sm,
+    orientation_sm: s.orientation_sm,
+    aspect_lg: s.aspect_lg,
+    custom_lg: s.custom_aspect_lg,
+    orientation_lg: s.orientation_lg,
+    overlay: s.section_overlay_header
+  -%}
+{%- endcapture -%}
 
 {%- comment -%} STYLES {%- endcomment -%}
   {%- style -%}
     #{{ id }} {
-      --aspect-pb: {{ aspect_pb_sm }};
-
-      {% if s.enable_aspect_lg -%}
-      @media (width >= 1024px) {
-        --aspect-pb: {{ aspect_pb_lg }};
-      }
-      {%- endif %}
+      {{ aspect_padding }}
     }
   {%- endstyle -%}
 {%- comment -%} END {%- endcomment -%}
