@@ -50,6 +50,98 @@
     "settings": [
       {
         "type": "header",
+        "content": "Carousel Setting"
+      },
+      {
+        "type": "select",
+        "id": "type",
+        "label": "Slide type",
+        "default": "slide",
+        "options": [
+          { "value": "slide", "label": "Slide" },
+          { "value": "fade", "label": "Fade" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Loop",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay slider",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "interval",
+        "label": "Duration",
+        "default": 4000,
+        "min": 250,
+        "max": 9750,
+        "step": 250,
+        "unit": "ms",
+        "visible_if": "{{ block.settings.autoplay }}"
+      },
+      {
+        "type": "range",
+        "id": "speed",
+        "label": "Transition",
+        "default": 1000,
+        "min": 0,
+        "max": 5000,
+        "step": 100,
+        "unit": "ms",
+        "visible_if": "{{ block.settings.autoplay }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay_video",
+        "label": "Autoplay video",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Controls Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_arrows",
+        "label": "Show arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pagination",
+        "label": "Show pagination",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "arrows_on",
+        "label": "Arrows on",
+        "default": "block",
+        "options": [
+          { "value": "block", "label": "All" },
+          { "value": "hidden lg:block", "label": "Desktop" },
+          { "value": "block lg:hidden", "label": "Mobile" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "pagination_on",
+        "label": "Pagination on",
+        "default": "block",
+        "options": [
+          { "value": "block", "label": "All" },
+          { "value": "hidden lg:block", "label": "Desktop" },
+          { "value": "block lg:hidden", "label": "Mobile" }
+        ]
+      },
+      {
+        "type": "header",
         "content": "Aspect Ratio"
       },
       {
