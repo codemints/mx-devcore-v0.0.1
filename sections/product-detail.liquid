@@ -28,8 +28,8 @@
     {%- content_for 'block', type: '_product-information', id: 'product_information', item: resource -%}
   {%- endcapture -%}
 
-  {%- capture product_carousel -%}
-    {%- content_for 'block', type: '_product-slider', id: 'product_slider' -%}
+  {%- capture product_media_carousel -%}
+    {%- content_for 'block', type: '_product-media-carousel', id: 'product_slider', item: resource -%}
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
@@ -77,15 +77,11 @@
 
         <div class="section__main flex {{ flex_col }} {{ flex_row }} lg:items-start gap-x-(--gap-x) gap-y-(--gap-y)">
           <div class="pdp-carousel flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} w-full">
-            {{ product_carousel }}
+            {{ product_media_carousel }}
           </div>
 
           <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} w-full">
             {{ product_information }}
-
-            <script type="application/json" data-product-json data-product-id="{{ resource.id }}">
-              {{ resource | json }}
-            </script>
           </div>
         </div>
       </div>
