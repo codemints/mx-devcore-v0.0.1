@@ -18,14 +18,15 @@
       "blocks": {
         "section_spacing": {
           "type": "_section-spacing",
+          "disabled": true,
           "static": true,
           "settings": {
-            "pt_sm": 200,
-            "pb_sm": 40,
+            "pt_sm": 0,
+            "pb_sm": 0,
             "enable_padding_lg": false,
             "pt_lg": 80,
             "pb_lg": 80,
-            "mt_sm": 300,
+            "mt_sm": 0,
             "mb_sm": 0,
             "enable_margin_lg": false,
             "mt_lg": 0,
@@ -187,7 +188,7 @@
       "name": "Product Detail",
       "settings": {
         "anchor_id": "",
-        "bg_color": "default",
+        "bg_color": "midnight",
         "bg_opacity": 100,
         "bg_size": "full",
         "product": "",
