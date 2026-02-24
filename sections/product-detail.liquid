@@ -43,7 +43,7 @@
     -%}
   {%- endcapture -%}
 
-  {%- if s.aspect_lg_on == true -%}
+  {%- if s.enable_aspect_lg -%}
     {%- capture aspect_pb_lg -%}
       {%- render 'u.aspect-padding',
         ratio: s.aspect_lg,
@@ -74,8 +74,8 @@
 
       --aspect-pb: {{ aspect_pb_sm }};
 
-      {% if s.aspect_lg_on == true -%}
-      @media only screen and (min-width: 1024px) {
+      {% if s.enable_aspect_lg -%}
+      @media (width >= 1024px) {
         --aspect-pb: {{ aspect_pb_lg }};
       }
       {%- endif %}
@@ -291,7 +291,7 @@
       },
       {
         "type": "checkbox",
-        "id": "aspect_lg_on",
+        "id": "enable_aspect_lg",
         "label": "Enable different aspect ratio for desktop",
         "default": false
       },
@@ -317,7 +317,7 @@
           { "value": "21:9", "label": "21:9" },
           { "value": "32:9", "label": "32:9" }
         ],
-        "visible_if": "{{ section.settings.aspect_lg_on }}"
+        "visible_if": "{{ section.settings.enable_aspect_lg }}"
       },
       {
         "type": "text",
@@ -325,7 +325,7 @@
         "label": "Custom aspect ratio (desktop)",
         "default": "16:9",
         "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
-        "visible_if": "{{ section.settings.aspect_lg_on and section.settings.aspect_lg == 'custom' }}"
+        "visible_if": "{{ section.settings.enable_aspect_lg and section.settings.aspect_lg == 'custom' }}"
       },
       {
         "type": "radio",
@@ -336,7 +336,7 @@
           { "value": "vertical", "label": "Portrait" },
           { "value": "horizontal", "label": "Landscape" }
         ],
-        "visible_if": "{{ section.settings.aspect_lg_on and section.settings.aspect_lg != 'custom' and section.settings.aspect_lg != 'square' and section.settings.aspect_lg != 'adapt' and section.settings.aspect_lg != 'fill' }}"
+        "visible_if": "{{ section.settings.enable_aspect_lg and section.settings.aspect_lg != 'custom' and section.settings.aspect_lg != 'square' and section.settings.aspect_lg != 'adapt' and section.settings.aspect_lg != 'fill' }}"
       }
     ],
     "blocks": [],
