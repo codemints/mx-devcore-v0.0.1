@@ -1,9 +1,3 @@
-{%- comment -%} SECTION SPACING {%- endcomment -%}
-{%- capture section_spacing -%}
-{%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
-{%- endcapture -%}
-{%- comment -%} END {%- endcomment -%}
-
 {%- liquid
   assign s = section.settings
   assign gap_x = s.gap_y
@@ -25,7 +19,7 @@
   assign resource = all_products[s.product.handle] | default: product
 -%}
 
-{%- comment -%} Start - Static Blocks {%- endcomment -%}
+{%- comment -%} STATIC BLOCKS {%- endcomment -%}
   {%- capture product_information -%}
     {%- content_for 'block', type: '_product-information', id: 'product_information', item: resource -%}
   {%- endcapture -%}
@@ -33,25 +27,61 @@
   {%- capture product_carousel -%}
     {%- content_for 'block', type: '_product-slider', id: 'product_slider' -%}
   {%- endcapture -%}
-{%- comment -%} End - Static Blocks{%- endcomment -%}
 
-{%- style -%}
-  #shopify-section-{{ section.id }} {
-    {% if section_spacing != blank -%}
-    {{ section_spacing }}
-    {%- endif %}
+  {%- capture section_spacing -%}
+    {%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
+  {%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
 
-    --section-bg-color: var(--c-{{ s.bg_color }});
-    --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+{%- comment -%} ASPECT RATIO {%- endcomment -%}
+  {%- capture aspect_padding_sm -%}
+    {%- render 'u.aspect-padding',
+      ratio: s.aspect_sm,
+      custom: s.custom_aspect_sm,
+      orientation: s.orientation_sm,
+      overlay: s.section_overlay_header
+    -%}
+  {%- endcapture -%}
 
-    --gap-x: {{ gap_x }}px;
-    --gap-y: {{ gap_y }}px;
-    {% if s.enable_layout_lg == true %}
-    --flex-carousel: 1 0 {{ basis_carousel }}%;
-    --flex-detail: 1 0 {{ basis_detail }}%;
-    {% endif %}
-  }
-{%- endstyle -%}
+  {%- if s.aspect_lg_on == true -%}
+    {%- capture aspect_padding_lg -%}
+      {%- render 'u.aspect-padding',
+        ratio: s.aspect_lg,
+        custom: s.custom_aspect_lg,
+        orientation: s.orientation_lg,
+        overlay: s.section_overlay_header
+      -%}
+    {%- endcapture -%}
+  {%- endif -%}
+{%- comment -%} END {%- endcomment -%}
+
+{%- comment -%} STYLES {%- endcomment -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      {% if section_spacing != blank -%}
+      {{ section_spacing }}
+      {%- endif %}
+
+      --section-bg-color: var(--c-{{ s.bg_color }});
+      --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+
+      --gap-x: {{ gap_x }}px;
+      --gap-y: {{ gap_y }}px;
+      {% if s.enable_layout_lg == true %}
+      --flex-carousel: 1 0 {{ basis_carousel }}%;
+      --flex-detail: 1 0 {{ basis_detail }}%;
+      {% endif %}
+
+      --aspect-ratio-padding: {{ aspect_padding_sm }};
+
+      {% if s.aspect_lg_on == true -%}
+      @media only screen and (min-width: 1024px) {
+        --aspect-ratio-padding: {{ aspect_padding_lg }};
+      }
+      {%- endif %}
+    }
+  {%- endstyle -%}
+{%- comment -%} END {%- endcomment -%}
 
 <div {% if s.anchor_id != blank %}id="{{ s.anchor_id }}" {% endif %}class="section__wrapper">
   <div class="{% if s.bg_size == 'full' %} background{% endif %}">
