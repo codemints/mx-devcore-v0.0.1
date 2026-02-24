@@ -70,42 +70,6 @@
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
-{%- comment -%} ASPECT RATIO {%- endcomment -%}
-  {%- capture aspect_padding_sm -%}
-    {%- render 'u.aspect-padding',
-      ratio: s.aspect_sm,
-      custom: s.custom_aspect_sm,
-      orientation: s.orientation_sm,
-      overlay: s.section_overlay_header
-    -%}
-  {%- endcapture -%}
-
-  {%- if s.aspect_lg_on == true -%}
-    {%- capture aspect_padding_lg -%}
-      {%- render 'u.aspect-padding',
-        ratio: s.aspect_lg,
-        custom: s.custom_aspect_lg,
-        orientation: s.orientation_lg,
-        overlay: s.section_overlay_header
-      -%}
-    {%- endcapture -%}
-  {%- endif -%}
-{%- comment -%} END {%- endcomment -%}
-
-{%- comment -%} SECTION STYLES {%- endcomment -%}
-  {%- style -%}
-    #shopify-section-{{ section.id }} {
-      --aspect-ratio-padding: {{ aspect_padding_sm }};
-
-      {% if s.aspect_lg_on == true -%}
-      @media only screen and (min-width: 1024px) {
-        --aspect-ratio-padding: {{ aspect_padding_lg }};
-      }
-      {%- endif %}
-    }
-  {%- endstyle -%}
-{%- comment -%} END {%- endcomment -%}
-
 <div {% render 'block.attributes' %}>
   <slider-ui data-section-id="{{ section.id }}">
     {%- render 'component.slider',
