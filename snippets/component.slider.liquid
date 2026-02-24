@@ -2,8 +2,7 @@
   Reusable Splide slider wrapper.
 
   Accepts:
-    - prefix: {String}  Ref prefix for element targeting (default: 'slider')
-    - variation: {String}  CSS variant identifier (default: 'default')
+    - prefix: {String}  Ref prefix for element targeting
     - slides_html: {String}  Pre-rendered slide <li> elements
     - arrows_html: {String}  Custom arrow markup; ignored if has_arrows is false
     - arrows_classlist: {String} Arrows container classlist to show/hide
@@ -19,12 +18,11 @@
 
 {%- liquid
   assign prefix = prefix | default: 'main'
-  assign variation = variation | default: 'default'
   assign arrows_classlist = arrows_classlist | default: 'hidden'
   assign pagination_classlist = pagination_classlist | default: 'hidden'
 -%}
 
-<div class="splide" ref="{{ prefix }}-slider-ui" data-custom-variant="{{ variation }}">
+<div class="splide" ref="{{ prefix }}-slider-ui" data-custom-variant="{{ prefix }}">
   <div class="splide__track" ref="{{ prefix }}-slider-track">
     <ul class="splide__list" ref="{{ prefix }}-slider-list">
       {%- if slides_html != blank -%}
