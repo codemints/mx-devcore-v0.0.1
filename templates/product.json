@@ -142,12 +142,17 @@
               "static": true,
               "settings": {
                 "enable_zoom": true,
-                "type": "slide",
+                "type": "fade",
                 "per_page_sm": 4,
                 "gap_sm": 10,
                 "enable_settings_lg": false,
                 "per_page_lg": 4,
-                "gap_lg": 10
+                "gap_lg": 10,
+                "arrows_sm": "false",
+                "pagination_sm": "false",
+                "enable_controls_lg": false,
+                "arrows_lg": "false",
+                "pagination_lg": "false"
               },
               "blocks": {}
             }
