@@ -188,7 +188,7 @@
       "name": "Product Detail",
       "settings": {
         "anchor_id": "",
-        "bg_color": "midnight",
+        "bg_color": "default",
         "bg_opacity": 100,
         "bg_size": "full",
         "product": "",
