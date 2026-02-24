@@ -18,7 +18,6 @@
       "blocks": {
         "section_spacing": {
           "type": "_section-spacing",
-          "disabled": true,
           "static": true,
           "settings": {
             "pt_sm": 0,
