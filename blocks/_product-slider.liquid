@@ -33,31 +33,27 @@
   {{ pagination_sm }}{% if s.enable_controls_lg %} {{ pagination_lg }}{% endif %}
 {%- endcapture -%}
 
-{%- comment -%} SLIDES {%- endcomment -%}
-  {%- capture main_slides -%}
+{%- comment -%} SLIDER {%- endcomment -%}
+  {%- capture slider -%}
     {%- render 'product.slides',
       resource: resource,
-      prefix: 'main'
+      prefix: 'main',
+      arrows_classlist: arrows_classlist,
+      pagination_classlist: pagination_classlist
     -%}
-  {%- endcapture -%}
-
-  {%- capture navigation_slides -%}
-  {%- endcapture -%}
-
-  {%- capture modal_slides -%}
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
 <div {% render 'block.attributes' %}>
   <slider-ui data-section-id="{{ section.id }}">
-    {{ main_slides }}
+    {{ slider }}
 
     {%- if s.show_slider_navigation -%}
-      {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation', slides: navigation_slides -%}
+      {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation', data: resource -%}
     {%- endif -%}
 
     {%- if s.show_slider_modal -%}
-      {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal', slides: modal_slides -%}
+      {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal', data: resource -%}
     {%- endif %}
 
     <script type="application/json" ref="main-slider-config">
