@@ -8,11 +8,17 @@
 -%}
 
 <div {% render 'block.attributes' %}>
-  {%- render 'component.slider',
-    prefix: 'modal',
-    variation: 'modal',
-    slides_html: slides
-  -%}
+  <overlay-ui>
+    <div ref="backdrop"></div>
+    
+    <div ref="dialog">
+      {%- render 'component.slider',
+        prefix: 'modal',
+        variation: 'modal',
+        slides_html: slides
+      -%}
+    </div>
+  </overlay-ui>
   
   <script type="application/json" ref="modal-slider-config">
     {{ s | json }}
