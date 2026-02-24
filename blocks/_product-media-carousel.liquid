@@ -70,8 +70,9 @@
       {
         "settings": {},
         "config": {
-          "type": {{ type | json }},{% if s.type == 'fade' and s.loop %}"rewind": true,{% endif %}
-          "autoplay": {{ s.autoplay }},
+          "type": {{ type | json }},{% if s.type == 'fade' and s.loop -%}
+          "rewind": true,
+          {%- endif %}"autoplay": {{ s.autoplay }},
           "arrows": {{ s.show_arrows }},
           "pagination": {{ s.show_pagination }}
         }
