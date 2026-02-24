@@ -197,7 +197,7 @@
         "use_variant": false,
         "variant_id": "",
         "flex_col": "flex-col",
-        "gap_y": 40,
+        "gap_y": 50,
         "enable_layout_lg": false,
         "flex_row": "lg:flex-row",
         "gap_x": 80,
