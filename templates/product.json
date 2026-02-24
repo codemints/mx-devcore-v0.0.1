@@ -16,6 +16,23 @@
     "product_detail_bFFYRL": {
       "type": "product-detail",
       "blocks": {
+        "section_spacing": {
+          "type": "_section-spacing",
+          "static": true,
+          "settings": {
+            "pt_sm": 200,
+            "pb_sm": 40,
+            "enable_padding_lg": false,
+            "pt_lg": 80,
+            "pb_lg": 80,
+            "mt_sm": 300,
+            "mb_sm": 0,
+            "enable_margin_lg": false,
+            "mt_lg": 0,
+            "mb_lg": 0
+          },
+          "blocks": {}
+        },
         "product_information": {
           "type": "_product-information",
           "static": true,
@@ -116,6 +133,13 @@
             "enable_controls_lg": false,
             "arrows_lg": "false",
             "pagination_lg": "false",
+            "aspect_sm": "16:9",
+            "custom_aspect_sm": "16:9",
+            "orientation_sm": "horizontal",
+            "aspect_lg_on": false,
+            "aspect_lg": "16:9",
+            "custom_aspect_lg": "16:9",
+            "orientation_lg": "horizontal",
             "show_slider_navigation": true,
             "show_slider_modal": true
           },
