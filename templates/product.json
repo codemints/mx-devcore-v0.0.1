@@ -165,6 +165,7 @@
             },
             "product_slider_modal": {
               "type": "_slider-modal",
+              "disabled": true,
               "static": true,
               "settings": {
                 "enable_zoom": true,
