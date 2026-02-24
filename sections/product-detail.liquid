@@ -20,16 +20,16 @@
 -%}
 
 {%- comment -%} STATIC BLOCKS {%- endcomment -%}
+  {%- capture section_spacing -%}
+    {%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
+  {%- endcapture -%}
+
   {%- capture product_information -%}
     {%- content_for 'block', type: '_product-information', id: 'product_information', item: resource -%}
   {%- endcapture -%}
 
   {%- capture product_carousel -%}
     {%- content_for 'block', type: '_product-slider', id: 'product_slider' -%}
-  {%- endcapture -%}
-
-  {%- capture section_spacing -%}
-    {%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
