@@ -8,7 +8,7 @@
 -%}
 
 <div {% render 'block.attributes' %}>
-  <overlay-ui>
+  {% comment %} <overlay-ui> {% endcomment %}
     <div ref="backdrop"></div>
     
     <div ref="dialog">
@@ -18,7 +18,7 @@
         slides_html: slides
       -%}
     </div>
-  </overlay-ui>
+  {% comment %} </overlay-ui> {% endcomment %}
   
   <script type="application/json" ref="modal-slider-config">
     {{ s | json }}
