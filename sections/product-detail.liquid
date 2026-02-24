@@ -29,7 +29,11 @@
   {%- endcapture -%}
 
   {%- capture product_media_carousel -%}
-    {%- content_for 'block', type: '_product-media-carousel', id: 'product_slider', item: resource -%}
+    {%- content_for 'block', type: '_product-media-carousel', id: 'product_media_carousel', item: resource -%}
+  {%- endcapture -%}
+
+  {%- capture product_media_modal -%}
+    {%- content_for 'block', type: '_product-media-modal', id: 'product_media_modal', item: resource -%}
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
@@ -87,6 +91,10 @@
     </div>
   </div>
 </div>
+
+{%- if product_media_modal != blank -%}
+  {{ product_media_modal }}
+{%- endif -%}
 
 {%- schema -%}
   {
