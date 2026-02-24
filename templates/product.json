@@ -151,7 +151,7 @@
                 "gap_sm": 8,
                 "enable_settings_lg": false,
                 "position_lg": "bottom",
-                "per_page_lg": 4,
+                "per_page_lg": 3,
                 "gap_lg": 10,
                 "aspect_sm": "square",
                 "custom_aspect_sm": "16:9",
