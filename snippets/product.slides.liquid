@@ -16,29 +16,40 @@
   assign image_classlist = image_classlist | default: default_classlist
   assign video_classlist = video_classlist | default: default_classlist
   assign iframe_classlist = iframe_classlist | default: default_classlist
+  assign arrows_classlist = arrows_classlist | default: 'hidden'
+  assign pagination_classlist = pagination_classlist | default: 'hidden'
 -%}
 
-{% for item in resource.media %}
-  {%- capture media_type -%}
-    {%- render 'u.media-type', source: item -%}
-  {%- endcapture -%}
+{%- capture slides -%}
+  {% for item in resource.media %}
+    {%- capture media_type -%}
+      {%- render 'u.media-type', source: item -%}
+    {%- endcapture -%}
 
-  <li class="splide__slide" ref="[]{{ prefix }}-slide">
-    <div class="slider-image__wrapper relative after:block after:pb-(--aspect-pb)">
-      <div class="slider-image__inner absolute w-full h-full">
-        {%- case media_type -%}
-          {%- when 'image' -%}
-            {{ item
-              | image_url: width: item.width
-              | image_tag: class: image_classlist
-            }}
-          {%- when 'video' -%}
-            {{ item
-              | video_tag: class: video_classlist
-            }}
-          {%- when 'external_video' -%}
-        {%- endcase -%}
+    <li class="splide__slide" ref="[]{{ prefix }}-slide">
+      <div class="slider-image__wrapper relative after:block after:pb-(--aspect-pb)">
+        <div class="slider-image__inner absolute w-full h-full">
+          {%- case media_type -%}
+            {%- when 'image' -%}
+              {{ item
+                | image_url: width: item.width
+                | image_tag: class: image_classlist
+              }}
+            {%- when 'video' -%}
+              {{ item
+                | video_tag: class: video_classlist
+              }}
+            {%- when 'external_video' -%}
+          {%- endcase -%}
+        </div>
       </div>
-    </div>
-  </li>
-{%- endfor -%}
+    </li>
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- render 'component.slider',
+  prefix: prefix,
+  slides_html: slides,
+  arrows_classlist: arrows_classlist
+  pagination_classlist: pagination_classlist
+-%}
