@@ -1,0 +1,76 @@
+{%- comment -%}
+  This snippet is used to calculate the padding for a media element based on the aspect ratio.
+
+  Accepts:
+    - ratio: {String} The aspect ratio to calculate the padding value.
+    - custom: {String} A custom value to use if ratio value is 'custom'
+    - orientation: {String} The orientation of the image - either 'vertical' or 'horizontal'
+    - source: {Object} The media object to get aspect ratio from if ratio value is 'adapt'
+    - overlay: {Boolean} Whether the section is set to 'Overlay header'
+
+  Returns:
+    - padding_bottom: {String} The padding bottom value to apply to the element.
+
+  Usage:
+    {% render 'utility-aspect-ratio',
+      ratio: 'custom',
+      custom: '3:4',
+      orientation: 'vertical',
+      overlay: true
+    %}
+{%- endcomment -%}
+
+{%- capture media_type -%}
+  {%- render 'utility.media-type', source: source -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign value = null
+  assign orientation = orientation | default: 'horizontal'
+  assign overlay = overlay | default: false
+
+  if media_type == 'youtube' or media_type == 'vimeo'
+    assign value = 56.25
+  else
+    if ratio == 'square'
+      assign value = 100
+    elsif ratio == 'fill'
+      if overlay
+        assign value = 'calc(100dvh - var(--topbar-height))'
+      else
+        assign value = 'calc(100dvh - var(--header-height))'
+      endif
+    else
+      assign evaluate = null
+
+      if ratio == 'adapt'
+        assign evaluate = 1.00 | divided_by: source.aspect_ratio
+      else
+        assign width = null
+        assign height = null
+
+        if ratio == 'custom'
+          assign width = custom | split: ':' | first | times: 1.0
+          assign height = custom | split: ':' | last | times: 1.0
+        else
+          assign width = ratio | split: ':' | first | times: 1.0
+          assign height = ratio | split: ':' | last | times: 1.0
+        endif
+
+        assign evaluate = width | divided_by: height
+      endif
+
+      if orientation == 'horizontal' and ratio != 'adapt'
+        assign evaluate = 1.00 | divided_by: evaluate
+      endif
+
+      assign value = evaluate | times: 100 | round: 2
+    endif
+  endif
+
+  unless ratio == 'fill'
+    assign value = value | append: '%'
+  endunless
+-%}
+
+{{ value | strip_newlines | strip }}
