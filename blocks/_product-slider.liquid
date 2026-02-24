@@ -37,7 +37,7 @@
   {% for item in resource.media %}
     <li class="splide__slide" ref="[]$PREFIX$-slide">
       <div class="slider-image__wrapper aspect-square overflow-hidden relative">
-        <div class="slider-image__inner absolute">
+        <div class="slider-image__inner absolute flex items-center justify-center">
           {%- case item.media_type -%}
             {%- when 'image' -%}
               {{ item
