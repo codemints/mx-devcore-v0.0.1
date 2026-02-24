@@ -1,9 +1,3 @@
-{%- comment -%} SECTION SPACING {%- endcomment -%}
-{%- capture section_spacing -%}
-  {%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
-{%- endcapture -%}
-{%- comment -%} END {%- endcomment -%}
-
 {%- liquid
   assign s = block.settings
   assign resource = closest.product | default: product
@@ -101,10 +95,6 @@
 {%- comment -%} SECTION STYLES {%- endcomment -%}
   {%- style -%}
     #shopify-section-{{ section.id }} {
-      {% if section_spacing != blank -%}
-      {{ section_spacing }}
-      {%- endif %}
-
       --aspect-ratio-padding: {{ aspect_padding_sm }};
 
       {% if s.aspect_lg_on == true -%}
