@@ -1,5 +1,6 @@
 {%- liquid
   assign s = block.settings
+  assign attrs = block.shopify_attributes
   assign sid = section.id
   assign bid = block.id
 
@@ -18,7 +19,24 @@
   # theme-check-disable UndefinedObject
   assign resource = data | default: closest.product | default: product
   # theme-check-enable UndefinedObject
+
+  assign arrows_classlist = 'hidden'
+  assign pagination_classlist = 'hidden'
+
+  if s.show_arrows
+    assign arrows_classlist = s.arrows_on
+  endif
+
+  if s.show_pagination
+    assign pagination_classlist = s.pagination_on
+  endif
 -%}
+
+<div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
+  <slider-ui>
+    
+  </slider-ui>
+</div>
 
 {%- comment -%} ASPECT RATIO {%- endcomment -%}
   {%- capture aspect_padding -%}
