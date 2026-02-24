@@ -37,8 +37,8 @@
   {%- capture slider_slides -%}
     {% for item in resource.media %}
       <li class="splide__slide" ref="[]$PREFIX$-slide">
-        <div class="slider-image__wrapper">
-          <div class="slider-image__inner">
+        <div class="slider-image__wrapper relative after:block after:pb-[100%]">
+          <div class="slider-image__inner absolute">
             {%- case item.media_type -%}
               {%- when 'image' -%}
                 {{ item
