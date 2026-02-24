@@ -37,16 +37,16 @@
   {% for item in resource.media %}
     <li class="splide__slide aspect-square" ref="[]$PREFIX$-slide">
       <div class="slider-image__wrapper">
-        <div class="slider-image__inner w-full">
+        <div class="slider-image__inner">
           {%- case item.media_type -%}
             {%- when 'image' -%}
               {{ item
                 | image_url: width: item.width
-                | image_tag: class: 'w-full h-full object-$IMAGE_FIT$'
+                | image_tag: class: 'aspect-1 w-full h-full object-$IMAGE_FIT$'
               }}
             {%- when 'video' -%}
               {{ item
-                | video_tag: class: 'w-full h-full object-$VIDEO_FIT$'
+                | video_tag: class: 'aspect-1 w-full h-full object-$VIDEO_FIT$'
               }}
             {%- when 'external_video' -%}
           {%- endcase -%}
