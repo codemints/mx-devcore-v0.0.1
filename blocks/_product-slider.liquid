@@ -33,40 +33,42 @@
   {{ pagination_sm }}{% if s.enable_controls_lg %} {{ pagination_lg }}{% endif %}
 {%- endcapture -%}
 
-{%- capture slider_slides -%}
-  {% for item in resource.media %}
-    <li class="splide__slide" ref="[]$PREFIX$-slide">
-      <div class="slider-image__wrapper">
-        <div class="slider-image__inner">
-          {%- case item.media_type -%}
-            {%- when 'image' -%}
-              {{ item
-                | image_url: width: item.width
-                | image_tag: class: 'w-full h-full object-$IMAGE_FIT$'
-              }}
-            {%- when 'video' -%}
-              {{ item
-                | video_tag: class: 'w-full h-full object-$VIDEO_FIT$'
-              }}
-            {%- when 'external_video' -%}
-          {%- endcase -%}
+{%- comment -%} SLIDES {%- endcomment -%}
+  {%- capture slider_slides -%}
+    {% for item in resource.media %}
+      <li class="splide__slide" ref="[]$PREFIX$-slide">
+        <div class="slider-image__wrapper">
+          <div class="slider-image__inner">
+            {%- case item.media_type -%}
+              {%- when 'image' -%}
+                {{ item
+                  | image_url: width: item.width
+                  | image_tag: class: 'w-full h-full object-$IMAGE_FIT$'
+                }}
+              {%- when 'video' -%}
+                {{ item
+                  | video_tag: class: 'w-full h-full object-$VIDEO_FIT$'
+                }}
+              {%- when 'external_video' -%}
+            {%- endcase -%}
+          </div>
         </div>
-      </div>
-    </li>
-  {%- endfor -%}
-{%- endcapture -%}
+      </li>
+    {%- endfor -%}
+  {%- endcapture -%}
 
-{%- capture main_slides -%}
-  {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
-{%- endcapture -%}
+  {%- capture main_slides -%}
+    {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
+  {%- endcapture -%}
 
-{%- capture navigation_slides -%}
-  {{ slider_slides | replace: '$PREFIX$', 'navigation' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
-{%- endcapture -%}
+  {%- capture navigation_slides -%}
+    {{ slider_slides | replace: '$PREFIX$', 'navigation' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
+  {%- endcapture -%}
 
-{%- capture modal_slides -%}
-  {{ slider_slides | replace: '$PREFIX$', 'modal' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
-{%- endcapture -%}
+  {%- capture modal_slides -%}
+    {{ slider_slides | replace: '$PREFIX$', 'modal' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
+  {%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
 
 {%- comment -%} ASPECT RATIO {%- endcomment -%}
   {%- capture aspect_padding_sm -%}
@@ -100,16 +102,6 @@
           --aspect-ratio-padding: {{ aspect_padding_lg }};
         }
       {%- endif %}
-
-      --grid-cols-sm: repeat({{ s.grid_cols_sm }}, 1fr);
-      --gap-x-sm: {{ s.gap_x_sm }}px;
-      --gap-y-sm: {{ s.gap_y_sm }}px;
-
-      {%- if s.enable_grid_lg == true -%}
-        --grid-cols-lg: repeat({{ s.grid_cols_lg }}, 1fr);
-        --gap-x-lg: {{ s.gap_x_lg }}px;
-        --gap-y-lg: {{ s.gap_y_lg }}px;
-      {%- endif -%}
     }
   {%- endstyle -%}
 {%- comment -%} END {%- endcomment -%}
