@@ -141,7 +141,6 @@
           "blocks": {
             "product_slider_navigation": {
               "type": "_slider-navigation",
-              "disabled": true,
               "static": true,
               "settings": {
                 "mt_sm": "mt-2.5",
