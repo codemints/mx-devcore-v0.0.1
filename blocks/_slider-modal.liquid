@@ -3,7 +3,7 @@
 
   # PROP DECLARATIONS
   # theme-check-disable UndefinedObject
-  assign slides = slides
+  assign data = data
   # theme-check-enable UndefinedObject
   
   assign arrows_sm = 'hidden'
@@ -37,18 +37,21 @@
   {{ pagination_sm }}{% if s.enable_controls_lg %} {{ pagination_lg }}{% endif %}
 {%- endcapture -%}
 
+{%- capture slider -%}
+  {%- render 'product.slides',
+    resource: data,
+    prefix: 'modal',
+    arrows_classlist: arrows_classlist,
+    pagination_classlist: pagination_classlist
+  -%}
+{%- endcapture -%}
+
 <div {% render 'block.attributes' %}>
   <overlay-ui>
     <div ref="backdrop"></div>
     
     <div ref="dialog">
-      {%- render 'component.slider',
-        prefix: 'modal',
-        variation: 'modal',
-        slides_html: slides
-        arrows_classlist: arrows_classlist
-        pagination_classlist: pagination_classlist
-      -%}
+      {{ slider }}
     </div>
   </overlay-ui>
   
