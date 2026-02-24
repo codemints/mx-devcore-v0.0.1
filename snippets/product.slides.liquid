@@ -9,6 +9,15 @@
     - iframe_classlist: {String} a classlist string to apply to external videos
 {%- endcomment -%}
 
+{%- liquid
+  assign default_classlist = 'w-full h-full object-cover'
+  assign resource = resource | default: closest.product
+  assign prefix = prefix | default: 'main'
+  assign image_classlist = image_classlist | default: default_classlist
+  assign video_classlist = video_classlist | default: default_classlist
+  assign iframe_classlist = iframe_classlist | default: default_classlist
+-%}
+
 {% for item in resource.media %}
   <li class="splide__slide" ref="[]{{ prefix }}-slide">
     <div class="slider-image__wrapper relative after:block after:pb-[135%]">
@@ -17,11 +26,11 @@
           {%- when 'image' -%}
             {{ item
               | image_url: width: item.width
-              | image_tag: class: 'w-full h-full object-cover'
+              | image_tag: class: image_classlist
             }}
           {%- when 'video' -%}
             {{ item
-              | video_tag: class: 'w-full h-full object-cover'
+              | video_tag: class: video_classlist
             }}
           {%- when 'external_video' -%}
         {%- endcase -%}
