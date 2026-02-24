@@ -34,39 +34,20 @@
 {%- endcapture -%}
 
 {%- comment -%} SLIDES {%- endcomment -%}
-  {%- capture slider_slides -%}
-    {% for item in resource.media %}
-      <li class="splide__slide" ref="[]$PREFIX$-slide">
-        <div class="slider-image__wrapper relative after:block after:pb-[135%]">
-          <div class="slider-image__inner absolute w-full h-full">
-            {%- case item.media_type -%}
-              {%- when 'image' -%}
-                {{ item
-                  | image_url: width: item.width
-                  | image_tag: class: 'w-full h-full object-cover'
-                }}
-              {%- when 'video' -%}
-                {{ item
-                  | video_tag: class: 'w-full h-full object-cover'
-                }}
-              {%- when 'external_video' -%}
-            {%- endcase -%}
-          </div>
-        </div>
-      </li>
-    {%- endfor -%}
-  {%- endcapture -%}
-
   {%- capture main_slides -%}
-    {{ slider_slides | replace: '$PREFIX$', 'main' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
+    {%- render 'product.slides',
+      resource: resource,
+      prefix: 'main',
+      image_classlist: 'cover',
+      video_classlist: 'cover',
+      iframe_classlist: 'cover'
+    -%}
   {%- endcapture -%}
 
   {%- capture navigation_slides -%}
-    {{ slider_slides | replace: '$PREFIX$', 'navigation' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
   {%- endcapture -%}
 
   {%- capture modal_slides -%}
-    {{ slider_slides | replace: '$PREFIX$', 'modal' | replace: '$IMAGE_FIT$', 'cover' | replace: '$VIDEO_FIT$', 'cover' }}
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
