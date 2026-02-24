@@ -3,9 +3,16 @@
 
   # PROP DECLARATIONS
   # theme-check-disable UndefinedObject
-  assign slider = slider
+  assign data = data
   # theme-check-enable UndefinedObject
 -%}
+
+{%- capture slider -%}
+  {%- render 'product.slides',
+    resource: data,
+    prefix: 'navigation'
+  -%}
+{%- endcapture -%}
 
 {%- capture margin_classlist -%}
 {{ s.mt_sm }}{% if s.enable_mt_lg %} {{ s.mt_lg }}{% endif %}
