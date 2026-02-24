@@ -143,7 +143,7 @@
               "settings": {
                 "enable_zoom": true,
                 "type": "slide",
-                "per_page_sm": 3,
+                "per_page_sm": 6,
                 "gap_sm": 10,
                 "enable_settings_lg": false,
                 "per_page_lg": 4,
