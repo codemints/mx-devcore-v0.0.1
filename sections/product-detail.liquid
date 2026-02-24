@@ -34,7 +34,7 @@
 {%- comment -%} END {%- endcomment -%}
 
 {%- comment -%} ASPECT RATIO {%- endcomment -%}
-  {%- capture aspect_padding_sm -%}
+  {%- capture aspect_pb_sm -%}
     {%- render 'u.aspect-padding',
       ratio: s.aspect_sm,
       custom: s.custom_aspect_sm,
@@ -44,7 +44,7 @@
   {%- endcapture -%}
 
   {%- if s.aspect_lg_on == true -%}
-    {%- capture aspect_padding_lg -%}
+    {%- capture aspect_pb_lg -%}
       {%- render 'u.aspect-padding',
         ratio: s.aspect_lg,
         custom: s.custom_aspect_lg,
@@ -72,11 +72,11 @@
       --flex-detail: 1 0 {{ basis_detail }}%;
       {% endif %}
 
-      --aspect-ratio-padding: {{ aspect_padding_sm }};
+      --aspect-pb: {{ aspect_pb_sm }};
 
       {% if s.aspect_lg_on == true -%}
       @media only screen and (min-width: 1024px) {
-        --aspect-ratio-padding: {{ aspect_padding_lg }};
+        --aspect-pb: {{ aspect_pb_lg }};
       }
       {%- endif %}
     }
