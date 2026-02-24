@@ -113,7 +113,7 @@
             "autoplay_video": false,
             "arrows_sm": "false",
             "pagination_sm": "false",
-            "enable_controls_lg": true,
+            "enable_controls_lg": false,
             "arrows_lg": "false",
             "pagination_lg": "false",
             "show_slider_navigation": true,
@@ -142,7 +142,7 @@
               "static": true,
               "settings": {
                 "enable_zoom": true,
-                "type": "fade",
+                "type": "slide",
                 "per_page_sm": 2,
                 "gap_sm": 26,
                 "enable_settings_lg": false,
