@@ -3,7 +3,7 @@
 
   # PROP DECLARATIONS
   # theme-check-disable UndefinedObject
-  assign slides = slides
+  assign slider = slider
   # theme-check-enable UndefinedObject
 -%}
 
@@ -12,11 +12,7 @@
 {%- endcapture -%}
 
 <div {% render 'block.attributes', classlist: margin_classlist %}>
-  {%- render 'component.slider',
-    prefix: 'navigation',
-    variation: 'navigation',
-    slides_html: slides
-  -%}
+  {{ slider }}
   
   <script type="application/json" ref="navigation-slider-config">
     {{ s | json }}
