@@ -1,11 +1,8 @@
 import Component from '@js/core/component'
 
-class OffCanvas extends Component {
+class OverlayUi extends Component {
   constructor() {
     super()
-  }
-
-  toggle(invoker) {
   }
 
   connectedCallback() {
@@ -15,4 +12,4 @@ class OffCanvas extends Component {
   }
 }
 
-export default OffCanvas
+export default OverlayUi

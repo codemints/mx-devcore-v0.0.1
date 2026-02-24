@@ -1,0 +1,40 @@
+{%- comment -%}
+  Reusable Splide slider wrapper.
+
+  Accepts:
+    - prefix: {String}  Ref prefix for element targeting
+    - slides_html: {String}  Pre-rendered slide <li> elements
+    - arrows_html: {String}  Custom arrow markup; ignored if has_arrows is false
+    - arrows_classlist: {String} Arrows container classlist to show/hide
+    - pagination_classlist: {String} Pagination container classlist to show/hide
+
+  Usage:
+    {%- render 'component.slider',
+      prefix: 'navigation',
+      slides_html: slide_markup
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign prefix = prefix | default: 'main'
+  assign arrows_classlist = arrows_classlist | default: 'hidden'
+  assign pagination_classlist = pagination_classlist | default: 'hidden'
+-%}
+
+<div class="splide" ref="{{ prefix }}-slider-ui" data-custom-variant="{{ prefix }}">
+  <div class="splide__track" ref="{{ prefix }}-slider-track">
+    <ul class="splide__list" ref="{{ prefix }}-slider-list">
+      {%- if slides_html != blank -%}
+        {{ slides_html }}
+      {%- endif -%}
+    </ul>
+  </div>
+  
+  <div class="splide__arrows {{ arrows_classlist }}" ref="{{ prefix }}-slider-arrows">
+    {%- if arrows_html != blank -%}
+      {{ arrows_html }}
+    {%- endif -%}
+  </div>
+  
+  <ul class="splide__pagination {{ pagination_classlist }}" ref="{{ prefix }}-slider-pagination"></ul>
+</div>

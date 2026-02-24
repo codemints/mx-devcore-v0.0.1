@@ -1,8 +1,11 @@
 import Component from '@js/core/component'
 
-class Modal extends Component {
+class OffcanvasUi extends Component {
   constructor() {
     super()
+  }
+
+  toggle(invoker) {
   }
 
   connectedCallback() {
@@ -12,4 +15,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal
+export default OffcanvasUi

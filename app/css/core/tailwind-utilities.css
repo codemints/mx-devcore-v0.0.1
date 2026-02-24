@@ -10,6 +10,7 @@ TABLE OF CONTENTS
 
 /* SECTION CLASSNAMES */
   @utility background {
+    @apply section-my;
     background-color: oklch(from var(--section-bg-color) l c h / var(--section-bg-opacity, 1));
   }
 

@@ -1,0 +1,46 @@
+{%- comment -%}
+  This snippet is used to render aspect ratio padding variables. The main purpose of this snippet is to clean up implementation in sections and blocks.
+
+  Accepts:
+    - enable_lg: {Boolean} Will render different aspect for desktop and mobile
+    - aspect_sm: {String} The base aspect ratio, represented as 'number:number'
+    - aspect_lg: {String} For desktop
+    - custom_sm: {String} A custom base aspect ratio, represented as 'nuber:number'
+    - custom_lg: {String} For desktop
+    - orientation_sm: {String} Used to determine the proper aspect ratio order for portrait or landscape orientations
+    - orientation_lg: {String} For desktop
+    - overlay: {Boolean} Whether the header overlays the section
+{%- endcomment -%}
+
+{%- assign enable_lg = enable_lg | default: false -%}
+
+{%- capture aspect_sm -%}
+  {%- render 'u.aspect-padding',
+    ratio: aspect_sm,
+    custom: custom_sm,
+    orientation: orientation_sm,
+    overlay: overlay
+  -%}
+{%- endcapture -%}
+
+{%- if enable_lg -%}
+  {%- capture aspect_lg -%}
+    {%- render 'u.aspect-padding',
+      ratio: aspect_lg,
+      custom: custom_lg,
+      orientation: orientation_lg,
+      overlay: overlay
+    -%}
+  {%- endcapture -%}
+{%- endif -%}
+
+{%- capture aspect_variables -%}
+--aspect-pb: {{ aspect_sm }};
+{% if enable_lg -%}
+@media (width >= 1024px) {
+  --aspect-pb: {{ aspect_lg }};
+}
+{%- endif %}
+{%- endcapture -%}
+
+{{ aspect_variables }}

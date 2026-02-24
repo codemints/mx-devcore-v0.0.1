@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/js/components/*"],
-      "@core/*": ["src/js/core/*"],
-      "@lib/*": ["src/js/lib/*"],
-      "@stores/*": ["src/js/stores/*"],
-      "@css/*": ["src/css/*"],
-      "@js/*": ["src/js/*"],
-      "@/*": ["src/*"]
+      "@components/*": ["app/js/components/*"],
+      "@core/*": ["app/js/core/*"],
+      "@lib/*": ["app/js/lib/*"],
+      "@stores/*": ["app/js/stores/*"],
+      "@css/*": ["app/css/*"],
+      "@js/*": ["app/js/*"],
+      "@/*": ["app/*"]
     },
     "target": "ES2022",
     "module": "ESNext",

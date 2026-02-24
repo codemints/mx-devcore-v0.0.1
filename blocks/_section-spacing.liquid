@@ -1,0 +1,137 @@
+{%- liquid
+  assign s = block.settings
+-%}
+
+{%- capture padding_variables -%}
+--theme-pt: {{ s.pt_sm }}px;
+--theme-pb: {{ s.pb_sm }}px;
+{% if s.enable_padding_lg %}
+@media (width >= 1024px) {
+  --theme-pt: {{ s.pt_lg }}px;
+  --theme-pb: {{ s.pb_lg }}px;
+}
+{% endif %}
+{%- endcapture %}
+
+{%- capture margin_variables -%}
+--theme-mt: {{ s.mt_sm }}px;
+--theme-mb: {{ s.mb_sm }}px;
+{% if s.enable_margin_lg == true -%}
+@media (width >= 1024px) {
+  --theme-mt: {{ s.mt_lg }}px;
+  --theme-mb: {{ s.mb_lg }}px;
+}
+{% endif -%}
+{%- endcapture -%}
+
+{%- capture spacing_variables -%}
+  {%- if s.enable_custom_padding -%}
+    {{ padding_variables }}
+  {%- endif -%}
+  {%- if s.enable_custom_margin -%}
+    {{ margin_variables }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{{ spacing_variables | strip }}
+
+{%- schema -%}
+  {
+    "name": "Section Spacing",
+    "tag": null,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_custom_padding",
+        "label": "Enable custom padding",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_margin",
+        "label": "Enable custom margin",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings",
+        "visible_if": "{{ block.settings.enable_custom_padding }}"
+      },
+      {
+        "type": "number",
+        "id": "pt_sm",
+        "label": "Padding top",
+        "default": 40,
+        "visible_if": "{{ block.settings.enable_custom_padding }}"
+      },
+      {
+        "type": "number",
+        "id": "pb_sm",
+        "label": "Padding bottom",
+        "default": 40,
+        "visible_if": "{{ block.settings.enable_custom_padding }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_padding_lg",
+        "label": "Enable different padding for desktop",
+        "default": false,
+        "visible_if": "{{ block.settings.enable_custom_padding }}"
+      },
+      {
+        "type": "number",
+        "id": "pt_lg",
+        "label": "Padding top (desktop)",
+        "default": 80,
+        "visible_if": "{{ block.settings.enable_custom_padding and block.settings.enable_padding_lg == true }}"
+      },
+      {
+        "type": "number",
+        "id": "pb_lg",
+        "label": "Padding bottom (desktop)",
+        "default": 80,
+        "visible_if": "{{ block.settings.enable_custom_padding and block.settings.enable_padding_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Margin Settings",
+        "visible_if": "{{ block.settings.enable_custom_margin }}"
+      },
+      {
+        "type": "number",
+        "id": "mt_sm",
+        "label": "Margin top (mobile)",
+        "default": 0,
+        "visible_if": "{{ block.settings.enable_custom_margin }}"
+      },
+      {
+        "type": "number",
+        "id": "mb_sm",
+        "label": "Margin bottom (mobile)",
+        "default": 0,
+        "visible_if": "{{ block.settings.enable_custom_margin }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_margin_lg",
+        "label": "Enable different margin for desktop",
+        "default": false,
+        "visible_if": "{{ block.settings.enable_custom_margin }}"
+      },
+      {
+        "type": "number",
+        "id": "mt_lg",
+        "label": "Margin top (desktop)",
+        "default": 0,
+        "visible_if": "{{ block.settings.enable_custom_margin and block.settings.enable_margin_lg == true }}"
+      },
+      {
+        "type": "number",
+        "id": "mb_lg",
+        "label": "Margin bottom (desktop)",
+        "default": 0,
+        "visible_if": "{{ block.settings.enable_custom_margin and block.settings.enable_margin_lg == true }}"
+      }
+    ]
+  }
+{%- endschema -%}

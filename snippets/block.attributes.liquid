@@ -1,0 +1,17 @@
+{%- liquid
+  assign sid = section.id
+  assign bid = block.id
+
+  assign prefix = 'theme-block__'
+
+  assign id_parts = bid | split: '__'
+  assign unique = id_parts | first
+  assign name = id_parts | last
+
+  assign block_id = sid | append: '--' | append: bid | append: '__'
+
+  assign id = prefix | append: block_id | append: unique
+  assign classname = prefix | append: name
+-%}
+
+id="{{ id }}" class="theme-block {{ classname }}{% if classlist != blank %} {{ classlist }}{% endif %}" {{ block.shopify_attributes }}

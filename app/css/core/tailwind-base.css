@@ -9,7 +9,7 @@
 
   [data-header-sticky] {
     [id$="header_primary"] {
-      @apply sticky top-0;
+      @apply sticky top-0 z-10;
     }
   }
 
@@ -71,5 +71,16 @@
     font-weight: var(--weight-h5-6);
     line-height: var(--leading-h6);
     letter-spacing: var(--tracking-h6);
+  }
+
+  [ref="navigation-slider-list"] {
+    .splide__slide {
+      border: 2px solid transparent;
+      transition: border-color 0.2s ease;
+
+      &.is-active {
+        border-color: red;
+      }
+    }
   }
 }

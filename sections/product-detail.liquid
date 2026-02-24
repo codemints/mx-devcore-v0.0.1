@@ -19,32 +19,59 @@
   assign resource = all_products[s.product.handle] | default: product
 -%}
 
-{%- comment -%} Start - Static Blocks {%- endcomment -%}
+{%- comment -%} STATIC BLOCKS {%- endcomment -%}
+  {%- capture section_spacing -%}
+    {%- content_for 'block', type: '_section-spacing', id: 'section_spacing' -%}
+  {%- endcapture -%}
+
   {%- capture product_information -%}
-    {%- content_for 'block', type: '_product-information', id: 'product-information', item: resource -%}
+    {%- content_for 'block', type: '_product-information', id: 'product_information', item: resource -%}
   {%- endcapture -%}
 
   {%- capture product_carousel -%}
-    {%- content_for 'block', type: '_product-carousel', id: 'product-carousel' -%}
+    {%- content_for 'block', type: '_product-slider', id: 'product_slider' -%}
   {%- endcapture -%}
-{%- comment -%} End - Static Blocks{%- endcomment -%}
+{%- comment -%} END {%- endcomment -%}
 
-{%- style -%}
-  #shopify-section-{{ section.id }} {
-    --section-bg-color: var(--c-{{ s.bg_color }});
-    --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+{%- comment -%} ASPECT RATIO {%- endcomment -%}
+  {%- capture aspect_padding -%}
+    {%- render 'u.aspect-composition',
+      enable_lg: s.enable_aspect_lg,
+      aspect_sm: s.aspect_sm,
+      custom_sm: s.custom_aspect_sm,
+      orientation_sm: s.orientation_sm,
+      aspect_lg: s.aspect_lg,
+      custom_lg: s.custom_aspect_lg,
+      orientation_lg: s.orientation_lg,
+      overlay: s.section_overlay_header
+    -%}
+  {%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
 
-    --gap-x: {{ gap_x }}px;
-    --gap-y: {{ gap_y }}px;
-    {% if s.enable_layout_lg == true %}
-    --flex-carousel: 1 0 {{ basis_carousel }}%;
-    --flex-detail: 1 0 {{ basis_detail }}%;
-    {% endif %}
-  }
-{%- endstyle -%}
+{%- comment -%} STYLES {%- endcomment -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      {% if section_spacing != blank -%}
+      {{ section_spacing }}
+      {%- endif %}
+
+      --section-bg-color: var(--c-{{ s.bg_color }});
+      --section-bg-opacity: {{ s.bg_opacity | times: 0.01 }};
+
+      --gap-x: {{ gap_x }}px;
+      --gap-y: {{ gap_y }}px;
+      {% if s.enable_layout_lg == true %}
+      --flex-carousel: 1 0 {{ basis_carousel }}%;
+      --flex-detail: 1 0 {{ basis_detail }}%;
+      {% endif %}
+
+      {{ aspect_padding }}
+    }
+  {%- endstyle -%}
+{%- comment -%} END {%- endcomment -%}
 
 <div {% if s.anchor_id != blank %}id="{{ s.anchor_id }}" {% endif %}class="section__wrapper">
-  <div class="{% if s.bg_size == 'full' %} background{% endif %}">
+  <div class="section__inner{% if s.bg_size == 'full' %} background{% endif %}">
     <div class="section__container container">
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
 
@@ -55,6 +82,10 @@
 
           <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} w-full">
             {{ product_information }}
+
+            <script type="application/json" data-product-json data-product-id="{{ resource.id }}">
+              {{ resource | json }}
+            </script>
           </div>
         </div>
       </div>
@@ -198,11 +229,104 @@
         "step": 1,
         "unit": "%",
         "visible_if": "{{ section.settings.enable_layout_lg == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Aspect Ratio"
+      },
+      {
+        "type": "select",
+        "id": "aspect_sm",
+        "label": "Aspect ratio",
+        "default": "16:9",
+        "options": [
+          { "value": "custom", "label": "Custom" },
+          { "value": "square", "label": "Square" },
+          { "value": "fill", "label": "Fill" },
+          { "value": "2:1", "label": "2:1" },
+          { "value": "3:2", "label": "3:2" },
+          { "value": "4:3", "label": "4:3"},
+          { "value": "5:4", "label": "5:4" },
+          { "value": "6:5", "label": "6:5" },
+          { "value": "7:6", "label": "7:6" },
+          { "value": "8:7", "label": "8:7" },
+          { "value": "9:8", "label": "9:8" },
+          { "value": "10:9", "label": "10:9" },
+          { "value": "16:9", "label": "16:9" },
+          { "value": "21:9", "label": "21:9" },
+          { "value": "32:9", "label": "32:9" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_aspect_sm",
+        "label": "Custom aspect ratio",
+        "default": "16:9",
+        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
+        "visible_if": "{{ section.settings.aspect_sm == 'custom' }}"
+      },
+      {
+        "type": "radio",
+        "id": "orientation_sm",
+        "label": "Media orientation",
+        "default": "horizontal",
+        "options": [
+          { "value": "vertical", "label": "Portrait" },
+          { "value": "horizontal", "label": "Landscape" }
+        ],
+        "visible_if": "{{ section.settings.aspect_sm != 'custom' and section.settings.aspect_sm != 'square' and section.settings.aspect_sm != 'adapt' and section.settings.aspect_sm != 'fill' }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_aspect_lg",
+        "label": "Enable different aspect ratio for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "aspect_lg",
+        "label": "Aspect ratio (desktop)",
+        "default": "16:9",
+        "options": [
+          { "value": "custom", "label": "Custom" },
+          { "value": "square", "label": "Square" },
+          { "value": "fill", "label": "Fill" },
+          { "value": "2:1", "label": "2:1" },
+          { "value": "3:2", "label": "3:2" },
+          { "value": "4:3", "label": "4:3"},
+          { "value": "5:4", "label": "5:4" },
+          { "value": "6:5", "label": "6:5" },
+          { "value": "7:6", "label": "7:6" },
+          { "value": "8:7", "label": "8:7" },
+          { "value": "9:8", "label": "9:8" },
+          { "value": "10:9", "label": "10:9" },
+          { "value": "16:9", "label": "16:9" },
+          { "value": "21:9", "label": "21:9" },
+          { "value": "32:9", "label": "32:9" }
+        ],
+        "visible_if": "{{ section.settings.enable_aspect_lg }}"
+      },
+      {
+        "type": "text",
+        "id": "custom_aspect_lg",
+        "label": "Custom aspect ratio (desktop)",
+        "default": "16:9",
+        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
+        "visible_if": "{{ section.settings.enable_aspect_lg and section.settings.aspect_lg == 'custom' }}"
+      },
+      {
+        "type": "radio",
+        "id": "orientation_lg",
+        "label": "Media orientation (desktop)",
+        "default": "horizontal",
+        "options": [
+          { "value": "vertical", "label": "Portrait" },
+          { "value": "horizontal", "label": "Landscape" }
+        ],
+        "visible_if": "{{ section.settings.enable_aspect_lg and section.settings.aspect_lg != 'custom' and section.settings.aspect_lg != 'square' and section.settings.aspect_lg != 'adapt' and section.settings.aspect_lg != 'fill' }}"
       }
     ],
-    "blocks": [
-
-    ],
+    "blocks": [],
     "disabled_on": {
       "groups": ["header", "footer"]
     },
