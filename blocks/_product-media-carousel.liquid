@@ -32,6 +32,12 @@
   endif
 -%}
 
+{%- comment -%} THUMBNAIL SLIDER {%- endcomment -%}
+  {%- capture carousel_thumbnails -%}
+    {%- content_for 'block', type: '_carousel-thumbnails', id: 'carousel_thumbnails', data: resource -%}
+  {%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
+
 {%- comment -%} ASPECT RATIO {%- endcomment -%}
   {%- capture aspect_padding -%}
     {%- render 'u.aspect-composition',
@@ -57,6 +63,10 @@
 
 <div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
   <slider-ui>
+
+    {%- if carousel_thumbnails != blank -%}
+      {{ carousel_thumbnails }}
+    {%- endif -%}
 
     <script type="application/json" ref="main-config">
       {%- liquid
