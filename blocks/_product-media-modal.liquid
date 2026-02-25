@@ -65,10 +65,7 @@
 {%- comment -%} END {%- endcomment -%}
 
 <div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
-  <slider-ui
-    class="flex {{ s.layout_sm }} gap-(--space-sm){% if s.enable_layout_lg %} {{ s.layout_lg }} lg:gap-(--space-lg){% endif %}"
-    sync-group="product-media-carousel"
-  >
+  <slider-ui sync-group="product-media-carousel" sync-role="dependent">
     {%- render 'product.media-slides',
       prefix: 'main',
       images: resource.media,
