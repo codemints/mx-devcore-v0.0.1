@@ -240,7 +240,17 @@
       },
       {
         "type": "header",
-        "content": "Aspect Ratio"
+        "content": "Image Settings"
+      },
+      {
+        "type": "select",
+        "id": "image_fit",
+        "label": "Image fit",
+        "default": "object-cover",
+        "options": [
+          { "value": "object-cover", "label": "Cover" },
+          { "value": "object-contain", "label": "Contain" }
+        ]
       },
       {
         "type": "select",
