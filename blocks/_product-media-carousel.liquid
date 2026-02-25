@@ -62,7 +62,7 @@
 {%- comment -%} END {%- endcomment -%}
 
 <div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
-  <slider-ui>
+  <slider-ui sync-group="product-media-carousel">
     {%- render 'product.media-slides',
       prefix: 'main',
       images: resource.media,
