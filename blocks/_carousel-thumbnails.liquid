@@ -29,6 +29,45 @@
     arrows_classlist: 'hidden',
     pagination_classlist: 'hidden'
   -%}
+
+  <script type="application/json" ref="thumbnail-config">
+    {%- liquid
+      assign page_same = false
+      assign gap_same = false
+      assign has_breakpoints = false
+
+      if s.per_page_sm == s.per_page_lg
+        assign page_same = true
+      endif
+
+      if s.gap_sm == s.gap_lg
+        assign gap_same = true
+      endif
+
+      if s.enable_settings_lg
+        if page_same == false or gap_same == false
+          assign has_breakpoints = true
+        endif
+      endif
+    -%}
+
+    {
+      "perPage": {{ s.per_page_sm }},
+      "gap": {{ s.gap_sm }},
+      {% if has_breakpoints -%}
+      "breakpoints": {
+        "1024": {
+          {% if page_same == false -%}
+          "perPage": {{ s.per_page_lg }},
+          {%- endif %}
+          {% if gap_same == false %}
+          "gap": {{ s.gap_lg }}
+          {%- endif %}
+        }
+      }
+      {%- endif %}
+    }
+  </script>
 </div>
 
 {%- schema -%}
