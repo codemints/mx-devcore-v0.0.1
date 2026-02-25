@@ -130,7 +130,7 @@
             "interval": 4750,
             "speed": 1400,
             "autoplay_video": false,
-            "show_arrows": false,
+            "show_arrows": true,
             "show_pagination": false,
             "arrows_on": "block",
             "pagination_on": "block",
