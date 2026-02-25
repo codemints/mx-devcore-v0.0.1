@@ -272,6 +272,34 @@
         "unit": "px"
       },
       {
+        "type": "checkbox",
+        "id": "enable_layout_lg",
+        "label": "Enable desktop settings",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "layout_lg",
+        "label": "Layout",
+        "default": "lg:flex-col",
+        "options": [
+          { "value": "lg:flex-col", "label": "Below" },
+          { "value": "lg:flex-col-reverse", "label": "Above" },
+          { "value": "lg:flex-row-reverse", "label": "Left" },
+          { "value": "lg:flex-row", "label": "Right" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "space_lg",
+        "label": "Space",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px"
+      },
+      {
         "type": "header",
         "content": "Image Settings"
       },
