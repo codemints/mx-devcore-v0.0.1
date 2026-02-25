@@ -73,12 +73,8 @@
           "type": {{ type | json }},
           {% if s.type == 'fade' and s.loop -%}
           "rewind": true,
-          {%- endif %}
+          {%- endif -%}
           "autoplay": {{ s.autoplay }},
-          {% if s.autoplay -%}
-          "interval": {{ s.interval }},
-          "speed": {{ s.speed }},
-          {%- endif %}
           "arrows": {{ s.show_arrows }},
           "pagination": {{ s.show_pagination }}
         }
