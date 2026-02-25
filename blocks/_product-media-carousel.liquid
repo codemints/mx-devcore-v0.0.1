@@ -57,12 +57,18 @@
   {%- style -%}
     #{{ id }} {
       {{ aspect_padding }}
+
+      --space-sm: {{ s.space_sm }}px;
+      --space-lg: {{ s.space_lg }}px;
     }
   {%- endstyle -%}
 {%- comment -%} END {%- endcomment -%}
 
 <div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
-  <slider-ui sync-group="product-media-carousel">
+  <slider-ui
+    class="flex {{ s.layout_sm }} gap-(--space-sm){% if s.enable_layout_lg %} {{ s.layout_lg }} lg:gap-(--space-lg){% endif %}"
+    sync-group="product-media-carousel"
+  >
     {%- render 'product.media-slides',
       prefix: 'main',
       images: resource.media,
