@@ -134,6 +134,11 @@
             "arrows_on": "block",
             "show_pagination": false,
             "pagination_on": "block",
+            "layout_sm": "flex-col",
+            "space_sm": 10,
+            "enable_layout_lg": false,
+            "layout_lg": "lg:flex-col",
+            "space_lg": 10,
             "image_fit": "object-cover",
             "aspect_sm": "16:9",
             "custom_aspect_sm": "16:9",
@@ -147,7 +152,21 @@
             "carousel_thumbnails": {
               "type": "_carousel-thumbnails",
               "static": true,
-              "settings": {},
+              "settings": {
+                "per_page_sm": 4,
+                "gap_sm": 10,
+                "enable_settings_lg": true,
+                "per_page_lg": 4,
+                "gap_lg": 10,
+                "image_fit": "object-cover",
+                "aspect_sm": "16:9",
+                "custom_aspect_sm": "16:9",
+                "orientation_sm": "horizontal",
+                "enable_aspect_lg": false,
+                "aspect_lg": "16:9",
+                "custom_aspect_lg": "16:9",
+                "orientation_lg": "horizontal"
+              },
               "blocks": {}
             }
           },
