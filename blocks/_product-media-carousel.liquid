@@ -287,7 +287,8 @@
           { "value": "lg:flex-col-reverse", "label": "Above" },
           { "value": "lg:flex-row-reverse", "label": "Left" },
           { "value": "lg:flex-row", "label": "Right" }
-        ]
+        ],
+        "visible_if": "{{ block.settings.enable_layout_lg }}"
       },
       {
         "type": "range",
@@ -297,7 +298,8 @@
         "min": 0,
         "max": 50,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "visible_if": "{{ block.settings.enable_layout_lg }}"
       },
       {
         "type": "header",
