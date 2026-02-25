@@ -61,6 +61,36 @@
     <script type="application/json" ref="main-config">
       {%- liquid
         assign type = s.type
+        assign arrows_sm = s.show_arrows
+        assign pagination_sm = s.show_pagination
+        assign arrows_lg = null
+        assign pagination_lg = null
+
+        if s.show_arrows
+          if s.arrows_on == 'block'
+            assign arrows_sm = true
+            assign arrows_lg = true
+          elsif s.arrows_on == 'hidden lg:block'
+            assign arrows_sm = false
+            assign arrows_lg = true
+          elsif s.arrows_on == 'block lg:hidden'
+            assign arrows_sm = true
+            assign arrows_lg = false
+          endif
+        endif
+
+        if s.show_pagination
+          if s.pagination_on == 'block'
+            assign pagination_sm = true
+            assign pagination_lg = true
+          elsif s.pagination_on == 'hidden lg:block'
+            assign pagination_sm = false
+            assign pagination_lg = true
+          elsif s.pagination_on == 'block lg:hidden'
+            assign pagination_sm = true
+            assign pagination_lg = false
+          endif
+        endif
         
         if s.type == 'slide' and s.loop
           assign type = 'loop'
@@ -80,7 +110,19 @@
           "speed": {{ s.speed }},
           {%- endif %}
           "arrows": {{ s.show_arrows }},
-          "pagination": {{ s.show_pagination }}
+          "pagination": {{ s.show_pagination }},
+          {% if arrows_lg or pagination_lg -%}
+          "breakpoints": {
+            "1024": {
+              {% if arrows_lg -%}
+              "arrows": {{ arrows_lg }},
+              {%- endif %}
+              {% if pagination_lg -%}
+              "pagination": {{ pagination_lg }}
+              {% endif %}
+            }
+          }
+          {%- endif %}
         }
       }
     </script>
