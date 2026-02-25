@@ -25,11 +25,15 @@
   {%- endcapture -%}
 
   {%- capture product_information -%}
-    {%- content_for 'block', type: '_product-information', id: 'product_information', item: resource -%}
+    {%- content_for 'block', type: '_product-information', id: 'product_information', data: resource -%}
   {%- endcapture -%}
 
-  {%- capture product_carousel -%}
-    {%- content_for 'block', type: '_product-slider', id: 'product_slider' -%}
+  {%- capture product_media_carousel -%}
+    {%- content_for 'block', type: '_product-media-carousel', id: 'product_media_carousel', data: resource -%}
+  {%- endcapture -%}
+
+  {%- capture product_media_modal -%}
+    {%- content_for 'block', type: '_product-media-modal', id: 'product_media_modal', data: resource -%}
   {%- endcapture -%}
 {%- comment -%} END {%- endcomment -%}
 
@@ -74,24 +78,23 @@
   <div class="section__inner{% if s.bg_size == 'full' %} background{% endif %}">
     <div class="section__container container">
       <div class="section__content content{% if s.bg_size == 'contained' %} background{% endif %}">
-
         <div class="section__main flex {{ flex_col }} {{ flex_row }} lg:items-start gap-x-(--gap-x) gap-y-(--gap-y)">
           <div class="pdp-carousel flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-carousel){% endif %} w-full">
-            {{ product_carousel }}
+            {{ product_media_carousel }}
           </div>
 
           <div class="pdp-detail flex-1{% if s.enable_layout_lg == true %} lg:flex-(--flex-detail){% endif %} w-full">
             {{ product_information }}
-
-            <script type="application/json" data-product-json data-product-id="{{ resource.id }}">
-              {{ resource | json }}
-            </script>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+{%- if product_media_modal != blank -%}
+  {{ product_media_modal }}
+{%- endif -%}
 
 {%- schema -%}
   {
@@ -229,101 +232,6 @@
         "step": 1,
         "unit": "%",
         "visible_if": "{{ section.settings.enable_layout_lg == true }}"
-      },
-      {
-        "type": "header",
-        "content": "Aspect Ratio"
-      },
-      {
-        "type": "select",
-        "id": "aspect_sm",
-        "label": "Aspect ratio",
-        "default": "16:9",
-        "options": [
-          { "value": "custom", "label": "Custom" },
-          { "value": "square", "label": "Square" },
-          { "value": "fill", "label": "Fill" },
-          { "value": "2:1", "label": "2:1" },
-          { "value": "3:2", "label": "3:2" },
-          { "value": "4:3", "label": "4:3"},
-          { "value": "5:4", "label": "5:4" },
-          { "value": "6:5", "label": "6:5" },
-          { "value": "7:6", "label": "7:6" },
-          { "value": "8:7", "label": "8:7" },
-          { "value": "9:8", "label": "9:8" },
-          { "value": "10:9", "label": "10:9" },
-          { "value": "16:9", "label": "16:9" },
-          { "value": "21:9", "label": "21:9" },
-          { "value": "32:9", "label": "32:9" }
-        ]
-      },
-      {
-        "type": "text",
-        "id": "custom_aspect_sm",
-        "label": "Custom aspect ratio",
-        "default": "16:9",
-        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
-        "visible_if": "{{ section.settings.aspect_sm == 'custom' }}"
-      },
-      {
-        "type": "radio",
-        "id": "orientation_sm",
-        "label": "Media orientation",
-        "default": "horizontal",
-        "options": [
-          { "value": "vertical", "label": "Portrait" },
-          { "value": "horizontal", "label": "Landscape" }
-        ],
-        "visible_if": "{{ section.settings.aspect_sm != 'custom' and section.settings.aspect_sm != 'square' and section.settings.aspect_sm != 'adapt' and section.settings.aspect_sm != 'fill' }}"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_aspect_lg",
-        "label": "Enable different aspect ratio for desktop",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "aspect_lg",
-        "label": "Aspect ratio (desktop)",
-        "default": "16:9",
-        "options": [
-          { "value": "custom", "label": "Custom" },
-          { "value": "square", "label": "Square" },
-          { "value": "fill", "label": "Fill" },
-          { "value": "2:1", "label": "2:1" },
-          { "value": "3:2", "label": "3:2" },
-          { "value": "4:3", "label": "4:3"},
-          { "value": "5:4", "label": "5:4" },
-          { "value": "6:5", "label": "6:5" },
-          { "value": "7:6", "label": "7:6" },
-          { "value": "8:7", "label": "8:7" },
-          { "value": "9:8", "label": "9:8" },
-          { "value": "10:9", "label": "10:9" },
-          { "value": "16:9", "label": "16:9" },
-          { "value": "21:9", "label": "21:9" },
-          { "value": "32:9", "label": "32:9" }
-        ],
-        "visible_if": "{{ section.settings.enable_aspect_lg }}"
-      },
-      {
-        "type": "text",
-        "id": "custom_aspect_lg",
-        "label": "Custom aspect ratio (desktop)",
-        "default": "16:9",
-        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
-        "visible_if": "{{ section.settings.enable_aspect_lg and section.settings.aspect_lg == 'custom' }}"
-      },
-      {
-        "type": "radio",
-        "id": "orientation_lg",
-        "label": "Media orientation (desktop)",
-        "default": "horizontal",
-        "options": [
-          { "value": "vertical", "label": "Portrait" },
-          { "value": "horizontal", "label": "Landscape" }
-        ],
-        "visible_if": "{{ section.settings.enable_aspect_lg and section.settings.aspect_lg != 'custom' and section.settings.aspect_lg != 'square' and section.settings.aspect_lg != 'adapt' and section.settings.aspect_lg != 'fill' }}"
       }
     ],
     "blocks": [],

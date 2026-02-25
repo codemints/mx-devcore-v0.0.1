@@ -17,8 +17,6 @@ class SliderUi extends Component {
     arrows: false,
     pagination: false,
     autoplay: false,
-    interval: 5000,
-    speed: 1000,
     pauseOnHover: false,
     pauseOnFocus: false,
     trimSpace: true,
@@ -44,30 +42,30 @@ class SliderUi extends Component {
 
   constructor() {
     super()
-    this.requiredRefs = ['mainSliderUi', 'mainSliderTrack', 'mainSliderList']
+    // this.requiredRefs = ['mainSliderUi', 'mainSliderTrack', 'mainSliderList']
 
-    this.mainConfig = null
-    this.navigationConfig = null
-    this.modalConfig = null
+    // this.mainConfig = null
+    // this.navigationConfig = null
+    // this.modalConfig = null
 
-    this.mainSplide = null
-    this.navigationSplide = null
-    this.modalSplide = null
+    // this.mainSplide = null
+    // this.navigationSplide = null
+    // this.modalSplide = null
   }
 
   connectedCallback() {
     super.connectedCallback()
-    this.#initializeSliders()
+    // this.#initializeSliders()
   }
 
   updatedCallback() {
     super.updatedCallback()
-    this.#destroySliders()
-    this.#initializeSliders()
+    // this.#destroySliders()
+    // this.#initializeSliders()
   }
 
   disconnectedCallback() {
-    this.#destroySliders()
+    // this.#destroySliders()
     super.disconnectedCallback()
   }
 

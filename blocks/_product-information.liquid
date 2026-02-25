@@ -9,10 +9,8 @@
 
   # Statically Rendered Block Props
   # theme-check-disable UndefinedObject
-  assign item = item
+  assign resource = data | default: closest.product | default: product
   # theme-check-enable UndefinedObject
-
-  assign resource = item | default: closest.product | default: product
 -%}
 
 {%- capture classlist -%}

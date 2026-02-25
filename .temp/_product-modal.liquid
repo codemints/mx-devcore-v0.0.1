@@ -45,26 +45,24 @@
 {%- comment -%} END {%- endcomment -%}
 
 <div {% render 'block.attributes' %}>
-  <slider-ui data-section-id="{{ section.id }}">
-    {{ slider }}
+  <overlay-ui>
+    <slider-ui data-section-id="{{ section.id }}">
+      {{ slider }}
 
-    {%- if s.show_slider_navigation -%}
-      {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation', data: resource -%}
-    {%- endif -%}
+      {%- if s.show_slider_navigation -%}
+        {%- content_for 'block', type: '_slider-navigation', id: 'product_slider_navigation', data: resource -%}
+      {%- endif -%}
 
-    {%- if s.show_slider_modal -%}
-      {%- content_for 'block', type: '_slider-modal', id: 'product_slider_modal', data: resource -%}
-    {%- endif %}
-
-    <script type="application/json" ref="main-slider-config">
-      {{ s | json }}
-    </script>
-  </slider-ui>
+      <script type="application/json" ref="main-slider-config">
+        {{ s | json }}
+      </script>
+    </slider-ui>
+  </overlay-ui>
 </div>
 
 {%- schema -%}
   {
-    "name": "Product Slider",
+    "name": "Product Modal",
     "tag": null,
     "settings": [
       {
@@ -193,7 +191,7 @@
     "blocks": [],
     "presets": [
       {
-        "name": "Product Slider",
+        "name": "Product Modal",
         "settings": {},
         "blocks": [],
         "category": "Product"

@@ -72,7 +72,7 @@
                 "enable_mt_lg": false,
                 "mt_lg": "lg:mt-0",
                 "use_custom_title": false,
-                "custom_title": "",
+                "custom_title": "{{ closest.product.metafields.display.title.value }}",
                 "show_advanced_settings": false,
                 "tag_name": "h1"
               },
@@ -120,40 +120,46 @@
             "product_description_iFwdVT"
           ]
         },
-        "product_slider": {
-          "type": "_product-slider",
+        "product_media_carousel": {
+          "type": "_product-media-carousel",
           "static": true,
           "settings": {
-            "type": "fade",
-            "loop": true,
+            "type": "slide",
+            "loop": false,
             "autoplay": false,
-            "interval": 4000,
-            "speed": 1000,
+            "interval": 4750,
+            "speed": 1400,
             "autoplay_video": false,
-            "arrows_sm": "false",
-            "pagination_sm": "false",
-            "enable_controls_lg": false,
-            "arrows_lg": "false",
-            "pagination_lg": "false",
-            "show_slider_navigation": true,
-            "show_slider_modal": true
+            "show_arrows": false,
+            "arrows_on": "block",
+            "show_pagination": false,
+            "pagination_on": "block",
+            "layout_sm": "flex-col",
+            "space_sm": 10,
+            "enable_layout_lg": false,
+            "layout_lg": "lg:flex-col",
+            "space_lg": 10,
+            "image_fit": "object-cover",
+            "aspect_sm": "16:9",
+            "custom_aspect_sm": "16:9",
+            "orientation_sm": "horizontal",
+            "enable_aspect_lg": false,
+            "aspect_lg": "16:9",
+            "custom_aspect_lg": "16:9",
+            "orientation_lg": "horizontal"
           },
           "blocks": {
-            "product_slider_navigation": {
-              "type": "_slider-navigation",
+            "carousel_thumbnails": {
+              "type": "_carousel-thumbnails",
               "static": true,
               "settings": {
-                "mt_sm": "mt-2.5",
-                "enable_mt_lg": false,
-                "mt_lg": "lg:mt-0",
-                "position_sm": "bottom",
                 "per_page_sm": 4,
                 "gap_sm": 10,
-                "enable_settings_lg": false,
-                "position_lg": "bottom",
+                "enable_settings_lg": true,
                 "per_page_lg": 4,
                 "gap_lg": 10,
-                "aspect_sm": "square",
+                "image_fit": "object-cover",
+                "aspect_sm": "16:9",
                 "custom_aspect_sm": "16:9",
                 "orientation_sm": "horizontal",
                 "enable_aspect_lg": false,
@@ -162,29 +168,15 @@
                 "orientation_lg": "horizontal"
               },
               "blocks": {}
-            },
-            "product_slider_modal": {
-              "type": "_slider-modal",
-              "disabled": true,
-              "static": true,
-              "settings": {
-                "enable_zoom": true,
-                "type": "slide",
-                "per_page_sm": 2,
-                "gap_sm": 26,
-                "enable_settings_lg": false,
-                "per_page_lg": 4,
-                "gap_lg": 10,
-                "arrows_sm": "false",
-                "pagination_sm": "false",
-                "enable_controls_lg": false,
-                "arrows_lg": "false",
-                "pagination_lg": "false"
-              },
-              "blocks": {}
             }
           },
           "block_order": []
+        },
+        "product_media_modal": {
+          "type": "_product-media-modal",
+          "static": true,
+          "settings": {},
+          "blocks": {}
         }
       },
       "name": "Product Detail",
@@ -201,14 +193,7 @@
         "enable_layout_lg": false,
         "flex_row": "lg:flex-row",
         "gap_x": 80,
-        "basis_lg": 50,
-        "aspect_sm": "4:3",
-        "custom_aspect_sm": "16:9",
-        "orientation_sm": "vertical",
-        "enable_aspect_lg": false,
-        "aspect_lg": "16:9",
-        "custom_aspect_lg": "16:9",
-        "orientation_lg": "horizontal"
+        "basis_lg": 50
       }
     }
   },

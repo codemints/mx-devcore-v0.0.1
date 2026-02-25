@@ -1,4 +1,4 @@
-{%- liquid
+ {%- liquid
   assign s = block.settings
   assign sid = section.id
   assign bid = block.id
@@ -21,7 +21,7 @@
 -%}
 
 {%- capture slider -%}
-  {%- render 'product.slides',
+  {%- render 'product.media-slides',
     resource: data,
     prefix: 'navigation'
   -%}

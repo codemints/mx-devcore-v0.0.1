@@ -1,0 +1,457 @@
+{%- liquid
+  assign s = block.settings
+  assign attrs = block.shopify_attributes
+  assign sid = section.id
+  assign bid = block.id
+
+  assign prefix = 'theme-block__'
+
+  assign id_parts = bid | split: '__'
+  assign unique = id_parts | first
+  assign name = id_parts | last
+
+  assign block_id = sid | append: '--' | append: bid | append: '__'
+
+  assign id = prefix | append: block_id | append: unique
+  assign classname = prefix | append: name
+
+  # Statically Rendered Block Props
+  # theme-check-disable UndefinedObject
+  assign resource = data | default: closest.product | default: product
+  # theme-check-enable UndefinedObject
+
+  assign arrows_classlist = 'hidden'
+  assign pagination_classlist = 'hidden'
+
+  if s.show_arrows
+    assign arrows_classlist = s.arrows_on
+  endif
+
+  if s.show_pagination
+    assign pagination_classlist = s.pagination_on
+  endif
+-%}
+
+{%- comment -%} THUMBNAIL SLIDER {%- endcomment -%}
+  {%- capture carousel_thumbnails -%}
+    {%- content_for 'block', type: '_carousel-thumbnails', id: 'carousel_thumbnails', data: resource -%}
+  {%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
+
+{%- comment -%} ASPECT RATIO {%- endcomment -%}
+  {%- capture aspect_padding -%}
+    {%- render 'u.aspect-composition',
+      enable_lg: s.enable_aspect_lg,
+      aspect_sm: s.aspect_sm,
+      custom_sm: s.custom_aspect_sm,
+      orientation_sm: s.orientation_sm,
+      aspect_lg: s.aspect_lg,
+      custom_lg: s.custom_aspect_lg,
+      orientation_lg: s.orientation_lg,
+      overlay: s.section_overlay_header
+    -%}
+  {%- endcapture -%}
+{%- comment -%} END {%- endcomment -%}
+
+{%- comment -%} STYLES {%- endcomment -%}
+  {%- style -%}
+    #{{ id }} {
+      {{ aspect_padding }}
+
+      --space-sm: {{ s.space_sm }}px;
+      --space-lg: {{ s.space_lg }}px;
+    }
+  {%- endstyle -%}
+{%- comment -%} END {%- endcomment -%}
+
+<div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
+  <slider-ui sync-group="product-media-carousel" sync-role="dependent">
+    {%- render 'product.media-slides',
+      prefix: 'main',
+      images: resource.media,
+      image_fit: s.image_fit,
+      arrows_classlist: arrows_classlist,
+      pagination_classlist: pagination_classlist
+    -%}
+
+    {%- if carousel_thumbnails != blank -%}
+      {{ carousel_thumbnails }}
+    {%- endif -%}
+
+    <script type="application/json" ref="main-config">
+      {%- liquid
+        assign type = s.type
+        assign arrows_sm = s.show_arrows
+        assign pagination_sm = s.show_pagination
+        assign arrows_lg = null
+        assign pagination_lg = null
+
+        if s.show_arrows
+          if s.arrows_on == 'block'
+            assign arrows_sm = true
+            assign arrows_lg = true
+          elsif s.arrows_on == 'hidden lg:block'
+            assign arrows_sm = false
+            assign arrows_lg = true
+          elsif s.arrows_on == 'block lg:hidden'
+            assign arrows_sm = true
+            assign arrows_lg = false
+          endif
+        endif
+
+        if s.show_pagination
+          if s.pagination_on == 'block'
+            assign pagination_sm = true
+            assign pagination_lg = true
+          elsif s.pagination_on == 'hidden lg:block'
+            assign pagination_sm = false
+            assign pagination_lg = true
+          elsif s.pagination_on == 'block lg:hidden'
+            assign pagination_sm = true
+            assign pagination_lg = false
+          endif
+        endif
+        
+        assign page_same = false
+        assign gap_same = false
+
+        if s.per_page_sm == s.per_page_lg
+          assign page_same = true
+        endif
+
+        if s.gap_sm == s.gap_lg
+          assign gap_same = true
+        endif
+      -%}
+
+      {
+        "settings": {},
+        "config": {
+          "type": {{ type | json }},
+          {% if block.setting.type != 'fade' -%}
+          "perPage": {{ s.per_page_sm }},
+          {%- endif %}
+          "gap": {{ s.gap_sm }},
+          "arrows": {{ arrows_sm }},
+          "pagination": {{ pagination_sm }},
+          {% if arrows_lg or pagination_lg or s.enable_settings_lg -%}
+          "breakpoints": {
+            "1024": {
+              {% if s.type != 'fade' and page_same == false and s.enable_settings_lg -%},
+              "perPage": {{ s.per_page_lg }},
+              {%- endif %}
+              {% if gap_same == false and s.enable_settings_lg -%}
+              "gap": {{ s.gap_lg }},
+              {%- endif %}
+              {% if arrows_lg -%}
+              "arrows": {{ arrows_lg }},
+              {%- endif %}
+              {% if pagination_lg -%}
+              "pagination": {{ pagination_lg }}
+              {% endif %}
+            }
+          }
+          {%- endif %}
+        }
+      }
+    </script>
+  </slider-ui>
+</div>
+
+{%- schema -%}
+  {
+    "name": "Product Media Carousel",
+    "tag": null,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Modal Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable zoom",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "zoom_range",
+        "label": "Zoom range",
+        "default": 2,
+        "min": 1,
+        "max": 5,
+        "step": 0.1,
+        "visible_if": "{{ block.settings.enable_zoom }}"
+      },
+      {
+        "type": "header",
+        "content": "Carousel Setting"
+      },
+      {
+        "type": "select",
+        "id": "type",
+        "label": "Slide type",
+        "default": "slide",
+        "options": [
+          { "value": "slide", "label": "Slide" },
+          { "value": "fade", "label": "Fade" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "per_page_sm",
+        "label": "Slides per page",
+        "default": 4,
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "visible_if": "{{ block.settings.type != 'fade' }}"
+      },
+      {
+        "type": "range",
+        "id": "gap_sm",
+        "label": "Slide gap",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_settings_lg",
+        "label": "Enable desktop settings",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "per_page_lg",
+        "label": "Slides per page",
+        "default": 4,
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "visible_if": "{{ block.settings.type != 'fade' and block.settings.enable_settings_lg }}"
+      },
+      {
+        "type": "range",
+        "id": "gap_lg",
+        "label": "Slide gap",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "visible_if": "{{ block.settings.enable_settings_lg }}"
+      },
+      {
+        "type": "header",
+        "content": "Controls Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_arrows",
+        "label": "Show arrows",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "arrows_on",
+        "label": "Arrows on",
+        "default": "block",
+        "options": [
+          { "value": "block", "label": "All" },
+          { "value": "hidden lg:block", "label": "Desktop" },
+          { "value": "block lg:hidden", "label": "Mobile" }
+        ],
+        "visible_if": "{{ block.settings.show_arrows }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pagination",
+        "label": "Show pagination",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "pagination_on",
+        "label": "Pagination on",
+        "default": "block",
+        "options": [
+          { "value": "block", "label": "All" },
+          { "value": "hidden lg:block", "label": "Desktop" },
+          { "value": "block lg:hidden", "label": "Mobile" }
+        ],
+        "visible_if": "{{ block.settings.show_pagination }}"
+      },
+      {
+        "type": "header",
+        "content": "Thumbnail Settings"
+      },
+      {
+        "type": "select",
+        "id": "layout_sm",
+        "label": "Layout",
+        "default": "below",
+        "options": [
+          { "value": "below", "label": "Below" },
+          { "value": "on", "label": "On" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "space_sm",
+        "label": "Space",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_layout_lg",
+        "label": "Enable desktop settings",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "layout_lg",
+        "label": "Layout",
+        "default": "lg:flex-col",
+        "options": [
+          { "value": "lg:flex-col", "label": "Below" },
+          { "value": "lg:flex-col-reverse", "label": "Above" },
+          { "value": "lg:flex-row-reverse", "label": "Left" },
+          { "value": "lg:flex-row", "label": "Right" }
+        ],
+        "visible_if": "{{ block.settings.enable_layout_lg }}"
+      },
+      {
+        "type": "range",
+        "id": "space_lg",
+        "label": "Space",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "visible_if": "{{ block.settings.enable_layout_lg }}"
+      },
+      {
+        "type": "header",
+        "content": "Image Settings"
+      },
+      {
+        "type": "select",
+        "id": "image_fit",
+        "label": "Image fit",
+        "default": "object-cover",
+        "options": [
+          { "value": "object-cover", "label": "Cover" },
+          { "value": "object-contain", "label": "Contain" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "aspect_sm",
+        "label": "Aspect ratio",
+        "default": "16:9",
+        "options": [
+          { "value": "custom", "label": "Custom" },
+          { "value": "square", "label": "Square" },
+          { "value": "fill", "label": "Fill" },
+          { "value": "2:1", "label": "2:1" },
+          { "value": "3:2", "label": "3:2" },
+          { "value": "4:3", "label": "4:3"},
+          { "value": "5:4", "label": "5:4" },
+          { "value": "6:5", "label": "6:5" },
+          { "value": "7:6", "label": "7:6" },
+          { "value": "8:7", "label": "8:7" },
+          { "value": "9:8", "label": "9:8" },
+          { "value": "10:9", "label": "10:9" },
+          { "value": "16:9", "label": "16:9" },
+          { "value": "21:9", "label": "21:9" },
+          { "value": "32:9", "label": "32:9" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "custom_aspect_sm",
+        "label": "Custom aspect ratio",
+        "default": "16:9",
+        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
+        "visible_if": "{{ block.settings.aspect_sm == 'custom' }}"
+      },
+      {
+        "type": "radio",
+        "id": "orientation_sm",
+        "label": "Media orientation",
+        "default": "horizontal",
+        "options": [
+          { "value": "vertical", "label": "Portrait" },
+          { "value": "horizontal", "label": "Landscape" }
+        ],
+        "visible_if": "{{ block.settings.aspect_sm != 'custom' and block.settings.aspect_sm != 'square' and block.settings.aspect_sm != 'adapt' and block.settings.aspect_sm != 'fill' }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_aspect_lg",
+        "label": "Enable different aspect ratio for desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "aspect_lg",
+        "label": "Aspect ratio (desktop)",
+        "default": "16:9",
+        "options": [
+          { "value": "custom", "label": "Custom" },
+          { "value": "square", "label": "Square" },
+          { "value": "fill", "label": "Fill" },
+          { "value": "2:1", "label": "2:1" },
+          { "value": "3:2", "label": "3:2" },
+          { "value": "4:3", "label": "4:3"},
+          { "value": "5:4", "label": "5:4" },
+          { "value": "6:5", "label": "6:5" },
+          { "value": "7:6", "label": "7:6" },
+          { "value": "8:7", "label": "8:7" },
+          { "value": "9:8", "label": "9:8" },
+          { "value": "10:9", "label": "10:9" },
+          { "value": "16:9", "label": "16:9" },
+          { "value": "21:9", "label": "21:9" },
+          { "value": "32:9", "label": "32:9" }
+        ],
+        "visible_if": "{{ block.settings.enable_aspect_lg }}"
+      },
+      {
+        "type": "text",
+        "id": "custom_aspect_lg",
+        "label": "Custom aspect ratio (desktop)",
+        "default": "16:9",
+        "info": "Enter aspect ratio as 'width:height' (e.g. '16:9')",
+        "visible_if": "{{ block.settings.enable_aspect_lg and block.settings.aspect_lg == 'custom' }}"
+      },
+      {
+        "type": "radio",
+        "id": "orientation_lg",
+        "label": "Media orientation (desktop)",
+        "default": "horizontal",
+        "options": [
+          { "value": "vertical", "label": "Portrait" },
+          { "value": "horizontal", "label": "Landscape" }
+        ],
+        "visible_if": "{{ block.settings.enable_aspect_lg and block.settings.aspect_lg != 'custom' and block.settings.aspect_lg != 'square' and block.settings.aspect_lg != 'adapt' and block.settings.aspect_lg != 'fill' }}"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Product Media Carousel",
+        "settings": {},
+        "blocks": [],
+        "category": "Product"
+      }
+    ]
+  }
+{%- endschema -%}
