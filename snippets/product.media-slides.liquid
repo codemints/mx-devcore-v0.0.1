@@ -2,23 +2,23 @@
   This snippet is used to render slides for the product media carousel.
 
   Accepts:
-    - resource: {Object} the product object for media loop
-    - prefix: {String} determines the slider refs for the <slider-ui> </slider-ui> component
-    - image_classlist: {String} a classlist string to apply to images
-    - video_classlist: {String} a classlist string to apply to videos
-    - iframe_classlist: {String} a classlist string to apply to external videos
+    - prefix: {String} the prefix for the type of sider to render
+    - images: {Array} the product.media array
+    - image_fit: {String} the object-fit class for images
+    - arrows_classlist: {String} the classlist for arrows to pass to the slider.ui.liquid
+    - pagination_classlist: {String} the classlist for pagination to pass to the slider.ui.liquid
 {%- endcomment -%}
 
 {%- liquid
-  assign default_classlist = 'w-full h-full object-cover object-center'
-  assign resource = resource | default: closest.product
-  assign prefix = prefix | default: 'main'
-  assign image_classlist = image_classlist | default: default_classlist
-  assign video_classlist = video_classlist | default: default_classlist
-  assign iframe_classlist = iframe_classlist | default: default_classlist
-  assign arrows_classlist = arrows_classlist | default: 'hidden'
-  assign pagination_classlist = pagination_classlist | default: 'hidden'
 -%}
+
+{%- capture image_classlist -%}
+  w-full h-full {{ image_fit }}
+{%- endcapture -%}
+
+{%- capture video_classlist -%}
+  {{ image_classlist }}
+{%- endcapture -%}
 
 {%- capture slides -%}
   {% for item in resource.media %}
@@ -47,7 +47,7 @@
   {%- endfor -%}
 {%- endcapture -%}
 
-{%- render 'component.slider',
+{%- render 'slider.ui',
   prefix: prefix,
   slides_html: slides,
   arrows_classlist: arrows_classlist
