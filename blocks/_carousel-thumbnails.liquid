@@ -111,7 +111,8 @@
         "default": 4,
         "min": 3,
         "max": 10,
-        "step": 1
+        "step": 1,
+        "visible_if": "{{ block.settings.enable_settings_lg }}"
       },
       {
         "type": "range",
@@ -121,7 +122,8 @@
         "min": 0,
         "max": 50,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "visible_if": "{{ block.settings.enable_settings_lg }}"
       },
       {
         "type": "header",
