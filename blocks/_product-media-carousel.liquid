@@ -63,6 +63,13 @@
 
 <div id="{{ id }}" class="{{ classname }}" {{ attrs }}>
   <slider-ui>
+    {%- render 'product.media-slides',
+      prefix: 'main',
+      images: resource.media,
+      image_fit: s.image_fit,
+      arrows_classlist: arrows_classlist,
+      pagination_classlist: pagination_classlist
+    -%}
 
     {%- if carousel_thumbnails != blank -%}
       {{ carousel_thumbnails }}
@@ -209,12 +216,6 @@
         "default": false
       },
       {
-        "type": "checkbox",
-        "id": "show_pagination",
-        "label": "Show pagination",
-        "default": false
-      },
-      {
         "type": "select",
         "id": "arrows_on",
         "label": "Arrows on",
@@ -225,6 +226,12 @@
           { "value": "block lg:hidden", "label": "Mobile" }
         ],
         "visible_if": "{{ block.settings.show_arrows }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pagination",
+        "label": "Show pagination",
+        "default": false
       },
       {
         "type": "select",
