@@ -124,16 +124,17 @@
           "type": "_product-media-carousel",
           "static": true,
           "settings": {
-            "type": "fade",
-            "loop": true,
-            "autoplay": true,
+            "type": "slide",
+            "loop": false,
+            "autoplay": false,
             "interval": 4750,
             "speed": 1400,
             "autoplay_video": false,
-            "show_arrows": true,
-            "show_pagination": false,
+            "show_arrows": false,
             "arrows_on": "block",
+            "show_pagination": false,
             "pagination_on": "block",
+            "image_fit": "object-cover",
             "aspect_sm": "16:9",
             "custom_aspect_sm": "16:9",
             "orientation_sm": "horizontal",
@@ -142,7 +143,15 @@
             "custom_aspect_lg": "16:9",
             "orientation_lg": "horizontal"
           },
-          "blocks": {}
+          "blocks": {
+            "carousel_thumbnails": {
+              "type": "_carousel-thumbnails",
+              "static": true,
+              "settings": {},
+              "blocks": {}
+            }
+          },
+          "block_order": []
         },
         "product_media_modal": {
           "type": "_product-media-modal",
@@ -165,14 +174,7 @@
         "enable_layout_lg": false,
         "flex_row": "lg:flex-row",
         "gap_x": 80,
-        "basis_lg": 50,
-        "aspect_sm": "4:3",
-        "custom_aspect_sm": "16:9",
-        "orientation_sm": "vertical",
-        "enable_aspect_lg": false,
-        "aspect_lg": "16:9",
-        "custom_aspect_lg": "16:9",
-        "orientation_lg": "horizontal"
+        "basis_lg": 50
       }
     }
   },
