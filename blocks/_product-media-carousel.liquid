@@ -213,7 +213,8 @@
           { "value": "block", "label": "All" },
           { "value": "hidden lg:block", "label": "Desktop" },
           { "value": "block lg:hidden", "label": "Mobile" }
-        ]
+        ],
+        "visible_if": "{{ block.settings.show_arrows }}"
       },
       {
         "type": "select",
@@ -224,7 +225,8 @@
           { "value": "block", "label": "All" },
           { "value": "hidden lg:block", "label": "Desktop" },
           { "value": "block lg:hidden", "label": "Mobile" }
-        ]
+        ],
+        "visible_if": "{{ block.settings.show_pagination }}"
       },
       {
         "type": "header",
